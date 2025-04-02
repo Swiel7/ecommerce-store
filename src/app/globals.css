@@ -93,3 +93,6 @@
 @utility wrapper {
   @apply mx-auto max-w-7xl px-4;
 }
+@utility section-title {
+  @apply pb-8 text-3xl font-medium capitalize lg:pb-10 lg:text-4xl;
+}

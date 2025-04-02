@@ -7,7 +7,7 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
-    <header className="bg-background sticky top-0 shadow-md">
+    <header className="bg-background sticky top-0 z-20 shadow-xs">
       <div className="wrapper px-2 lg:px-4">
         <div className="flex items-center justify-between gap-3 py-2 lg:py-4">
           <MobileNav />

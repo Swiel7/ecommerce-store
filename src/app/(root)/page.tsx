@@ -1,5 +1,13 @@
+import { Brands, Categories, Hero } from "@/components/store/Home";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Hero />
+      <Brands />
+      <Categories />
+    </>
+  );
 };
 
 export default Home;
