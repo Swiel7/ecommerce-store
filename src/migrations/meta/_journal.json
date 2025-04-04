@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1743627458805,
+      "tag": "0000_careful_rumiko_fujikawa",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1743705081046,
+      "tag": "0001_stale_colonel_america",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1743717939683,
+      "tag": "0002_special_toxin",
+      "breakpoints": true
+    }
+  ]
+}

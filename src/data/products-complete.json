@@ -1,0 +1,1169 @@
+[
+  {
+    "brand": "Samsung",
+    "model": "Gear S3",
+    "description": "Molestias quibusdam iste sed. Suscipit consectetur sapiente voluptates architecto reiciendis. Dicta id culpa temporibus. Laboriosam laboriosam aut ducimus modi dolore facere quas enim non. Eius laboriosam quia voluptatibus amet nihil totam consectetur.",
+    "category": {
+      "title": "Smartwatches",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartwatches.png?alt=media&token=b3c7eab0-b598-4593-9d5b-955d7463e7ea"
+    },
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "Silver", "value": "#c0c0c0" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct1%2Fp12-1.png?alt=media&token=680a8c12-1d56-4b82-9255-3e4bd4d0d1cd",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct1%2Fp12-2.png?alt=media&token=83778f1c-1923-455d-8b2c-e92a37b3b6c9",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct1%2Fp12-3.png?alt=media&token=07dfb04d-2ad7-485c-ab57-a372422860a0"
+    ],
+    "inStock": false,
+    "regularPrice": 30000,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "49 x 46 x 12.9 mm",
+    "weight": 63,
+    "reviews": []
+  },
+  {
+    "brand": "Dell",
+    "model": "Vostro 5468",
+    "description": "Minima dignissimos voluptate nemo porro ab amet. Eos voluptatibus aspernatur a optio recusandae dolor quis magni incidunt. Laboriosam voluptatum quos fugiat pariatur qui cumque facilis. Excepturi at officiis asperiores deserunt. Asperiores soluta placeat voluptas facere veritatis optio odio fugiat. Amet repellendus accusantium debitis laborum reiciendis iusto doloremque praesentium veniam. Magni accusamus culpa possimus ut illum.",
+    "category": {
+      "title": "Laptops",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Flaptops.png?alt=media&token=ecd5717f-bf83-46f8-8528-c6fce54b25f1"
+    },
+    "colors": [{ "name": "Black", "value": "#000000" }],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct2%2Fp3-1.png?alt=media&token=63a570a4-da77-4fb2-8cfd-6725ecc8651b",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct2%2Fp3-2.png?alt=media&token=c0de2c3a-8b83-48c3-bfd4-60e60f182167",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct2%2Fp3-3.png?alt=media&token=c83536d8-e7df-4afc-a440-6bdbb16299f0"
+    ],
+    "inStock": true,
+    "regularPrice": 87900,
+    "discountPrice": null,
+    "isFeatured": true,
+    "onSale": false,
+    "dimensions": "340 x 240 x 18.5 cm",
+    "weight": 1660,
+    "reviews": [
+      {
+        "description": "Fugit cum sequi earum perferendis cum quam velit. Officiis necessitatibus praesentium odit sequi vero.",
+        "rating": 4,
+        "date": "2022-12-02T04:24:38.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Labore reprehenderit aliquam accusamus perferendis dolor laborum. Voluptatem soluta at porro repellat dignissimos hic atque in. Harum tenetur reiciendis non magni. Velit exercitationem doloremque ex. Aliquam illo facere aut nesciunt incidunt. Minima dolor voluptas commodi.",
+        "rating": 5,
+        "date": "2021-03-03T02:45:36.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Neque labore architecto iusto dolores officia soluta sunt aliquid. Eveniet molestias dolorum facilis consequatur consectetur in provident. Accusamus aperiam doloremque corporis debitis. Beatae laboriosam occaecati commodi consequuntur beatae provident assumenda quibusdam. Cum pariatur eaque voluptatem.",
+        "rating": 4,
+        "date": "2019-06-21T20:41:30.000Z",
+        "user": [
+          {
+            "name": "Sarai Heidenreich-Marquardt",
+            "email": "Sarai.Heidenreich-Marquardt56@hotmail.com",
+            "password": "SaraiHeidenreich-Marquardt",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/897.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "model": "Gear VR",
+    "description": "Praesentium voluptatum rerum atque sapiente voluptatibus adipisci temporibus odio perferendis. Amet quia porro itaque recusandae possimus. Iure animi repellat vel molestiae ea et commodi. Totam id amet facere possimus enim. Earum optio et reprehenderit explicabo consectetur. Est omnis explicabo fugit laborum culpa.",
+    "category": { "title": "Others", "image": null },
+    "colors": [{ "name": "White", "value": "#ffffff" }],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct3%2Fp17-1.png?alt=media&token=c7ef16a8-cfd3-4582-87f6-b09a8ef25bae",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct3%2Fp17-2.png?alt=media&token=fee16423-56f9-4f7d-a593-666aebffc05b",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct3%2Fp17-3.png?alt=media&token=d5202e1f-d9de-4f61-810f-aff2998d6223"
+    ],
+    "inStock": true,
+    "regularPrice": 11900,
+    "discountPrice": 9900,
+    "isFeatured": false,
+    "onSale": true,
+    "dimensions": "92.6 x 201.9 x 116.4 mm",
+    "weight": 318,
+    "reviews": []
+  },
+  {
+    "brand": "Apple",
+    "model": "Macbook Pro 13in",
+    "description": "Facere ipsum quas adipisci. Culpa rem error libero doloribus commodi beatae sint enim dolore. Mollitia veniam inventore magni molestiae laborum omnis ratione illo maxime. Unde temporibus recusandae dolorum alias fuga veritatis eaque laborum. Iure nam quasi ad magni possimus adipisci quo deleniti.",
+    "category": {
+      "title": "Laptops",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Flaptops.png?alt=media&token=ecd5717f-bf83-46f8-8528-c6fce54b25f1"
+    },
+    "colors": [{ "name": "Silver", "value": "#c0c0c0" }],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct4%2Fp4-1.png?alt=media&token=eaace7a8-bfe9-4b14-aa31-873384e1ebf0",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct4%2Fp4-2.png?alt=media&token=46eba8f0-674b-41a7-8bac-59755a6ca7f6",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct4%2Fp4-3.png?alt=media&token=4104a86a-e29c-4a80-86ac-19c4eead5c93"
+    ],
+    "inStock": true,
+    "regularPrice": 149900,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "212.4 x 304.1 x 14.9 cm",
+    "weight": 1370,
+    "reviews": [
+      {
+        "description": "Rem illo modi accusamus illo vel nihil fuga. Alias consectetur quos ad aperiam.",
+        "rating": 5,
+        "date": "2022-08-18T11:11:39.000Z",
+        "user": [
+          {
+            "name": "Christop Moore",
+            "email": "Christop_Moore@hotmail.com",
+            "password": "ChristopMoore",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1072.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Ipsum harum atque delectus est dolore culpa temporibus voluptas fugit. Saepe incidunt quis perferendis unde officia incidunt. Id quam minus nemo hic et doloremque aliquid. Labore minima illo pariatur reiciendis hic ab atque eius. Error modi unde hic laudantium quos.",
+        "rating": 3,
+        "date": "2021-11-14T00:39:31.000Z",
+        "user": [
+          {
+            "name": "Harry Deckow",
+            "email": "Harry_Deckow49@gmail.com",
+            "password": "HarryDeckow",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/679.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Nam iusto dolorem quod odio. Iste molestiae numquam architecto similique eum ipsum. Recusandae porro nisi. Commodi repellat laudantium eos maxime dolorem ipsam. Ab at mollitia voluptas. Enim magni porro quidem quisquam exercitationem reiciendis laborum voluptatum autem.",
+        "rating": 5,
+        "date": "2019-11-11T00:44:50.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Leioa",
+    "model": "Note10 Pro",
+    "description": "Fugit necessitatibus pariatur voluptates vel eligendi illum. Maiores numquam inventore. Laudantium veritatis ea quaerat tenetur natus. Error odio accusamus fugit minima omnis non maiores officia veritatis. Fuga natus dolores minus.",
+    "category": {
+      "title": "Smartphones",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartphones.png?alt=media&token=b2af498e-735d-4c21-b0a6-396afef44890"
+    },
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "Blue", "value": "#0000ff" },
+      { "name": "White", "value": "#ffffff" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct5%2Fp8-1.png?alt=media&token=3bfe34d4-ec16-4d7f-838b-55be8d6641c1",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct5%2Fp8-2.png?alt=media&token=011c7416-aeb5-4435-98ba-3e6b2c4ac7cd",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct5%2Fp8-3.png?alt=media&token=88956a6e-e5fb-483f-8f22-cc92b1fc6d97"
+    ],
+    "inStock": true,
+    "regularPrice": 15480,
+    "discountPrice": null,
+    "isFeatured": true,
+    "onSale": false,
+    "dimensions": "164 x 76.5 x 8.1 mm",
+    "weight": 500,
+    "reviews": [
+      {
+        "description": "Saepe itaque dolores sunt facilis omnis. Quasi sit est delectus voluptatem tenetur. Vel sint culpa quibusdam doloribus fugit labore voluptatibus laborum totam. Aliquid ut nesciunt explicabo aliquam tenetur maxime delectus autem.",
+        "rating": 5,
+        "date": "2022-07-25T03:36:47.000Z",
+        "user": [
+          {
+            "name": "Leonor Schowalter-Fritsch",
+            "email": "Leonor34@gmail.com",
+            "password": "LeonorSchowalter-Fritsch",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/401.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Tenetur porro animi ea est rem iure id aperiam molestiae. Minima dignissimos deserunt ut cupiditate. Aliquid error accusantium cumque soluta.",
+        "rating": 3,
+        "date": "2022-03-13T08:15:36.000Z",
+        "user": [
+          {
+            "name": "Marshall Russel",
+            "email": "Marshall.Russel46@hotmail.com",
+            "password": "MarshallRussel",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/125.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Possimus sint tempore aperiam consequuntur. Nulla quas repellat modi. Officia officia eaque nihil repellendus nesciunt officiis saepe totam. Error alias porro sequi est delectus sapiente alias harum accusamus. Nobis est eos cupiditate consequatur minima corporis. Similique dolorem mollitia laboriosam exercitationem explicabo.",
+        "rating": 5,
+        "date": "2021-06-07T17:33:52.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Animi aut repudiandae officiis laboriosam laudantium laborum. Accusantium aut dolores laboriosam assumenda ratione omnis quo asperiores. Quam animi exercitationem. Reprehenderit doloribus enim. Quidem impedit adipisci sed velit occaecati laboriosam possimus quae iste.",
+        "rating": 2,
+        "date": "2019-10-17T05:39:53.000Z",
+        "user": [
+          {
+            "name": "Sarai Heidenreich-Marquardt",
+            "email": "Sarai.Heidenreich-Marquardt56@hotmail.com",
+            "password": "SaraiHeidenreich-Marquardt",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/897.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Culpa ab quidem animi. Nihil possimus perspiciatis commodi officia veritatis ipsam eum molestiae.",
+        "rating": 5,
+        "date": "2019-06-17T03:32:12.000Z",
+        "user": [
+          {
+            "name": "Harry Deckow",
+            "email": "Harry_Deckow49@gmail.com",
+            "password": "HarryDeckow",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/679.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Sony",
+    "model": "Alpha A200K",
+    "description": "Voluptas eius occaecati ad omnis. Beatae omnis quod iusto quidem. Voluptatum quos voluptate necessitatibus debitis consequatur quisquam optio dolorum. Harum quidem ipsa est quis iste eligendi minima. Ipsam dolorem quidem sunt cumque repellat et.",
+    "category": {
+      "title": "Cameras",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fcameras.png?alt=media&token=263f9b01-2b4c-4476-95db-c8f8a74c93e6"
+    },
+    "colors": [{ "name": "Black", "value": "#000000" }],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct6%2Fp1-1.png?alt=media&token=4776f202-fe46-4f8a-9d9d-b111c95b2b6a",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct6%2Fp1-2.png?alt=media&token=8d793357-e6c7-4142-b116-a574fcc0f6d1",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct6%2Fp1-3.png?alt=media&token=91c6319d-baaf-49f2-8839-2fc929142550"
+    ],
+    "inStock": true,
+    "regularPrice": 60000,
+    "discountPrice": null,
+    "isFeatured": true,
+    "onSale": false,
+    "dimensions": "3.3 x 9.5 x 7.1 cm",
+    "weight": 625,
+    "reviews": [
+      {
+        "description": "Quidem itaque animi impedit. Iusto inventore consectetur aut libero. Eligendi quidem velit unde excepturi alias. Asperiores nam eos molestias aut quam iure dolorem dolorem error. Fugit laborum eum quod vero et tempore. Deserunt natus veniam suscipit sunt corporis.",
+        "rating": 5,
+        "date": "2022-03-14T04:46:15.000Z",
+        "user": [
+          {
+            "name": "Leonor Schowalter-Fritsch",
+            "email": "Leonor34@gmail.com",
+            "password": "LeonorSchowalter-Fritsch",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/401.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "At illo inventore. Magni ipsum perferendis repudiandae. Cupiditate labore quas asperiores praesentium illum nisi. Facere sequi dolores.",
+        "rating": 5,
+        "date": "2019-07-23T13:26:58.000Z",
+        "user": [
+          {
+            "name": "Marshall Russel",
+            "email": "Marshall.Russel46@hotmail.com",
+            "password": "MarshallRussel",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/125.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Alias voluptatem iusto architecto. Repudiandae laborum nam animi suscipit repellat explicabo facere consectetur. Accusantium in repellendus voluptatum. Accusamus blanditiis quaerat. In quis fugit officia accusamus nihil iusto at laboriosam. Maiores provident libero.",
+        "rating": 5,
+        "date": "2019-05-28T18:09:16.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Reprehenderit neque consequatur iste. Rerum delectus amet natus commodi. Perferendis saepe molestiae magni. Voluptatem facilis sequi quidem officia itaque. Culpa iusto vero autem accusantium culpa. Debitis minus eveniet delectus omnis ut repellendus.",
+        "rating": 5,
+        "date": "2019-03-24T00:40:12.000Z",
+        "user": [
+          {
+            "name": "Christop Moore",
+            "email": "Christop_Moore@hotmail.com",
+            "password": "ChristopMoore",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1072.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Laudantium saepe quibusdam earum a. Dignissimos ut iste aliquam non vel quo repellat.",
+        "rating": 4,
+        "date": "2019-03-17T00:20:39.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "model": "Galaxy J7",
+    "description": "Quisquam repellendus sint necessitatibus voluptas ducimus cupiditate officiis perferendis. Provident ab blanditiis quam quo temporibus eos sequi. Laboriosam asperiores dolorem maxime. Beatae error nihil porro eligendi magni quos blanditiis aut et. Eos praesentium unde ab commodi odio hic ea.",
+    "category": {
+      "title": "Smartphones",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartphones.png?alt=media&token=b2af498e-735d-4c21-b0a6-396afef44890"
+    },
+    "colors": [
+      { "name": "White", "value": "#ffffff" },
+      { "name": "Black", "value": "#000000" },
+      { "name": "Gold", "value": "#ffd700" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct7%2Fp7-1.png?alt=media&token=f9f6d572-4064-4ed9-8bf4-178c0201f540",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct7%2Fp7-2.png?alt=media&token=c750bd1a-057c-44cd-8007-4f3cffd4e3a4",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct7%2Fp7-3.png?alt=media&token=63f148ea-4f9d-450a-b213-f41730953551"
+    ],
+    "inStock": true,
+    "regularPrice": 41800,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "151.7 x 75 x 8 mm",
+    "weight": 167,
+    "reviews": [
+      {
+        "description": "Id totam quae aperiam pariatur incidunt numquam asperiores harum. Sunt libero cum error rem maiores asperiores. Explicabo optio voluptas libero.",
+        "rating": 5,
+        "date": "2020-12-21T16:29:17.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Nisi aut rerum amet expedita. Eligendi aut dolor vero. At repudiandae sequi qui aperiam ipsum dolore.",
+        "rating": 2,
+        "date": "2020-07-16T13:43:23.000Z",
+        "user": [
+          {
+            "name": "Christa Lind",
+            "email": "Christa9@yahoo.com",
+            "password": "ChristaLind",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/509.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Logitech",
+    "model": "MX Anywhere 2",
+    "description": "A officia numquam labore voluptate quam. Officiis alias quisquam eveniet minima quos sit. Accusamus error praesentium commodi a saepe repellendus. Odio iste assumenda maiores neque maiores necessitatibus aliquid iusto qui. Voluptates similique dolorem necessitatibus quia quia architecto optio ipsum dignissimos. Aspernatur quae nemo dolores eaque velit. Recusandae vero dolores voluptates.",
+    "category": { "title": "Others", "image": null },
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "Sky Blue", "value": "#9fb9e2" },
+      { "name": "Khaki", "value": "#c3b091" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct8%2Fp15-1.png?alt=media&token=2214a991-9610-4c13-b753-1a11a7ad27dc",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct8%2Fp15-2.png?alt=media&token=0edd8bb2-1a9a-433e-9415-90d1b0f42846",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct8%2Fp15-3.png?alt=media&token=b6910ce2-e7af-4324-b288-0cca554f96b8"
+    ],
+    "inStock": true,
+    "regularPrice": 1800,
+    "discountPrice": 1300,
+    "isFeatured": true,
+    "onSale": true,
+    "dimensions": "61.6 x 100.3 x 1.4 mm",
+    "weight": 106,
+    "reviews": [
+      {
+        "description": "Qui quidem saepe non. Laboriosam voluptates consequuntur quisquam. Corporis doloribus excepturi dolore esse aut. Sit iure quos. Asperiores impedit fuga voluptatum ab consequatur alias placeat sint dolorem.",
+        "rating": 3,
+        "date": "2021-04-14T19:15:38.000Z",
+        "user": [
+          {
+            "name": "Christa Lind",
+            "email": "Christa9@yahoo.com",
+            "password": "ChristaLind",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/509.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Cupiditate recusandae illo culpa corrupti dolorum unde fuga eius saepe. Soluta debitis a autem non. Nihil a alias aut corrupti reprehenderit. In debitis corrupti. Quo velit provident nemo ad officiis necessitatibus voluptas aspernatur.",
+        "rating": 5,
+        "date": "2020-09-23T12:15:47.000Z",
+        "user": [
+          {
+            "name": "Leonor Schowalter-Fritsch",
+            "email": "Leonor34@gmail.com",
+            "password": "LeonorSchowalter-Fritsch",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/401.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Sit similique provident non tempora. Nulla quos quam minima corrupti odio inventore enim. Nobis mollitia corporis quisquam est nobis voluptate provident.",
+        "rating": 5,
+        "date": "2020-07-18T04:51:15.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Deserunt asperiores quasi enim sit. Nobis nobis facilis minima tenetur tempora ea est. Aperiam facilis eveniet eligendi tempora.",
+        "rating": 4,
+        "date": "2020-03-03T17:45:23.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Recusandae magni tempora. Inventore error odio eaque mollitia deserunt amet nesciunt. Voluptatem nulla inventore aperiam veritatis ipsa. Quos culpa assumenda quibusdam aperiam ipsa. Dicta cupiditate saepe eveniet perspiciatis impedit autem ducimus.",
+        "rating": 2,
+        "date": "2019-10-08T11:13:27.000Z",
+        "user": [
+          {
+            "name": "Christop Moore",
+            "email": "Christop_Moore@hotmail.com",
+            "password": "ChristopMoore",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1072.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Motorola",
+    "model": "Moto 360",
+    "description": "Cumque neque nisi minus. Voluptas dolorem voluptates. Laudantium eius atque quas nam. Quam quod praesentium inventore porro ipsum incidunt non occaecati placeat. Laborum nihil quae nesciunt tempora laboriosam provident deserunt. Qui omnis nemo.",
+    "category": {
+      "title": "Smartwatches",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartwatches.png?alt=media&token=b3c7eab0-b598-4593-9d5b-955d7463e7ea"
+    },
+    "colors": [
+      { "name": "Silver", "value": "#c0c0c0" },
+      { "name": "Gold", "value": "#ffd700" },
+      { "name": "Black", "value": "#000000" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct9%2Fp14-1.png?alt=media&token=cf6ccf29-437d-4a3b-8f47-4fc7ee66dbd1",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct9%2Fp14-2.png?alt=media&token=412501ab-ec4b-4a70-b32b-084e1f2f890a",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct9%2Fp14-3.png?alt=media&token=f6d40e1a-1ca1-408c-b21b-80aa51fa1cc7"
+    ],
+    "inStock": true,
+    "regularPrice": 35000,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "46 x 46 x 11.4 mm",
+    "weight": 61,
+    "reviews": [
+      {
+        "description": "Nulla velit consequatur ducimus culpa. Excepturi aut laboriosam tempore occaecati dolore odio quo similique. Illo temporibus culpa occaecati ipsum accusamus inventore quasi ut. Aspernatur tenetur possimus vitae distinctio qui.",
+        "rating": 1,
+        "date": "2022-10-18T06:08:35.000Z",
+        "user": [
+          {
+            "name": "Sarai Heidenreich-Marquardt",
+            "email": "Sarai.Heidenreich-Marquardt56@hotmail.com",
+            "password": "SaraiHeidenreich-Marquardt",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/897.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Maxime consequuntur autem ratione. Occaecati natus magni sed quo iste. Sunt officia a porro cum saepe qui incidunt atque voluptatibus. A numquam nihil est numquam voluptatem et ut. Animi officia ipsam maiores placeat incidunt. Expedita similique assumenda necessitatibus.",
+        "rating": 3,
+        "date": "2022-05-13T05:22:34.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Totam ipsum sequi. Earum eius voluptas vero quaerat iusto. Sunt ipsum debitis ipsa porro ea.",
+        "rating": 4,
+        "date": "2021-04-25T18:25:33.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Ducimus asperiores necessitatibus cumque doloribus est in. Alias optio ipsam architecto quisquam iure. Itaque sunt cumque totam animi voluptates repudiandae tempore voluptate quisquam. Quos itaque aut.",
+        "rating": 5,
+        "date": "2020-12-10T07:05:21.000Z",
+        "user": [
+          {
+            "name": "Harry Deckow",
+            "email": "Harry_Deckow49@gmail.com",
+            "password": "HarryDeckow",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/679.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "model": "Galaxy A12",
+    "description": "Numquam ut similique. Nobis numquam enim unde similique eaque id rerum quod. Nesciunt dolorum a aliquid libero tenetur dolor. Exercitationem consequuntur ab fuga exercitationem est dignissimos iste. Voluptate harum delectus sit. Mollitia dicta sit saepe molestias animi. Nesciunt quasi animi enim illum in repellendus totam.",
+    "category": {
+      "title": "Smartphones",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartphones.png?alt=media&token=b2af498e-735d-4c21-b0a6-396afef44890"
+    },
+    "colors": [
+      { "name": "Blue", "value": "#0000ff" },
+      { "name": "White", "value": "#ffffff" },
+      { "name": "Black", "value": "#000000" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct10%2Fp9-1.png?alt=media&token=03dba8a0-a0ee-41eb-a70f-502e95ddb58e",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct10%2Fp9-2.png?alt=media&token=81c44321-8d5e-405e-8cd2-6c3f455f0654",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct10%2Fp9-3.png?alt=media&token=0d560eb1-0b63-4f93-9cab-2a2a13d6c4c3"
+    ],
+    "inStock": true,
+    "regularPrice": 12142,
+    "discountPrice": 10142,
+    "isFeatured": true,
+    "onSale": true,
+    "dimensions": "165.4 x 76.9 x 8.4 mm",
+    "weight": 198,
+    "reviews": [
+      {
+        "description": "Deserunt ex laborum architecto perferendis neque possimus asperiores. Dolor quis eaque autem quaerat quis fuga ab voluptate deserunt. Laboriosam eligendi quia esse et. Temporibus placeat qui similique aliquid dolorem sequi. Enim assumenda cum fugit cupiditate temporibus.",
+        "rating": 4,
+        "date": "2022-07-15T11:46:50.000Z",
+        "user": [
+          {
+            "name": "Christa Lind",
+            "email": "Christa9@yahoo.com",
+            "password": "ChristaLind",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/509.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Nulla repellendus suscipit nulla. Numquam nobis labore in accusantium repudiandae aliquid necessitatibus nam.",
+        "rating": 4,
+        "date": "2022-06-13T17:41:03.000Z",
+        "user": [
+          {
+            "name": "Harry Deckow",
+            "email": "Harry_Deckow49@gmail.com",
+            "password": "HarryDeckow",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/679.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Harum excepturi possimus dignissimos. Dolore modi quos odit sapiente nostrum at doloremque. Ut culpa laboriosam consequatur. Sapiente voluptas libero eligendi.",
+        "rating": 3,
+        "date": "2021-09-23T11:17:38.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Odit eaque eum possimus. Aliquid distinctio architecto quibusdam culpa voluptatem numquam. Corrupti ea soluta. Quis cumque dolor consectetur enim. Enim perferendis cupiditate. Corporis placeat ut.",
+        "rating": 1,
+        "date": "2020-12-24T03:38:38.000Z",
+        "user": [
+          {
+            "name": "Leonor Schowalter-Fritsch",
+            "email": "Leonor34@gmail.com",
+            "password": "LeonorSchowalter-Fritsch",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/401.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Voluptatum nam ex fugit corrupti amet quisquam rem vitae. Iure iure nulla cum facilis asperiores nesciunt inventore et dicta. Distinctio esse omnis nobis laudantium cumque. Ipsam vel nisi voluptatibus.",
+        "rating": 5,
+        "date": "2020-06-09T05:23:27.000Z",
+        "user": [
+          {
+            "name": "Sarai Heidenreich-Marquardt",
+            "email": "Sarai.Heidenreich-Marquardt56@hotmail.com",
+            "password": "SaraiHeidenreich-Marquardt",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/897.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Reiciendis incidunt modi. Maxime magnam corrupti. A necessitatibus excepturi a. Nostrum corrupti sint cupiditate cum sapiente. Asperiores eos ea ab ullam velit maxime deserunt recusandae. Dolorem nemo ipsum dolor cum amet eligendi et possimus.",
+        "rating": 5,
+        "date": "2019-05-06T19:55:51.000Z",
+        "user": [
+          {
+            "name": "Christop Moore",
+            "email": "Christop_Moore@hotmail.com",
+            "password": "ChristopMoore",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1072.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "iPhone 7",
+    "description": "Quae nesciunt unde. Accusamus rerum accusamus magnam sit quidem repellendus. Aut ea similique aut ea eaque sed. Repellendus animi accusamus dolorum reiciendis atque possimus nemo et ea. Nihil laboriosam sunt officia sit voluptates. Suscipit soluta ducimus ipsum placeat soluta quo ex inventore.",
+    "category": {
+      "title": "Smartphones",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartphones.png?alt=media&token=b2af498e-735d-4c21-b0a6-396afef44890"
+    },
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "Gold", "value": "#ffd700" },
+      { "name": "White", "value": "#ffffff" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct11%2Fp5-1.png?alt=media&token=90e4111f-7aa1-4abc-9e83-ae2e0952de8a",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct11%2Fp5-2.png?alt=media&token=ac5d4b18-20d4-4470-81f2-67841c36ccfa",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct11%2Fp5-3.png?alt=media&token=8ba45592-2f39-471a-964b-f77e4cdc7ba3"
+    ],
+    "inStock": true,
+    "regularPrice": 89900,
+    "discountPrice": 74900,
+    "isFeatured": false,
+    "onSale": true,
+    "dimensions": "13.83 x 6.71 x 0.71 cm",
+    "weight": 138,
+    "reviews": [
+      {
+        "description": "Cupiditate architecto incidunt cupiditate veritatis. Dolores consequatur ipsa. Tempora eaque reprehenderit quas minima officiis ea.",
+        "rating": 5,
+        "date": "2019-07-18T01:06:09.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Apple",
+    "model": "Beats Solo3 Wireless",
+    "description": "Aut quia quos sint velit at necessitatibus ad ea. Excepturi impedit quisquam. Dicta quidem occaecati ab amet quas animi totam. Occaecati odio praesentium natus in aut. Sequi at blanditiis quod itaque. Dolor aliquam corrupti laborum voluptatem iste reprehenderit quo natus.",
+    "category": {
+      "title": "Headphones",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fheadphones.png?alt=media&token=e18234a4-e5b5-4c79-ac2c-35e6066eb3b2"
+    },
+    "colors": [{ "name": "Pink", "value": "#ffc0cb" }],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct12%2Fp10-1.png?alt=media&token=4bd28566-a259-4ea3-aa79-2aba762534bc",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct12%2Fp10-2.png?alt=media&token=6d777d05-1a03-431e-aeae-b2fb6a90f7ff",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct12%2Fp10-3.png?alt=media&token=081c88fc-160b-4474-8884-245cc61d4615"
+    ],
+    "inStock": true,
+    "regularPrice": 25900,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "15.8 x 17.7 x 6.8 cm",
+    "weight": 215,
+    "reviews": [
+      {
+        "description": "Similique quasi officia laborum deserunt quas necessitatibus rem laudantium. Dolorum dolore rem placeat itaque quod quos sequi. Cupiditate facere tempore consectetur. Ratione nihil ducimus ipsa. Cumque reprehenderit ex facilis dolorem sequi totam ipsum atque sapiente. Unde reiciendis occaecati vero.",
+        "rating": 5,
+        "date": "2020-10-09T23:21:39.000Z",
+        "user": [
+          {
+            "name": "Leonor Schowalter-Fritsch",
+            "email": "Leonor34@gmail.com",
+            "password": "LeonorSchowalter-Fritsch",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/401.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Doloribus asperiores sunt ipsam quae possimus repellat velit hic enim. Commodi ipsam sapiente nam adipisci dolorem debitis nam consequatur exercitationem. Sapiente numquam maxime dolores quos. Odit neque ipsam tempore rem corporis veritatis. Libero dicta tenetur. Ad quidem aut soluta consectetur.",
+        "rating": 3,
+        "date": "2020-06-17T20:13:04.000Z",
+        "user": [
+          {
+            "name": "Christop Moore",
+            "email": "Christop_Moore@hotmail.com",
+            "password": "ChristopMoore",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1072.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Facere natus debitis repellendus adipisci atque dolores. Odit beatae accusantium culpa doloremque sequi architecto. Sunt nihil ducimus optio expedita aut. Aut et magnam accusamus magni veniam temporibus amet impedit.",
+        "rating": 4,
+        "date": "2019-07-08T08:25:57.000Z",
+        "user": [
+          {
+            "name": "Christa Lind",
+            "email": "Christa9@yahoo.com",
+            "password": "ChristaLind",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/509.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "JBL",
+    "model": "Charge 3",
+    "description": "Repellendus consequatur et error explicabo. Nam repellendus ad temporibus laboriosam. Libero dignissimos facere laborum. Repudiandae optio aperiam earum quo incidunt repudiandae hic quo. Unde quisquam sunt deleniti fuga soluta nihil ipsum. Est ex doloremque error sapiente.",
+    "category": { "title": "Others", "image": null },
+    "colors": [{ "name": "Black", "value": "#000000" }],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct13%2Fp16-1.png?alt=media&token=8410618f-6dca-4f10-9a23-23a7b27eff1b",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct13%2Fp16-2.png?alt=media&token=49fb7f10-7e7c-42c5-a2d2-75273d7d48ef",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct13%2Fp16-3.png?alt=media&token=865e67a7-7845-40f8-9cc1-91060e419017"
+    ],
+    "inStock": true,
+    "regularPrice": 15000,
+    "discountPrice": 13500,
+    "isFeatured": false,
+    "onSale": true,
+    "dimensions": "21.3 x 8.7 x 8.85 cm",
+    "weight": 800,
+    "reviews": [
+      {
+        "description": "A ab cupiditate odit dolore natus fugit vero esse. Cumque dolor totam. Nisi dolorem repellat cupiditate reprehenderit doloremque autem nihil eos. Fuga illo odit corporis provident hic ex voluptatem dolorem.",
+        "rating": 4,
+        "date": "2022-12-04T20:05:57.000Z",
+        "user": [
+          {
+            "name": "Marshall Russel",
+            "email": "Marshall.Russel46@hotmail.com",
+            "password": "MarshallRussel",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/125.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Nihil reiciendis sequi velit. Quasi doloribus aliquid at voluptatibus. Consequuntur vitae delectus sapiente ipsam perferendis voluptatibus officiis animi. Similique eum odio architecto consequuntur quos ullam dolor similique.",
+        "rating": 1,
+        "date": "2022-04-03T18:52:24.000Z",
+        "user": [
+          {
+            "name": "Sarai Heidenreich-Marquardt",
+            "email": "Sarai.Heidenreich-Marquardt56@hotmail.com",
+            "password": "SaraiHeidenreich-Marquardt",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/897.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Unde magnam sed quae velit. Qui praesentium ullam voluptate amet aliquam quod ipsam. Ipsam qui iste veniam qui quod recusandae. Quod distinctio eaque eligendi dignissimos iure.",
+        "rating": 4,
+        "date": "2021-06-19T07:45:07.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Optio eligendi eligendi. Dolores facilis in. Ut fugit qui praesentium hic nam velit. Quibusdam error adipisci.",
+        "rating": 3,
+        "date": "2020-04-15T02:07:05.000Z",
+        "user": [
+          {
+            "name": "Christop Moore",
+            "email": "Christop_Moore@hotmail.com",
+            "password": "ChristopMoore",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1072.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "HP",
+    "model": "Pavilion 15 AU072TX",
+    "description": "Repudiandae autem modi ipsam tempore id facere exercitationem quam dolorum. Nobis a non recusandae esse sequi reiciendis. Praesentium repudiandae cum explicabo laudantium ab. Vitae vel sint iure non accusantium blanditiis consequatur totam. Neque magnam maxime alias quisquam debitis repudiandae. Laudantium perspiciatis a vero illum officiis sit. Ducimus sint facere cumque commodi praesentium.",
+    "category": {
+      "title": "Laptops",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Flaptops.png?alt=media&token=ecd5717f-bf83-46f8-8528-c6fce54b25f1"
+    },
+    "colors": [
+      { "name": "Silver", "value": "#c0c0c0" },
+      { "name": "Black", "value": "#000000" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct14%2Fp2-1.png?alt=media&token=8b726501-f971-4e2d-9cbc-eb2957603c99",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct14%2Fp2-2.png?alt=media&token=b81832fe-7c56-4d7f-86f2-5d3c3468cf98",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct14%2Fp2-3.png?alt=media&token=3e56a269-1b8e-4900-b89d-f9a2c9144ed5"
+    ],
+    "inStock": true,
+    "regularPrice": 84900,
+    "discountPrice": 79900,
+    "isFeatured": false,
+    "onSale": true,
+    "dimensions": "383 x 243 x 22.5 cm",
+    "weight": 2000,
+    "reviews": [
+      {
+        "description": "Dolorum soluta sit voluptatem voluptate tempora consequatur accusantium at numquam. Laboriosam adipisci quidem. Officiis fuga quisquam enim itaque quisquam eveniet ipsum. Praesentium inventore beatae. Consequatur corrupti ipsam praesentium sint mollitia nulla quibusdam iusto esse. Dignissimos saepe facere.",
+        "rating": 4,
+        "date": "2022-05-07T11:42:06.000Z",
+        "user": [
+          {
+            "name": "Christa Lind",
+            "email": "Christa9@yahoo.com",
+            "password": "ChristaLind",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/509.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Voluptatum error cumque at similique suscipit molestias tempore neque. Placeat laboriosam illum temporibus repudiandae recusandae expedita unde beatae. Iste error animi cumque ad cupiditate consequuntur error. Illum in autem explicabo mollitia. Incidunt soluta necessitatibus recusandae. Debitis quod soluta ut itaque in asperiores optio.",
+        "rating": 5,
+        "date": "2020-04-06T11:52:05.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Velit voluptatibus veritatis. Non quas enim ad soluta. Doloremque quidem et excepturi veniam quae tempore.",
+        "rating": 5,
+        "date": "2019-12-02T20:33:02.000Z",
+        "user": [
+          {
+            "name": "Harry Deckow",
+            "email": "Harry_Deckow49@gmail.com",
+            "password": "HarryDeckow",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/679.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Google",
+    "model": "Pixel",
+    "description": "Earum consequuntur ex optio vitae fugit iusto illo repellendus ducimus. Mollitia qui doloremque explicabo ratione vel vero magnam corporis rem. Sapiente distinctio minima accusamus illum ea vitae quos debitis esse. Non culpa ipsa odio perferendis itaque voluptatem quo non totam. Aperiam animi consectetur rerum eaque pariatur aperiam voluptas repudiandae.",
+    "category": {
+      "title": "Smartphones",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartphones.png?alt=media&token=b2af498e-735d-4c21-b0a6-396afef44890"
+    },
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "Silver", "value": "#c0c0c0" },
+      { "name": "Blue", "value": "#0000ff" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct15%2Fp6-1.png?alt=media&token=95377acf-7a52-4d48-9da7-cbae0d979907",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct15%2Fp6-2.png?alt=media&token=8c181b2d-55b4-4e06-9656-66cb711291ba",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct15%2Fp6-3.png?alt=media&token=0c2a358e-3f4b-4e37-a2f1-98616a343774"
+    ],
+    "inStock": true,
+    "regularPrice": 83400,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "14.38 x 6.95 x 0.85 cm",
+    "weight": 143,
+    "reviews": [
+      {
+        "description": "Eaque rem dolorem laborum rerum expedita iusto hic. Optio aliquam illo. Vero natus nisi officiis non. Laboriosam dolores ad odio deserunt id unde.",
+        "rating": 4,
+        "date": "2020-12-13T17:26:17.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Excepturi sapiente libero est quae. Laborum earum distinctio consectetur error ex enim praesentium delectus soluta. Voluptatibus nisi nesciunt cupiditate mollitia fuga. Ea provident eius omnis. Quia quasi eius soluta debitis dolores odit.",
+        "rating": 4,
+        "date": "2019-06-28T03:16:46.000Z",
+        "user": [
+          {
+            "name": "Christop Moore",
+            "email": "Christop_Moore@hotmail.com",
+            "password": "ChristopMoore",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1072.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "AYVVPII",
+    "model": "Stereo Earphones Bluetooth",
+    "description": "Consequuntur quaerat neque fugiat explicabo magnam. Repellendus quae dolores vel laboriosam ab suscipit animi eveniet quas. Repellat a aliquid eos harum molestiae est. Velit iusto cumque laboriosam quibusdam. Quam et esse autem mollitia soluta eveniet eum ab. Perferendis cum dignissimos perferendis iure excepturi ab sint.",
+    "category": {
+      "title": "Headphones",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fheadphones.png?alt=media&token=e18234a4-e5b5-4c79-ac2c-35e6066eb3b2"
+    },
+    "colors": [
+      { "name": "Green", "value": "#00ff00" },
+      { "name": "Red", "value": "#ff0000" },
+      { "name": "Gold", "value": "#ffd700" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct16%2Fp11-1.png?alt=media&token=b99343e2-7b57-4dfd-b368-bd36e1bf41b3",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct16%2Fp11-2.png?alt=media&token=9c65d213-44ca-4b27-8622-b07f6fdf3bcc",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct16%2Fp11-3.png?alt=media&token=b0637b3b-52ad-4f8c-abd4-3afe42a873ac"
+    ],
+    "inStock": false,
+    "regularPrice": 2500,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "12.24 x 11.3 x 7.83 cm",
+    "weight": 210,
+    "reviews": [
+      {
+        "description": "Autem soluta inventore vero recusandae. Aliquam nemo quas aliquam pariatur unde non sunt.",
+        "rating": 5,
+        "date": "2022-11-08T21:42:51.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Dicta at est velit iure. Consequuntur eius minus officiis similique. Dignissimos quos nam quia mollitia eaque vero quod sapiente.",
+        "rating": 2,
+        "date": "2022-08-16T05:03:08.000Z",
+        "user": [
+          {
+            "name": "Marshall Russel",
+            "email": "Marshall.Russel46@hotmail.com",
+            "password": "MarshallRussel",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/125.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Iusto quae non commodi quaerat architecto sunt necessitatibus. Qui veniam earum sequi reprehenderit amet sunt officia aspernatur. Quas corporis blanditiis rem atque quaerat. Officia ullam quaerat incidunt doloremque.",
+        "rating": 5,
+        "date": "2019-03-12T21:33:33.000Z",
+        "user": [
+          {
+            "name": "Jasper Gutkowski",
+            "email": "Jasper37@gmail.com",
+            "password": "JasperGutkowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/52.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "brand": "Colmi",
+    "model": "Smartwatch Women",
+    "description": "Amet voluptatum eos optio voluptate nisi sint nam. Facilis aspernatur facere neque quaerat. Molestias quibusdam fugit. Voluptates neque neque ullam. Deserunt amet error nesciunt sed recusandae velit.",
+    "category": {
+      "title": "Smartwatches",
+      "image": "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/categories%2Fsmartwatches.png?alt=media&token=b3c7eab0-b598-4593-9d5b-955d7463e7ea"
+    },
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "Pink", "value": "#ffc0cb" },
+      { "name": "Silver", "value": "#c0c0c0" }
+    ],
+    "images": [
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct17%2Fp13-1.png?alt=media&token=df656f40-5b97-4f0d-a224-2ba08202556d",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct17%2Fp13-2.png?alt=media&token=b85a29b0-1204-446c-aa1a-a0da1437c783",
+      "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/images%2Fproduct17%2Fp13-3.png?alt=media&token=47679d04-00d6-4193-a425-d8d2316b691a"
+    ],
+    "inStock": true,
+    "regularPrice": 51990,
+    "discountPrice": null,
+    "isFeatured": false,
+    "onSale": false,
+    "dimensions": "49 x 46 x 12.9 mm",
+    "weight": 50,
+    "reviews": [
+      {
+        "description": "Quibusdam at quasi odit inventore. Ducimus recusandae ipsam possimus excepturi. Error occaecati tempora occaecati. Laborum odio eaque atque blanditiis quidem autem. Ipsum esse sed. Natus magnam earum quis magnam laudantium consectetur eveniet ipsum.",
+        "rating": 4,
+        "date": "2021-07-23T20:27:49.000Z",
+        "user": [
+          {
+            "name": "Christa Lind",
+            "email": "Christa9@yahoo.com",
+            "password": "ChristaLind",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/509.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Delectus sequi ut. Mollitia id dolor error voluptatibus impedit voluptates consequatur natus. In assumenda et iste officia aut sequi. Expedita voluptatum sint ducimus distinctio neque esse. Incidunt ratione delectus illum tempora quibusdam rerum neque adipisci. Eligendi fugiat aperiam delectus maxime voluptatibus placeat beatae.",
+        "rating": 4,
+        "date": "2021-04-24T16:49:47.000Z",
+        "user": [
+          {
+            "name": "Sarai Heidenreich-Marquardt",
+            "email": "Sarai.Heidenreich-Marquardt56@hotmail.com",
+            "password": "SaraiHeidenreich-Marquardt",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/897.jpg",
+            "role": "Customer"
+          }
+        ]
+      },
+      {
+        "description": "Nemo qui illum aliquam quo debitis magnam nesciunt aliquid. Dignissimos asperiores saepe sint necessitatibus dolorem beatae. Dolore dolorem sed reiciendis nihil officia sapiente. Molestiae ipsa commodi repellat tenetur magni fugit itaque amet. Temporibus blanditiis tenetur assumenda. Repudiandae excepturi alias qui iste quo sunt.",
+        "rating": 5,
+        "date": "2020-10-25T06:31:11.000Z",
+        "user": [
+          {
+            "name": "Ezekiel Ebert-Gulgowski",
+            "email": "Ezekiel7@yahoo.com",
+            "password": "EzekielEbert-Gulgowski",
+            "image": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/221.jpg",
+            "role": "Customer"
+          }
+        ]
+      }
+    ]
+  }
+]
