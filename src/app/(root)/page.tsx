@@ -1,4 +1,4 @@
-import { Brands, Categories, Hero } from "@/components/store/Home";
+import { Banners, Brands, Categories, Hero } from "@/components/store/Home";
 
 const Home = () => {
   return (
@@ -6,6 +6,7 @@ const Home = () => {
       <Hero />
       <Brands />
       <Categories />
+      <Banners />
     </>
   );
 };

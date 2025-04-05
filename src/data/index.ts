@@ -1,4 +1,5 @@
 import { headphones, laptop, smartwatch } from "public/hero";
+import { banner1, banner2 } from "public/banners";
 
 export const navLinks = [
   { label: "Home", href: "/" },
@@ -47,5 +48,18 @@ export const heroContent = [
     title: "Technology for your convenience",
     price: "$99.99",
     image: headphones,
+  },
+];
+
+export const bannerContent = [
+  {
+    title: "Upgrade to 5G With Samsung’s Ultra-Fast Devices",
+    subtitle: "Enjoy seamless, & next-level connectivity with Samsung.",
+    image: banner1,
+  },
+  {
+    title: "Find Your Perfect Headphones for Every Moment",
+    subtitle: "Discover a range of wireless, noise-canceling headphones.",
+    image: banner2,
   },
 ];
