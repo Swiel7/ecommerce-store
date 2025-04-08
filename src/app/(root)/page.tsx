@@ -1,4 +1,12 @@
-import { Banners, Brands, Categories, Hero } from "@/components/store/Home";
+import {
+  Banners,
+  BestDeal,
+  Brands,
+  Categories,
+  FeaturedProducts,
+  Hero,
+  OnSaleProducts,
+} from "@/components/store/Home";
 
 const Home = () => {
   return (
@@ -7,6 +15,9 @@ const Home = () => {
       <Brands />
       <Categories />
       <Banners />
+      <FeaturedProducts />
+      <BestDeal />
+      <OnSaleProducts />
     </>
   );
 };

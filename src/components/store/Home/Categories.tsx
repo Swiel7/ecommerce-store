@@ -3,12 +3,21 @@ import { categories } from "@/db/schema";
 import { isNotNull } from "drizzle-orm";
 import Image from "next/image";
 import Link from "next/link";
+import { cache } from "react";
 
 const Categories = async () => {
-  const data = await db
-    .select()
-    .from(categories)
-    .where(isNotNull(categories.image));
+  // const data = await db
+  //   .select()
+  //   .from(categories)
+  //   .where(isNotNull(categories.image));
+
+  const getData = cache(async () => {
+    return await db
+      .select()
+      .from(categories)
+      .where(isNotNull(categories.image));
+  });
+  const data = await getData();
 
   return (
     <section>
@@ -19,17 +28,18 @@ const Categories = async () => {
             <li key={id}>
               <Link
                 href={`/products?category=${name.toLowerCase()}`}
-                className="bg-muted grid justify-items-start gap-8 rounded-lg p-6"
+                className="bg-muted grid gap-8 rounded-lg p-6"
               >
-                <div className="aspect-square w-full">
+                <div className="relative aspect-square h-full">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${image}`}
                     alt="Category logo"
                     fill
-                    className="!static mx-auto !w-auto object-contain"
+                    className="mx-auto !w-auto object-contain"
+                    sizes="(max-width: 500px) 100vw, (max-width: 740px) 50vw, (max-width: 990px) 33vw, (max-width: 1230px) 25vw, 20vw"
                   />
                 </div>
-                <span className="inline-block rounded-lg bg-white px-8 py-4 font-medium">
+                <span className="block text-center text-lg font-medium">
                   {name}
                 </span>
               </Link>

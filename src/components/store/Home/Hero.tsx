@@ -33,16 +33,14 @@ const Hero = () => {
               >
                 <div className="grid h-full sm:grid-cols-2">
                   <div className="flex flex-col items-start justify-center py-4">
-                    <p className="font-semibold uppercase lg:text-base">
+                    <p className="font-medium uppercase lg:text-lg">
                       {subtitle}
                     </p>
-                    <h1 className="mt-2 text-4xl font-medium lg:mt-3 lg:text-6xl">
+                    <h1 className="mt-2 text-4xl font-bold lg:mt-3 lg:text-6xl">
                       {title}
                     </h1>
-                    <p className="mt-4 lg:mt-7 lg:text-lg">
-                      Start at <span>{price}</span>
-                    </p>
-                    <Button asChild size="lg" className="mt-6 lg:mt-8">
+                    <p className="mt-4 lg:mt-5 lg:text-lg">Start at {price}</p>
+                    <Button asChild size="lg" className="mt-6 lg:mt-10">
                       <Link href="/products">Shop Now</Link>
                     </Button>
                   </div>

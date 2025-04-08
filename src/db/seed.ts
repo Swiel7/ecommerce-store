@@ -92,6 +92,7 @@ const seed = async () => {
         .insert(products)
         .values({
           name: `${product.brand} ${product.model}`,
+          slug,
           brand: product.brand,
           model: product.model,
           description: product.description,
