@@ -22,7 +22,6 @@ const FeaturedProducts = async () => {
     });
   });
   const featuredProducts = await getData();
-  console.log(featuredProducts);
 
   return (
     <section>

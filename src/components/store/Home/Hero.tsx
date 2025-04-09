@@ -29,7 +29,7 @@ const Hero = () => {
             {heroContent.map(({ subtitle, title, price, image }) => (
               <CarouselItem
                 key={image.src}
-                className="py-8 md:h-[520px] lg:h-[700px]"
+                className="pt-8 md:h-[calc(520px_-_56px)] lg:h-[calc(700px_-_56px)]"
               >
                 <div className="grid h-full sm:grid-cols-2">
                   <div className="flex flex-col items-start justify-center py-4">

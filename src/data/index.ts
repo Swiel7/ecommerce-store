@@ -1,5 +1,6 @@
 import { headphones, laptop, smartwatch } from "public/hero";
 import { banner1, banner2 } from "public/banners";
+import { CreditCard, Headphones, Package, RotateCcwSquare } from "lucide-react";
 
 export const navLinks = [
   { label: "Home", href: "/" },
@@ -61,5 +62,28 @@ export const bannerContent = [
     title: "Find Your Perfect Headphones for Every Moment",
     subtitle: "Discover a range of wireless, noise-canceling headphones.",
     image: banner2,
+  },
+];
+
+export const features = [
+  {
+    icon: Package,
+    title: "Fast Free Shipping",
+    description: "You will love at great low prices",
+  },
+  {
+    icon: RotateCcwSquare,
+    title: "30 Days Returns",
+    description: "Within 15 days for an exchange",
+  },
+  {
+    icon: Headphones,
+    title: "Customer Support",
+    description: "24 hours a day, 7 days a week",
+  },
+  {
+    icon: CreditCard,
+    title: "Secure Payment",
+    description: "Pay with multiple credit cards",
   },
 ];

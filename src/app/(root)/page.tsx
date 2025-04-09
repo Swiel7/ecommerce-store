@@ -4,8 +4,10 @@ import {
   Brands,
   Categories,
   FeaturedProducts,
+  Features,
   Hero,
   OnSaleProducts,
+  Testimonials,
 } from "@/components/store/Home";
 
 const Home = () => {
@@ -18,6 +20,8 @@ const Home = () => {
       <FeaturedProducts />
       <BestDeal />
       <OnSaleProducts />
+      <Testimonials />
+      <Features />
     </>
   );
 };

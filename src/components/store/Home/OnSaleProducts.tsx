@@ -22,10 +22,9 @@ const OnSaleProducts = async () => {
     });
   });
   const onSaleProducts = await getData();
-  console.log(onSaleProducts);
 
   return (
-    <section>
+    <section className="pb-16 lg:pb-20">
       <div className="wrapper">
         <div className="flex flex-wrap items-center justify-between gap-4 pb-8 lg:pb-10">
           <h2 className="section-title pb-0">On Sale Products</h2>

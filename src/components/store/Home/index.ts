@@ -5,3 +5,5 @@ export { default as Banners } from "./Banners";
 export { default as FeaturedProducts } from "./FeaturedProducts";
 export { default as BestDeal } from "./BestDeal";
 export { default as OnSaleProducts } from "./OnSaleProducts";
+export { default as Testimonials } from "./Testimonials";
+export { default as Features } from "./Features";

@@ -16,6 +16,14 @@ export const formatPrice = (number: number) => {
   }).format(number / 100);
 };
 
+export const formatDate = (date: Date | number | string) => {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(date));
+};
+
 export const getAverage = (array: number[]) => {
   return array.reduce((sum, current) => sum + current, 0) / array.length;
 };
