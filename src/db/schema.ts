@@ -5,7 +5,7 @@ import {
   text,
   pgEnum,
   timestamp,
-  json,
+  jsonb,
   integer,
   boolean,
   check,
@@ -42,9 +42,8 @@ export const products = pgTable("products", {
   brand: text("brand").notNull(),
   model: text("model").unique(),
   description: text("description"),
-  variants: json("variants")
-    .$type<{ colorName: string; colorCode: string; stock: number }>()
-    .array()
+  variants: jsonb("variants")
+    .$type<{ colorName: string; colorCode: string; stock: number }[]>()
     .notNull(),
   images: text("images").array().notNull(),
   regularPrice: integer("regular_price").notNull(),
