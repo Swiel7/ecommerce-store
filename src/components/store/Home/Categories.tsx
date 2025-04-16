@@ -1,30 +1,18 @@
-import { db } from "@/db";
-import { categories } from "@/db/schema";
-import { isNotNull } from "drizzle-orm";
+import { getCategories } from "@/actions/products";
 import Image from "next/image";
 import Link from "next/link";
 import { cache } from "react";
 
 const Categories = async () => {
-  // const data = await db
-  //   .select()
-  //   .from(categories)
-  //   .where(isNotNull(categories.image));
-
-  const getData = cache(async () => {
-    return await db
-      .select()
-      .from(categories)
-      .where(isNotNull(categories.image));
-  });
-  const data = await getData();
+  // const categories = await getCategories();
+  const categories = await cache(getCategories)();
 
   return (
     <section>
       <div className="wrapper">
         <h2 className="section-title">Shop By Category</h2>
         <ul className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
-          {data.map(({ name, image, id }) => (
+          {categories.map(({ name, image, id }) => (
             <li key={id}>
               <Link
                 href={`/products?category=${name.toLowerCase()}`}

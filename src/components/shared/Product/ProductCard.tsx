@@ -1,19 +1,17 @@
 import { Badge } from "@/components/ui/badge";
-import { formatPrice, getAverage } from "@/lib/utils";
-import { TProduct, TReview } from "@/types";
+import { formatPrice } from "@/lib/utils";
+import { TProduct } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import ProductActions from "./ProductActions";
 import { Rating } from "@/components/ui/rating";
 
 type Props = {
-  product: TProduct & { reviews: TReview[] };
+  product: TProduct;
   variant?: "vertical" | "horizontal";
 };
 
 const ProductCard = ({ product, variant = "vertical" }: Props) => {
-  const rating = getAverage(product.reviews.map((review) => review.rating));
-
   return (
     <article className="group">
       <div className="bg-muted relative grid aspect-square overflow-hidden rounded-lg">
@@ -42,9 +40,9 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
       </div>
       <div className="mt-2 flex flex-col items-start gap-2">
         <div className="flex items-center gap-1.5">
-          <Rating initialRating={rating} disabled />
+          <Rating initialRating={Number(product.rating)} disabled />
           <span className="text-muted-foreground text-sm">
-            ({product.reviews.length} reviews)
+            ({product.numReviews} reviews)
           </span>
         </div>
         <Link href={`/products/${product.slug}`} className="hover:underline">

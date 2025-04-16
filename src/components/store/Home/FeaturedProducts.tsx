@@ -1,27 +1,13 @@
+import { getFeaturedProducts } from "@/actions/products";
 import { ProductCard } from "@/components/shared/Product";
 import { Button } from "@/components/ui/button";
-import { db } from "@/db";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { cache } from "react";
 
 const FeaturedProducts = async () => {
-  // const featuredProducts = await db.query.products.findMany({
-  //   where: (products, { eq }) => eq(products.isFeatured, true),
-  //   orderBy: (products, { asc }) => [asc(products.name)],
-  //   limit: 4,
-  //   with: { reviews: true },
-  // });
-
-  const getData = cache(async () => {
-    return await db.query.products.findMany({
-      where: (products, { eq }) => eq(products.isFeatured, true),
-      orderBy: (products, { asc }) => [asc(products.name)],
-      limit: 4,
-      with: { reviews: true },
-    });
-  });
-  const featuredProducts = await getData();
+  // const featuredProducts = await getFeaturedProducts();
+  const featuredProducts = await cache(getFeaturedProducts)();
 
   return (
     <section>

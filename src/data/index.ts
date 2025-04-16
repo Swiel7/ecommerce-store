@@ -87,3 +87,11 @@ export const features = [
     description: "Pay with multiple credit cards",
   },
 ];
+
+export const sortOptions = [
+  { value: "default", name: "Default sorting" },
+  { value: "rating", name: "Average rating" },
+  { value: "price_asc", name: "Price: low to high" },
+  { value: "price_desc", name: "Price: high to low" },
+  { value: "latest", name: "Latest" },
+] as const;

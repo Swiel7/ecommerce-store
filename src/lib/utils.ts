@@ -24,6 +24,6 @@ export const formatDate = (date: Date | number | string) => {
   }).format(new Date(date));
 };
 
-export const getAverage = (array: number[]) => {
-  return array.reduce((sum, current) => sum + current, 0) / array.length;
-};
+// export const getAverage = (array: number[]) => {
+//   return array.reduce((sum, current) => sum + current, 0) / array.length;
+// };

@@ -1,3 +1,4 @@
+import { sortOptions } from "@/data";
 import { products, reviews, users } from "@/db/schema";
 import { InferSelectModel } from "drizzle-orm";
 import { LucideProps } from "lucide-react";
@@ -14,3 +15,4 @@ export type TIcon = ForwardRefExoticComponent<
 export type TFilters = "status" | "category" | "brand" | "price" | "color";
 export type TFilterOption = { label: string; count: number };
 export type TFilterOptionColor = { colorName: string; colorCode: string };
+export type TSortValue = (typeof sortOptions)[number]["value"];

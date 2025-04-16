@@ -8,6 +8,20 @@
       "when": 1744317569660,
       "tag": "0000_thankful_magik",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1744811003541,
+      "tag": "0001_fixed_black_crow",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1744811446820,
+      "tag": "0002_round_boomer",
+      "breakpoints": true
     }
   ]
 }

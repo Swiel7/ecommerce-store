@@ -111,6 +111,16 @@ const seed = async () => {
           onSale: product.onSale,
           dimensions: product.dimensions,
           weight: product.weight,
+          numReviews: product.reviews.length,
+          rating:
+            product.reviews.length > 0
+              ? (
+                  product.reviews.reduce(
+                    (sum, review) => sum + review.rating,
+                    0,
+                  ) / product.reviews.length
+                ).toString()
+              : "0",
         })
         .returning();
 

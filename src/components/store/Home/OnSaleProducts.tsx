@@ -1,27 +1,13 @@
+import { getOnSaleProducts } from "@/actions/products";
 import { ProductCard } from "@/components/shared/Product";
 import { Button } from "@/components/ui/button";
-import { db } from "@/db";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { cache } from "react";
 
 const OnSaleProducts = async () => {
-  // const onSaleProducts = await db.query.products.findMany({
-  //   where: (products, { eq }) => eq(products.onSale, true),
-  //   orderBy: (products, { asc }) => [asc(products.name)],
-  //   limit: 4,
-  //   with: { reviews: true },
-  // });
-
-  const getData = cache(async () => {
-    return await db.query.products.findMany({
-      where: (products, { eq }) => eq(products.onSale, true),
-      orderBy: (products, { asc }) => [asc(products.name)],
-      limit: 4,
-      with: { reviews: true },
-    });
-  });
-  const onSaleProducts = await getData();
+  // const onSaleProducts = await getOnSaleProducts();
+  const onSaleProducts = await cache(getOnSaleProducts)();
 
   return (
     <section className="pb-16 lg:pb-20">

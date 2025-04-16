@@ -9,6 +9,7 @@ import {
   integer,
   boolean,
   check,
+  numeric,
 } from "drizzle-orm/pg-core";
 
 export const USER_ROLE = pgEnum("role", ["CUSTOMER", "ADMIN"]);
@@ -52,8 +53,8 @@ export const products = pgTable("products", {
   onSale: boolean("on_sale").default(false).notNull(),
   dimensions: text("dimensions"),
   weight: integer("weight"),
-  // rating: numeric("rating", { precision: 3, scale: 2 }).notNull().default("0"),
-  // numReviews: integer("numReviews").notNull().default(0),
+  rating: numeric("rating", { precision: 3, scale: 2 }).notNull().default("0"),
+  numReviews: integer("num_reviews").notNull().default(0),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

@@ -11,11 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { TFilterOption, TFilterOptionColor, TFilters } from "@/types";
 import React, { useRef, useState } from "react";
-import {
-  ReadonlyURLSearchParams,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Color } from "@/components/ui/color";
 import { SLIDER_MAX_PRICE } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
@@ -27,13 +23,16 @@ type Props = {
     brand: TFilterOption[];
     color: TFilterOptionColor[];
   };
+  searchParams: Record<
+    TFilters | "page" | "sort",
+    string | string[] | undefined
+  >;
 };
 
 const titles: TFilters[] = ["status", "category", "brand", "price", "color"];
 
-const Filters = ({ filters }: Props) => {
+const Filters = ({ filters, searchParams }: Props) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = () => {
@@ -65,9 +64,7 @@ const Filters = ({ filters }: Props) => {
                         name={title}
                         value={label}
                         onCheckedChange={handleChange}
-                        defaultChecked={searchParams
-                          .getAll(title)
-                          .includes(label)}
+                        defaultChecked={searchParams[title]?.includes(label)}
                       />
                       <Label htmlFor={label} className="grow">
                         <span>{label}</span>
@@ -82,7 +79,7 @@ const Filters = ({ filters }: Props) => {
               {title === "price" && (
                 <PriceSlider
                   onValueCommit={handleChange}
-                  searchParams={searchParams}
+                  price={searchParams.price}
                 />
               )}
               {title === "color" && (
@@ -94,9 +91,9 @@ const Filters = ({ filters }: Props) => {
                       name={title}
                       value={color.colorName}
                       onCheckedChange={handleChange}
-                      defaultChecked={searchParams
-                        .getAll(title)
-                        .includes(color.colorName)}
+                      defaultChecked={searchParams[title]?.includes(
+                        color.colorName,
+                      )}
                       item={color}
                     />
                   ))}
@@ -114,30 +111,27 @@ export default Filters;
 
 const PriceSlider = ({
   onValueCommit,
-  searchParams,
+  price,
 }: {
   onValueCommit: (value: number[]) => void;
-  searchParams: ReadonlyURLSearchParams;
+  price: string | string[] | undefined;
 }) => {
   const [sliderValue, setSliderValue] = useState<[number, number]>(() => {
-    const values = searchParams.getAll("price");
-    return values.length > 1
-      ? [parseInt(values[0]), parseInt(values[1])]
-      : [0, 100];
+    return Array.isArray(price) && price.length > 1
+      ? [parseInt(price[0]), parseInt(price[1])]
+      : [0, SLIDER_MAX_PRICE];
   });
-
-  const minPrice = formatPrice((sliderValue[0] * SLIDER_MAX_PRICE) / 100);
-  const maxPrice = formatPrice((sliderValue[1] * SLIDER_MAX_PRICE) / 100);
 
   return (
     <>
       <p>
-        Price: {minPrice} - {maxPrice}
+        Price: {formatPrice(sliderValue[0])} - {formatPrice(sliderValue[1])}
       </p>
       <Slider
         id="price"
         name="price"
-        step={5}
+        step={10000}
+        max={SLIDER_MAX_PRICE}
         minStepsBetweenThumbs={1}
         onValueCommit={onValueCommit}
         onValueChange={(value) => setSliderValue(value as [number, number])}

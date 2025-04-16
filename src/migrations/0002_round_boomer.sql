@@ -1,0 +1,1 @@
+ALTER TABLE "products" RENAME COLUMN "numReviews" TO "num_reviews";
