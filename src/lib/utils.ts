@@ -27,3 +27,15 @@ export const formatDate = (date: Date | number | string) => {
 // export const getAverage = (array: number[]) => {
 //   return array.reduce((sum, current) => sum + current, 0) / array.length;
 // };
+
+export const formQueryString = (
+  searchParams: URLSearchParams | Record<string, string>,
+  newParams: { key: string; value: string }[],
+): string => {
+  const params = new URLSearchParams(searchParams);
+
+  for (const { key, value } of newParams) {
+    params.set(key, value);
+  }
+  return `?${params.toString()}`;
+};

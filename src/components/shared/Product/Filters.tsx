@@ -52,7 +52,7 @@ const Filters = ({ filters, searchParams }: Props) => {
     <form ref={formRef}>
       <Accordion type="multiple" defaultValue={titles}>
         {titles.map((title) => (
-          <AccordionItem key={title} value={title}>
+          <AccordionItem key={title} value={title} className="not-lg:mb-4">
             <AccordionTrigger className="capitalize">{title}</AccordionTrigger>
             <AccordionContent className="space-y-4">
               {title !== "price" && title !== "color" && (

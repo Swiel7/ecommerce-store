@@ -134,7 +134,7 @@ export const getFilteredProducts = async (
       .from(products)
       .where(and(...conditions))
       .orderBy(order)
-      .offset((Number(page) - 1) * PRODUCTS_PER_PAGE)
+      .offset((Number(page || 1) - 1) * PRODUCTS_PER_PAGE)
       .limit(PRODUCTS_PER_PAGE),
 
     db

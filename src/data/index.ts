@@ -95,3 +95,5 @@ export const sortOptions = [
   { value: "price_desc", name: "Price: high to low" },
   { value: "latest", name: "Latest" },
 ] as const;
+
+export const sortValues = sortOptions.map(({ value }) => value);

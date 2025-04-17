@@ -7,7 +7,7 @@ import {
   MoreHorizontalIcon,
 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn, formQueryString } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -34,9 +34,10 @@ function Pagination({ className, totalPages, ...props }: Props) {
   }
 
   const setCurrentPage = (value: number) => {
-    const params = new URLSearchParams(searchParams);
-    params.set("page", value.toString());
-    router.push(`?${params.toString()}`);
+    const url = formQueryString(searchParams, [
+      { key: "page", value: value.toString() },
+    ]);
+    router.push(url);
   };
 
   return (
@@ -110,7 +111,7 @@ function PaginationLink({
         data-slot="pagination-link"
         data-active={isActive}
         size={size}
-        variant={isActive ? "outline" : "ghost"}
+        variant={isActive ? "default" : "ghost"}
         className={className}
         {...props}
       />
@@ -130,7 +131,6 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
     </PaginationLink>
   );
 }
@@ -146,7 +146,6 @@ function PaginationNext({
       className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
       <ChevronRightIcon />
     </PaginationLink>
   );

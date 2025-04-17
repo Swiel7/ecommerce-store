@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { formatPrice } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import { TProduct } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,9 +13,19 @@ type Props = {
 
 const ProductCard = ({ product, variant = "vertical" }: Props) => {
   return (
-    <article className="group">
-      <div className="bg-muted relative grid aspect-square overflow-hidden rounded-lg">
-        <Link href={`/products/${product.slug}`} className="p-6">
+    <article
+      className={cn(
+        "group flex gap-x-4 gap-y-2 lg:gap-x-8",
+        variant === "vertical" && "flex-col",
+      )}
+    >
+      <div
+        className={cn(
+          "bg-muted relative grid aspect-square overflow-hidden rounded-lg",
+          variant === "horizontal" && "flex-1 shrink-1",
+        )}
+      >
+        <Link href={`/products/${product.slug}`} className="p-4 xl:p-6">
           <div className="relative h-full w-full">
             <Image
               src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${product.images[0]}`}
@@ -36,20 +46,27 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
             %
           </Badge>
         )}
-        <ProductActions className="slide-in-from-right slide-out-to-right group-hover:animate-in animate-out focus-within:animate-in absolute top-[5%] right-[5%] opacity-0 transition duration-100 ease-in group-hover:opacity-100 group-hover:duration-300 group-hover:ease-out focus-within:opacity-100 focus-within:duration-300 focus-within:ease-out" />
+        {variant === "vertical" && (
+          <ProductActions className="slide-in-from-right slide-out-to-right group-hover:animate-in animate-out focus-within:animate-in absolute top-[5%] right-[5%] opacity-0 transition duration-100 ease-in group-hover:opacity-100 group-hover:duration-300 group-hover:ease-out focus-within:opacity-100 focus-within:duration-300 focus-within:ease-out" />
+        )}
       </div>
-      <div className="mt-2 flex flex-col items-start gap-2">
-        <div className="flex items-center gap-1.5">
+      <div
+        className={cn(
+          "flex flex-col items-start gap-2",
+          variant === "horizontal" && "flex-1",
+        )}
+      >
+        <div className="flex flex-wrap items-center gap-1.5">
           <Rating initialRating={Number(product.rating)} disabled />
-          <span className="text-muted-foreground text-sm">
+          <span className="text-muted-foreground text-sm whitespace-nowrap">
             ({product.numReviews} reviews)
           </span>
         </div>
         <Link href={`/products/${product.slug}`} className="hover:underline">
           <h3 className="font-medium">{product.name}</h3>
         </Link>
-        <div>
-          <span className="mr-1.5 font-medium">
+        <div className="flex flex-wrap gap-1.5">
+          <span className="font-medium">
             {formatPrice(product.discountPrice || product.regularPrice)}
           </span>
           {product.discountPrice && (
@@ -58,6 +75,9 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
             </span>
           )}
         </div>
+        {variant === "horizontal" && (
+          <ProductActions className="mt-auto" variant="horizontal" />
+        )}
       </div>
     </article>
   );
