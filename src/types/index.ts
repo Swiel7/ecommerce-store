@@ -12,7 +12,19 @@ export type TIcon = ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
 >;
 
-export type TFilters = "status" | "category" | "brand" | "price" | "color";
+export type TFilterKeys =
+  | "status"
+  | "category"
+  | "brand"
+  | "price"
+  | "color"
+  | "page"
+  | "sort";
+export type TFilterURLSearchParams = Record<
+  TFilterKeys,
+  string | string[] | undefined
+>;
+
 export type TFilterOption = { label: string; count: number };
 export type TFilterOptionColor = { colorName: string; colorCode: string };
 export type TSortValue = (typeof sortOptions)[number]["value"];

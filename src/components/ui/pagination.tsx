@@ -7,7 +7,7 @@ import {
   MoreHorizontalIcon,
 } from "lucide-react";
 
-import { cn, formQueryString } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -34,10 +34,9 @@ function Pagination({ className, totalPages, ...props }: Props) {
   }
 
   const setCurrentPage = (value: number) => {
-    const url = formQueryString(searchParams, [
-      { key: "page", value: value.toString() },
-    ]);
-    router.push(url);
+    const params = new URLSearchParams(searchParams);
+    params.set("page", value.toString());
+    router.push(`?${params.toString()}`);
   };
 
   return (

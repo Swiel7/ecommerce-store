@@ -9,9 +9,9 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { TFilterOption, TFilterOptionColor, TFilters } from "@/types";
-import React, { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { TFilterKeys, TFilterOption, TFilterOptionColor } from "@/types";
+import React, { Fragment, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Color } from "@/components/ui/color";
 import { SLIDER_MAX_PRICE } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
@@ -23,27 +23,32 @@ type Props = {
     brand: TFilterOption[];
     color: TFilterOptionColor[];
   };
-  searchParams: Record<
-    TFilters | "page" | "sort",
-    string | string[] | undefined
-  >;
 };
 
-const titles: TFilters[] = ["status", "category", "brand", "price", "color"];
+const titles: Exclude<TFilterKeys, "sort" | "page">[] = [
+  "status",
+  "category",
+  "brand",
+  "price",
+  "color",
+];
 
-const Filters = ({ filters, searchParams }: Props) => {
+const Filters = ({ filters }: Props) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = () => {
     if (formRef.current) {
       const formData = new FormData(formRef.current);
       const params = new URLSearchParams();
+      const sort = searchParams.get("sort");
 
       for (const [key, value] of formData.entries()) {
         params.append(key, value.toString());
       }
 
+      if (sort) params.set("sort", sort);
       router.replace(`?${params.toString()}`, { scroll: false });
     }
   };
@@ -60,11 +65,14 @@ const Filters = ({ filters, searchParams }: Props) => {
                   {filters[title].map(({ label, count }) => (
                     <div key={label} className="flex items-center space-x-3">
                       <Checkbox
+                        key={searchParams.getAll(title).toString()}
                         id={label}
                         name={title}
                         value={label}
                         onCheckedChange={handleChange}
-                        defaultChecked={searchParams[title]?.includes(label)}
+                        defaultChecked={searchParams
+                          .getAll(title)
+                          .includes(label)}
                       />
                       <Label htmlFor={label} className="grow">
                         <span>{label}</span>
@@ -79,23 +87,26 @@ const Filters = ({ filters, searchParams }: Props) => {
               {title === "price" && (
                 <PriceSlider
                   onValueCommit={handleChange}
-                  price={searchParams.price}
+                  price={searchParams.getAll("price")}
+                  key={searchParams.getAll("price").toString()}
                 />
               )}
               {title === "color" && (
                 <div className="flex flex-wrap gap-4 p-1">
                   {filters.color.map((color) => (
-                    <Color
-                      key={color.colorName}
-                      id={color.colorName}
-                      name={title}
-                      value={color.colorName}
-                      onCheckedChange={handleChange}
-                      defaultChecked={searchParams[title]?.includes(
-                        color.colorName,
-                      )}
-                      item={color}
-                    />
+                    <Fragment key={color.colorName}>
+                      <Color
+                        key={searchParams.getAll(title).toString()}
+                        id={color.colorName}
+                        name={title}
+                        value={color.colorName}
+                        onCheckedChange={handleChange}
+                        defaultChecked={searchParams
+                          .getAll(title)
+                          .includes(color.colorName)}
+                        item={color}
+                      />
+                    </Fragment>
                   ))}
                 </div>
               )}

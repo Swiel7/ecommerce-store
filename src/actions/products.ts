@@ -3,26 +3,19 @@
 import { db } from "@/db";
 import { categories, products } from "@/db/schema";
 import { PRODUCTS_PER_PAGE } from "@/lib/constants";
-import { TFilters, TSortValue } from "@/types";
-import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  gte,
-  inArray,
-  isNotNull,
-  lte,
-  sql,
-} from "drizzle-orm";
-import { toArray } from "drizzle-orm/mysql-core";
+import { TFilterURLSearchParams, TSortValue } from "@/types";
+import { and, asc, desc, eq, isNotNull, sql } from "drizzle-orm";
+import { getFilterConditions } from "./filters";
 
-export const getCategories = async () => {
+export const getCategories = async (): Promise<
+  (typeof categories.$inferSelect)[]
+> => {
   return await db.select().from(categories).where(isNotNull(categories.image));
 };
 
-export const getFeaturedProducts = async () => {
+export const getFeaturedProducts = async (): Promise<
+  (typeof products.$inferSelect)[]
+> => {
   return await db
     .select()
     .from(products)
@@ -31,7 +24,9 @@ export const getFeaturedProducts = async () => {
     .limit(4);
 };
 
-export const getOnSaleProducts = async () => {
+export const getOnSaleProducts = async (): Promise<
+  (typeof products.$inferSelect)[]
+> => {
   return await db
     .select()
     .from(products)
@@ -41,69 +36,11 @@ export const getOnSaleProducts = async () => {
 };
 
 export const getFilteredProducts = async (
-  searchParams: Record<
-    TFilters | "page" | "sort",
-    string | string[] | undefined
-  >,
+  searchParams: TFilterURLSearchParams,
 ) => {
-  const { brand, category, color, status, price, page, sort } = searchParams;
-  const conditions = [];
-
-  if (category) {
-    const categoryNames = toArray(category);
-
-    const categoryResults = await db
-      .select({ id: categories.id })
-      .from(categories)
-      .where(inArray(categories.name, categoryNames));
-
-    const categoryIds = categoryResults.map((c) => c.id);
-    conditions.push(inArray(products.category, categoryIds));
-  }
-
-  if (brand) {
-    const brands = toArray(brand);
-    conditions.push(inArray(products.brand, brands));
-  }
-
-  if (color) {
-    const colors = toArray(color);
-    conditions.push(
-      sql`EXISTS (
-        SELECT 1 FROM jsonb_array_elements(${products.variants}) AS elem
-        WHERE elem->>'colorName' = ANY(${colors})
-      )`,
-    );
-  }
-
-  if (status) {
-    const statuses = toArray(status);
-
-    if (statuses.includes("On Sale")) {
-      conditions.push(eq(products.onSale, true));
-    }
-    if (statuses.includes("Featured")) {
-      conditions.push(eq(products.isFeatured, true));
-    }
-    if (statuses.includes("In Stock")) {
-      conditions.push(
-        sql`EXISTS (
-        SELECT 1 FROM jsonb_array_elements(${products.variants}) AS elem
-        WHERE (elem->>'stock')::int > 0
-      )`,
-      );
-    }
-  }
-
-  if (price) {
-    const prices = toArray(price);
-    if (prices.length > 1) {
-      conditions.push(
-        gte(products.regularPrice, Number(prices[0])),
-        lte(products.regularPrice, Number(prices[1])),
-      );
-    }
-  }
+  const conditions = await getFilterConditions(searchParams);
+  const sort = searchParams.sort || "default";
+  const page = searchParams.page || 1;
 
   let order;
   switch (sort as TSortValue) {
@@ -128,24 +65,11 @@ export const getFilteredProducts = async (
       break;
   }
 
-  const [filteredProducts, [totalProducts]] = await Promise.all([
-    db
-      .select()
-      .from(products)
-      .where(and(...conditions))
-      .orderBy(order)
-      .offset((Number(page || 1) - 1) * PRODUCTS_PER_PAGE)
-      .limit(PRODUCTS_PER_PAGE),
-
-    db
-      .select({ count: count() })
-      .from(products)
-      .where(and(...conditions)),
-  ]);
-
-  return {
-    products: filteredProducts,
-    totalProducts: totalProducts.count,
-    totalPages: Math.ceil(totalProducts.count / PRODUCTS_PER_PAGE),
-  };
+  return await db
+    .select()
+    .from(products)
+    .where(and(...conditions))
+    .orderBy(order)
+    .offset((Number(page) - 1) * PRODUCTS_PER_PAGE)
+    .limit(PRODUCTS_PER_PAGE);
 };
