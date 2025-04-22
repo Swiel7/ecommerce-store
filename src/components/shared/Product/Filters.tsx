@@ -73,6 +73,7 @@ const Filters = ({ filters }: Props) => {
                         defaultChecked={searchParams
                           .getAll(title)
                           .includes(label)}
+                        disabled={count.toString() === "0"}
                       />
                       <Label htmlFor={label} className="grow">
                         <span>{label}</span>

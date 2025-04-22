@@ -1,4 +1,4 @@
-import { getFilters, getTotals } from "@/actions/filters";
+import { getFilters } from "@/actions/filters";
 import { getFilteredProducts } from "@/actions/products";
 import { Filters, ProductList } from "@/components/shared/Product";
 import SectionBreadcrumb, {
@@ -20,15 +20,13 @@ const Products = async (props: {
 }) => {
   const searchParams = getFilterSearchParams(await props.searchParams);
 
-  // const { totalPages, totalProducts } = await getTotals(searchParams);
-  const { totalPages, totalProducts } = await cache(() =>
-    getTotals(searchParams),
+  // const  {products,total,totalPages} = await getFilteredProducts(searchParams);
+  const { products, total, totalPages } = await cache(() =>
+    getFilteredProducts(searchParams),
   )();
-  // const products = await getFilteredProducts(searchParams);
-  const products = await cache(() => getFilteredProducts(searchParams))();
-  const filters = await cache(() => getFilters())();
+  const filters = await cache(() => getFilters(searchParams))();
 
-  // const filters = await getFilters();
+  // const filters = await getFilters(searchParams);
 
   return (
     <>
@@ -41,7 +39,7 @@ const Products = async (props: {
             </div>
             <ProductList
               products={products}
-              totalProducts={totalProducts}
+              totalProducts={total}
               totalPages={totalPages}
               filters={filters}
             />

@@ -2,10 +2,10 @@
 
 import { db } from "@/db";
 import { categories, products } from "@/db/schema";
-import { PRODUCTS_PER_PAGE } from "@/lib/constants";
 import { TFilterURLSearchParams, TSortValue } from "@/types";
-import { and, asc, desc, eq, isNotNull, sql } from "drizzle-orm";
+import { and, asc, eq, isNotNull, SQL, sql } from "drizzle-orm";
 import { getFilterConditions } from "./filters";
+import { PRODUCTS_PER_PAGE } from "@/lib/constants";
 
 export const getCategories = async (): Promise<
   (typeof categories.$inferSelect)[]
@@ -38,38 +38,37 @@ export const getOnSaleProducts = async (): Promise<
 export const getFilteredProducts = async (
   searchParams: TFilterURLSearchParams,
 ) => {
+  const page = Number(searchParams.page || 1);
+  const sort: TSortValue = (searchParams.sort as TSortValue) || "default";
   const conditions = await getFilterConditions(searchParams);
-  const sort = searchParams.sort || "default";
-  const page = searchParams.page || 1;
+  const offset = (page - 1) * PRODUCTS_PER_PAGE;
 
-  let order;
-  switch (sort as TSortValue) {
-    case "price_asc":
-      order = asc(
-        sql`COALESCE(${products.discountPrice}, ${products.regularPrice})`,
-      );
-      break;
-    case "price_desc":
-      order = desc(
-        sql`COALESCE(${products.discountPrice}, ${products.regularPrice})`,
-      );
-      break;
-    case "rating":
-      order = desc(products.rating);
-      break;
-    case "latest":
-      order = desc(products.createdAt);
-      break;
-    default:
-      order = asc(products.name);
-      break;
-  }
+  const sortOptions: Record<TSortValue, SQL> = {
+    default: sql`name ASC`,
+    rating: sql`rating DESC`,
+    price_asc: sql`COALESCE(discountPrice, regularPrice) ASC`,
+    price_desc: sql`COALESCE(discountPrice, regularPrice) DESC`,
+    latest: sql`createdAt DESC`,
+  };
 
-  return await db
-    .select()
-    .from(products)
-    .where(and(...conditions))
-    .orderBy(order)
-    .offset((Number(page) - 1) * PRODUCTS_PER_PAGE)
-    .limit(PRODUCTS_PER_PAGE);
+  const [items, total] = await Promise.all([
+    db
+      .select()
+      .from(products)
+      .where(and(...conditions))
+      .orderBy(sortOptions[sort])
+      .offset(offset)
+      .limit(PRODUCTS_PER_PAGE),
+
+    db
+      .select({ count: sql<number>`COUNT(*)` })
+      .from(products)
+      .where(and(...conditions)),
+  ]);
+
+  return {
+    products: items,
+    total: total[0]?.count ?? 0,
+    totalPages: Math.ceil((total[0]?.count ?? 0) / PRODUCTS_PER_PAGE),
+  };
 };

@@ -114,7 +114,7 @@ const ProductList = ({
           </li>
         ))}
       </ul>
-      <Pagination totalPages={totalPages} />
+      {totalPages > 1 && <Pagination totalPages={totalPages} />}
     </div>
   );
 };
