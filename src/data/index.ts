@@ -1,6 +1,6 @@
 import { headphones, laptop, smartwatch } from "public/hero";
 import { banner1, banner2 } from "public/banners";
-import { CreditCard, Headphones, Package, RotateCcwSquare } from "lucide-react";
+import { CreditCard, Headphones, Package, RefreshCcw } from "lucide-react";
 
 export const navLinks = [
   { label: "Home", href: "/" },
@@ -72,7 +72,7 @@ export const features = [
     description: "You will love at great low prices",
   },
   {
-    icon: RotateCcwSquare,
+    icon: RefreshCcw,
     title: "30 Days Returns",
     description: "Within 15 days for an exchange",
   },

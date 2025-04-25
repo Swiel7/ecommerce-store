@@ -9,9 +9,9 @@ import {
 } from "../ui/breadcrumb";
 import { Fragment } from "react";
 
-export type BreadcrumbsItemType = { label: string; href?: string };
+export type TBreadcrumbsItem = { label: string; href?: string };
 
-const SectionBreadcrumb = ({ items }: { items: BreadcrumbsItemType[] }) => {
+const SectionBreadcrumb = ({ items }: { items: TBreadcrumbsItem[] }) => {
   return (
     <Breadcrumb className="pt-4 pb-8 lg:pt-8 [&_~_section]:!pt-0">
       <div className="wrapper">

@@ -6,7 +6,7 @@ import {
   SheetTitle,
   Sheet,
 } from "@/components/ui/sheet";
-import { FilterIcon } from "lucide-react";
+import { Settings2 } from "lucide-react";
 import Filters from "./Filters";
 import { TFilterOption, TFilterOptionColor } from "@/types";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -26,7 +26,7 @@ const MobileFilters = ({ filters }: Props) => {
       <Sheet>
         <SheetTrigger asChild>
           <Button>
-            <FilterIcon /> Filter
+            <Settings2 /> Filter
           </Button>
         </SheetTrigger>
         <SheetContent className="w-80">

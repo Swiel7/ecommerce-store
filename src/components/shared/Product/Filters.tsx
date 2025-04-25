@@ -93,7 +93,7 @@ const Filters = ({ filters }: Props) => {
                 />
               )}
               {title === "color" && (
-                <div className="flex flex-wrap gap-4 p-1">
+                <div className="flex flex-wrap gap-4">
                   {filters.color.map((color) => (
                     <Fragment key={color.colorName}>
                       <Color

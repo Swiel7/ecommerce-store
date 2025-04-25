@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SLIDER_MAX_PRICE } from "@/lib/constants";
 import { formatPrice } from "@/lib/utils";
@@ -70,17 +69,14 @@ const FilterTags = ({ filters }: Props) => {
           {Object.entries(tags).map(([key, values]) =>
             values.map((value) => (
               <li key={`${key}-${value}`}>
-                <Badge
-                  className="h-8 cursor-pointer text-sm"
-                  asChild
+                <Button
                   variant="secondary"
+                  className="h-8 gap-x-1 text-sm"
                   onClick={() => removeTag(key, value)}
                 >
-                  <button>
-                    {value}
-                    <X />
-                  </button>
-                </Badge>
+                  {value}
+                  <X className="size-3" />
+                </Button>
               </li>
             )),
           )}

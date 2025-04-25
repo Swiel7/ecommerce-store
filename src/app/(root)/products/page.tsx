@@ -2,7 +2,7 @@ import { getFilters } from "@/actions/filters";
 import { getFilteredProducts } from "@/actions/products";
 import { Filters, ProductList } from "@/components/shared/Product";
 import SectionBreadcrumb, {
-  BreadcrumbsItemType,
+  TBreadcrumbsItem,
 } from "@/components/shared/SectionBreadcrumb";
 import { getFilterSearchParams } from "@/lib/utils";
 import { TFilterURLSearchParams } from "@/types";
@@ -10,7 +10,7 @@ import { cache } from "react";
 
 export const metadata = { title: "Products" };
 
-const items: BreadcrumbsItemType[] = [
+const items: TBreadcrumbsItem[] = [
   { label: "Home", href: "/" },
   { label: "Products" },
 ];

@@ -67,7 +67,7 @@ const getStatuses = async (conditions: SQL[]) => {
     { label: "Featured", count: featured[0]?.count || 0 },
     {
       label: "In Stock",
-      count: inStock.rows[0]?.count || 0,
+      count: (inStock.rows[0]?.count as number) || 0,
     },
     { label: "On Sale", count: onSale[0]?.count || 0 },
   ];

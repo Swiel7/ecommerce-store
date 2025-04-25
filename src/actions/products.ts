@@ -72,3 +72,10 @@ export const getFilteredProducts = async (
     totalPages: Math.ceil((total[0]?.count ?? 0) / PRODUCTS_PER_PAGE),
   };
 };
+
+export const getProductBySlug = async (slug: string) => {
+  return await db.query.products.findFirst({
+    where: eq(products.slug, slug),
+    with: { reviews: true },
+  });
+};
