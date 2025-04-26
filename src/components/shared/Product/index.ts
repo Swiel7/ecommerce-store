@@ -6,3 +6,4 @@ export { default as MobileFilters } from "./MobileFilters";
 export { default as FilterTags } from "./FilterTags";
 export { default as ProductImages } from "./ProductImages";
 export { default as ProductDetails } from "./ProductDetails";
+export { default as ProductTabs } from "./ProductTabs";

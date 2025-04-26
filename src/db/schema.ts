@@ -1,4 +1,4 @@
-import { relations, sql } from "drizzle-orm";
+import { relations } from "drizzle-orm";
 import {
   pgTable,
   uuid,
@@ -8,7 +8,6 @@ import {
   jsonb,
   integer,
   boolean,
-  check,
   numeric,
 } from "drizzle-orm/pg-core";
 
@@ -62,23 +61,19 @@ export const productsRelations = relations(products, ({ many }) => ({
   reviews: many(reviews),
 }));
 
-export const reviews = pgTable(
-  "reviews",
-  {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
-    userId: uuid("user_id")
-      .references(() => users.id)
-      .notNull(),
-    productId: uuid("product_id")
-      .references(() => products.id)
-      .notNull(),
-    rating: integer("rating").notNull(),
-    description: text("description").notNull(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at"),
-  },
-  (table) => [check("rating_check", sql`${table.rating} between 1 and 5`)],
-);
+export const reviews = pgTable("reviews", {
+  id: uuid("id").notNull().primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+  productId: uuid("product_id")
+    .references(() => products.id)
+    .notNull(),
+  rating: integer("rating").notNull(),
+  description: text("description").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at"),
+});
 
 export const reviewsRelations = relations(reviews, ({ one }) => ({
   user: one(users, { fields: [reviews.userId], references: [users.id] }),

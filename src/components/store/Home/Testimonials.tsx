@@ -56,7 +56,7 @@ const Testimonials = async () => {
   const testimonials = await getData();
 
   return (
-    <section className="bg-muted pt-16 pb-10 lg:pt-20 lg:pb-14">
+    <section className="bg-muted pt-16 !pb-10 lg:pt-20 lg:!pb-14">
       <div className="wrapper">
         <Carousel opts={{ align: "start", loop: true }}>
           <div className="flex flex-wrap items-center justify-between gap-4 pb-8 lg:pb-10">

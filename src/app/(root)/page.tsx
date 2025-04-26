@@ -4,7 +4,6 @@ import {
   Brands,
   Categories,
   FeaturedProducts,
-  Features,
   Hero,
   OnSaleProducts,
   Testimonials,
@@ -21,7 +20,6 @@ const Home = () => {
       <BestDeal />
       <OnSaleProducts />
       <Testimonials />
-      <Features />
     </>
   );
 };

@@ -13,7 +13,7 @@ export type TBreadcrumbsItem = { label: string; href?: string };
 
 const SectionBreadcrumb = ({ items }: { items: TBreadcrumbsItem[] }) => {
   return (
-    <Breadcrumb className="pt-4 pb-8 lg:pt-8 [&_~_section]:!pt-0">
+    <Breadcrumb className="pt-4 pb-8 lg:pt-8 [&_+_section]:!pt-0">
       <div className="wrapper">
         <BreadcrumbList>
           {items.map(({ label, href }, index) => (

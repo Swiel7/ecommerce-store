@@ -11,9 +11,17 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 
-type Props = { totalPages: number } & React.ComponentProps<"nav">;
+type Props = {
+  totalPages: number;
+  scrollToTop?: boolean;
+} & React.ComponentProps<"nav">;
 
-function Pagination({ className, totalPages, ...props }: Props) {
+function Pagination({
+  className,
+  totalPages,
+  scrollToTop = false,
+  ...props
+}: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -36,7 +44,7 @@ function Pagination({ className, totalPages, ...props }: Props) {
   const setCurrentPage = (value: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", value.toString());
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: scrollToTop });
   };
 
   return (

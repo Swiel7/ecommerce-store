@@ -2,20 +2,29 @@
 
 import { db } from "@/db";
 import { categories, products } from "@/db/schema";
-import { TFilterURLSearchParams, TSortValue } from "@/types";
-import { and, asc, eq, isNotNull, SQL, sql } from "drizzle-orm";
+import {
+  TCategory,
+  TFilterURLSearchParams,
+  TProduct,
+  TSortValue,
+} from "@/types";
+import {
+  and,
+  asc,
+  eq,
+  getTableColumns,
+  isNotNull,
+  SQL,
+  sql,
+} from "drizzle-orm";
 import { getFilterConditions } from "./filters";
 import { PRODUCTS_PER_PAGE } from "@/lib/constants";
 
-export const getCategories = async (): Promise<
-  (typeof categories.$inferSelect)[]
-> => {
+export const getCategories = async (): Promise<TCategory[]> => {
   return await db.select().from(categories).where(isNotNull(categories.image));
 };
 
-export const getFeaturedProducts = async (): Promise<
-  (typeof products.$inferSelect)[]
-> => {
+export const getFeaturedProducts = async (): Promise<TProduct[]> => {
   return await db
     .select()
     .from(products)
@@ -24,9 +33,7 @@ export const getFeaturedProducts = async (): Promise<
     .limit(4);
 };
 
-export const getOnSaleProducts = async (): Promise<
-  (typeof products.$inferSelect)[]
-> => {
+export const getOnSaleProducts = async (): Promise<TProduct[]> => {
   return await db
     .select()
     .from(products)
@@ -73,9 +80,14 @@ export const getFilteredProducts = async (
   };
 };
 
-export const getProductBySlug = async (slug: string) => {
-  return await db.query.products.findFirst({
-    where: eq(products.slug, slug),
-    with: { reviews: true },
-  });
+export const getProductBySlug = async (
+  slug: string,
+): Promise<TProduct | null> => {
+  const product = await db
+    .select({ ...getTableColumns(products), category: categories.name })
+    .from(products)
+    .where(eq(products.slug, slug))
+    .innerJoin(categories, eq(products.category, categories.id));
+
+  return product.length > 0 ? product[0] : null;
 };

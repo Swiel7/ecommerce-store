@@ -21,7 +21,7 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
   return (
     <div className="space-y-8">
       <div className="flex flex-col space-y-3">
-        <h3 className="text-4xl font-bold">{name}</h3>
+        <h3 className="text-3xl font-bold lg:text-4xl">{name}</h3>
         <div className="flex flex-wrap items-center gap-1.5">
           <Rating initialRating={Number(rating)} disabled />
           <span className="text-muted-foreground text-sm whitespace-nowrap">
@@ -79,7 +79,7 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
           Buy Now
         </Button>
       </div>
-      <ul className="flex flex-wrap gap-4">
+      <ul className="flex flex-wrap gap-x-4 gap-y-1">
         <li>
           <Button variant="ghost" size="sm">
             <Heart />
@@ -105,9 +105,9 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
         </li>
         <li className="flex items-center gap-3">
           <Package />
-          <p>
+          <p className="flex flex-wrap gap-x-3">
             Delivers in 2-4 working days
-            <Button asChild variant="link" size="sm" className="h-7 px-3">
+            <Button asChild variant="link" size="sm" className="h-7 px-0">
               <Link href="/">Shipping & Return</Link>
             </Button>
           </p>
