@@ -23,7 +23,7 @@ const ReviewItem = ({ review, className }: Props) => {
       )}
     >
       <div className="flex items-center justify-between">
-        <Rating initialRating={rating} disabled size={24} />
+        <Rating value={rating} disabled size={24} />
         <span className="text-sm group-first:hidden">
           {formatDate(createdAt)}
         </span>

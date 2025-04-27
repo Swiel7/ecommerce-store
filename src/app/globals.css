@@ -88,6 +88,9 @@
   section {
     @apply py-8 lg:py-10;
   }
+  button {
+    @apply cursor-pointer;
+  }
 }
 
 @utility wrapper {

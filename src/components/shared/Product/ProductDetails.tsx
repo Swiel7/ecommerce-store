@@ -23,7 +23,7 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
       <div className="flex flex-col space-y-3">
         <h3 className="text-3xl font-bold lg:text-4xl">{name}</h3>
         <div className="flex flex-wrap items-center gap-1.5">
-          <Rating initialRating={Number(rating)} disabled />
+          <Rating value={Number(rating)} disabled />
           <span className="text-muted-foreground text-sm whitespace-nowrap">
             ({numReviews} reviews)
           </span>

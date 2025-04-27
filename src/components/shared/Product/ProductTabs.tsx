@@ -1,9 +1,8 @@
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ReviewItem } from "../Review";
+import { ReviewForm, ReviewItem } from "../Review";
 import { TProduct, TReview, TUser } from "@/types";
 import { Rating } from "@/components/ui/rating";
-import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Pagination } from "@/components/ui/pagination";
@@ -77,11 +76,9 @@ const ProductTabs = ({
                 <span className="text-muted-foreground text-center text-sm">
                   {totalReviews} reviews
                 </span>
-                <Rating initialRating={Number(rating)} disabled />
+                <Rating value={Number(rating)} disabled />
               </div>
-              <Button variant="outline" size="sm">
-                Write A Review
-              </Button>
+              <ReviewForm />
             </div>
             <ul className="flex grow flex-col gap-4">
               {Array.from({ length: 5 }, (_, i) => {

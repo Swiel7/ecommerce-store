@@ -1,113 +1,80 @@
 "use client";
 
-import React, { useState } from "react";
-import { Star } from "lucide-react";
+import { StarHalf, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
-interface RatingProps extends React.HTMLAttributes<HTMLDivElement> {
-  initialRating: number;
+interface RatingProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  value?: number;
   size?: number;
   onRatingChange?: (rating: number) => void;
-  disabled?: boolean;
 }
 
 export const Rating = ({
-  initialRating,
+  value,
   size = 20,
   onRatingChange,
   disabled = false,
   ...props
 }: RatingProps) => {
-  const [hoverRating, setHoverRating] = useState<number | null>(null);
-  const [currentRating, setCurrentRating] = useState(initialRating);
+  const [internalValue, setInternalValue] = useState<number>(value ?? 0);
+  const [hoveredValue, setHoveredValue] = useState<number | null>(null);
 
-  const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
-    const starIndex = parseInt(
-      (event.currentTarget as HTMLDivElement).dataset.starIndex || "0",
+  const currentValue = value ?? internalValue;
+
+  const handleSelect = (rating: number) => {
+    if (disabled) return;
+    setInternalValue(rating);
+    onRatingChange?.(rating);
+  };
+
+  const getStar = (star: number) => {
+    const activeValue = hoveredValue ?? currentValue;
+    const diff = activeValue - star;
+
+    const empty = <Star size={size} className="fill-border stroke-0" />;
+    const full = <Star size={size} className="fill-chart-4 stroke-0" />;
+    const half = (
+      <>
+        <StarHalf size={size} className="fill-chart-4 stroke-0" />
+        <Star
+          size={size}
+          className="fill-border absolute inset-0 -z-10 stroke-0"
+        />
+      </>
     );
-    setHoverRating(starIndex);
+
+    if (diff >= -0.25) return full;
+    else if (diff >= -0.75) return half;
+    else return empty;
   };
-
-  const handleMouseLeave = () => {
-    setHoverRating(null);
-  };
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const starIndex = parseInt(
-      (event.currentTarget as HTMLDivElement).dataset.starIndex || "0",
-    );
-    setCurrentRating(starIndex);
-    setHoverRating(null);
-    onRatingChange?.(starIndex);
-  };
-
-  const displayRating = disabled
-    ? initialRating
-    : (hoverRating ?? currentRating);
-
-  const fullStars = Math.floor(displayRating);
-  const fillPercentage =
-    displayRating % 1 < 0.3 ? 0 : displayRating % 1 > 0.7 ? 1 : 0.5;
-
-  const partialStar =
-    displayRating % 1 > 0 ? (
-      <PartialStar fillPercentage={fillPercentage} size={size} />
-    ) : null;
 
   return (
-    <div
-      className={cn("flex items-center", {
-        "pointer-events-none": disabled,
-      })}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      {...props}
-    >
-      {[...Array(fullStars)].map((_, i) => (
-        <div
-          key={i}
-          onClick={handleClick}
-          onMouseEnter={handleMouseEnter}
-          data-star-index={i + 1}
+    <div className="flex items-center gap-x-0.5">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <label
+          key={star}
+          className={cn(
+            "cursor-pointer transition-colors",
+            disabled && "cursor-default",
+          )}
+          onMouseEnter={() => !disabled && setHoveredValue(star)}
+          onMouseLeave={() => !disabled && setHoveredValue(null)}
         >
-          <Star size={size} className="text-chart-4 fill-current stroke-0" />
-        </div>
+          {!disabled && (
+            <input
+              type="radio"
+              value={star}
+              checked={currentValue === star}
+              onChange={() => handleSelect(star)}
+              disabled={disabled}
+              className="hidden"
+              {...props}
+            />
+          )}
+          <div className="relative">{getStar(star)}</div>
+        </label>
       ))}
-      <div>{partialStar}</div>
-      {[...Array(Math.max(0, 5 - fullStars - (partialStar ? 1 : 0)))].map(
-        (_, i) => (
-          <div
-            key={i + fullStars + 1}
-            onClick={handleClick}
-            onMouseEnter={handleMouseEnter}
-            data-star-index={i + fullStars + 1}
-          >
-            <Star size={size} className="fill-border stroke-0" />
-          </div>
-        ),
-      )}
-    </div>
-  );
-};
-
-interface PartialStarProps {
-  fillPercentage: number;
-  size: number;
-  className?: string;
-}
-
-const PartialStar = (props: PartialStarProps) => {
-  const { fillPercentage, size, className } = props;
-
-  return (
-    <div className="relative">
-      <Star size={size} className={cn("fill-border stroke-0", className)} />
-      <div
-        className="absolute top-0 overflow-hidden"
-        style={{ width: `${fillPercentage * 100}%` }}
-      >
-        <Star size={size} className={cn("fill-chart-4 stroke-0", className)} />
-      </div>
     </div>
   );
 };

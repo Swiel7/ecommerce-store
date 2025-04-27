@@ -57,7 +57,7 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
         )}
       >
         <div className="flex flex-wrap items-center gap-1.5">
-          <Rating initialRating={Number(product.rating)} disabled />
+          <Rating value={Number(product.rating)} disabled />
           <span className="text-muted-foreground text-sm whitespace-nowrap">
             ({product.numReviews} reviews)
           </span>
