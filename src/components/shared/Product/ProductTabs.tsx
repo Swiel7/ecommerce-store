@@ -6,6 +6,7 @@ import { Rating } from "@/components/ui/rating";
 import { Star } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Pagination } from "@/components/ui/pagination";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 type Props = {
   product: TProduct;
@@ -47,11 +48,14 @@ const ProductTabs = ({
 
   return (
     <Tabs defaultValue="description">
-      <TabsList>
-        <TabsTrigger value="description">Description</TabsTrigger>
-        <TabsTrigger value="specification">Specification</TabsTrigger>
-        <TabsTrigger value="reviews">Reviews ({totalReviews})</TabsTrigger>
-      </TabsList>
+      <ScrollArea>
+        <TabsList>
+          <TabsTrigger value="description">Description</TabsTrigger>
+          <TabsTrigger value="specification">Specification</TabsTrigger>
+          <TabsTrigger value="reviews">Reviews ({totalReviews})</TabsTrigger>
+        </TabsList>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
       <TabsContent value="description">
         <p>{description}</p>
       </TabsContent>

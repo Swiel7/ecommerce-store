@@ -26,7 +26,7 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
         )}
       >
         <Link href={`/products/${product.slug}`} className="p-4 xl:p-6">
-          <div className="relative h-full w-full">
+          <div className="relative size-full">
             <Image
               src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${product.images[0]}`}
               alt={product.name}

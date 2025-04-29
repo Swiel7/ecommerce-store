@@ -20,7 +20,7 @@ const OnSaleProducts = async () => {
             </Link>
           </Button>
         </div>
-        <ul className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
+        <ul className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
           {onSaleProducts.map((product) => (
             <li key={product.id}>
               <ProductCard product={product} />

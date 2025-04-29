@@ -13,7 +13,7 @@ const ProductImages = ({ product }: { product: TProduct }) => {
 
   return (
     <div className="space-y-4">
-      <div className="grid aspect-square overflow-hidden rounded-lg border">
+      <div className="grid aspect-square rounded-lg border">
         <div className="p-4 xl:p-10">
           <div className="relative size-full">
             <Image

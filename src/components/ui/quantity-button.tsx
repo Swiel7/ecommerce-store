@@ -65,7 +65,7 @@ export const QuantityButton = ({
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onBlur={handleBlur}
-        className="rounded-none border-x-0 px-2 text-center !text-base font-medium"
+        className="rounded-none border-x-0 px-0 text-center font-medium [&]:text-base"
       />
       <button
         data-slot="quantity-btn"
