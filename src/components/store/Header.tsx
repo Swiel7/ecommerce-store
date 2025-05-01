@@ -2,8 +2,9 @@ import { navLinks } from "@/data";
 import { Logo } from "../shared";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Heart, Search, ShoppingCart, User2 } from "lucide-react";
+import { Heart, Search, User2 } from "lucide-react";
 import MobileNav from "./MobileNav";
+import { CartDrawer } from "./Cart";
 
 const Header = () => {
   return (
@@ -51,9 +52,7 @@ const Header = () => {
             </Button>
 
             {/* cart */}
-            <Button variant="ghost" size="icon" className="size-10">
-              <ShoppingCart />
-            </Button>
+            <CartDrawer />
           </div>
         </div>
       </div>

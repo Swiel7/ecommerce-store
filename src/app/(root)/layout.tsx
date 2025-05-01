@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-1 *:nth-last-[2]:pb-16 *:nth-last-[2]:lg:pb-20">
+      <main className="flex-1 *:nth-last-[2]:pb-8 *:nth-last-[2]:lg:pb-20">
         {children}
         <Features />
       </main>

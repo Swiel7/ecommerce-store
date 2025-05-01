@@ -25,16 +25,17 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
           variant === "horizontal" && "flex-1 shrink-1",
         )}
       >
-        <Link href={`/products/${product.slug}`} className="p-4 xl:p-6">
-          <div className="relative size-full">
-            <Image
-              src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${product.images[0]}`}
-              alt={product.name}
-              fill
-              className="object-contain"
-              sizes="(max-width: 500px) 100vw, (max-width: 740px) 50vw, (max-width: 990px) 33vw, 25vw"
-            />
-          </div>
+        <Link
+          href={`/products/${product.slug}`}
+          className="relative m-auto size-[80%]"
+        >
+          <Image
+            src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${product.images[0]}`}
+            alt={product.name}
+            fill
+            className="object-contain"
+            sizes="(max-width: 500px) 100vw, (max-width: 740px) 50vw, (max-width: 990px) 33vw, 25vw"
+          />
         </Link>
         {product.discountPrice && (
           <Badge className="absolute top-[5%] left-[5%]">

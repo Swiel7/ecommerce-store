@@ -48,7 +48,7 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
         <ToggleGroup
           type="single"
           variant="outline"
-          className="flex-wrap gap-4"
+          className="flex-wrap gap-4 !shadow-none"
           value={variant.toString()}
           onValueChange={(value) => setVariant(Number(value))}
         >
@@ -59,7 +59,7 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
               value={i.toString()}
               disabled={v.stock < 1}
               size="lg"
-              className="!bg-background data-[state=on]:border-primary rounded-lg !border"
+              className="!bg-background data-[state=on]:border-primary flex-none rounded-lg !border"
             >
               <Color item={v} />
             </ToggleGroupItem>
