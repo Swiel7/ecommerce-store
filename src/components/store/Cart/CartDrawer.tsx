@@ -1,4 +1,5 @@
-import { getProductBySlug } from "@/actions/products";
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -9,26 +10,29 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { TProduct } from "@/types";
 import { ShoppingCart } from "lucide-react";
-import { cache } from "react";
 import CartItem from "./CartItem";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useCart } from "@/hooks/use-cart";
+import { Badge } from "@/components/ui/badge";
 
-const CartDrawer = async () => {
-  const p = await cache(() =>
-    getProductBySlug("ayvvpii-stereo-earphones-bluetooth"),
-  )();
-  if (!p) return <div>Product not found</div>;
-  const cartItems = Array(7).fill(p) as TProduct[];
+const CartDrawer = () => {
+  const {
+    cart: { items, itemsCount, totalPrice },
+  } = useCart();
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-10">
+        <Button variant="ghost" size="icon" className="relative size-10">
           <ShoppingCart />
+          {itemsCount > 0 && (
+            <Badge className="absolute -top-1 left-full aspect-square min-h-4 min-w-4 -translate-x-1/2 rounded-full p-1 leading-0">
+              {itemsCount}
+            </Badge>
+          )}
         </Button>
       </SheetTrigger>
       <SheetContent className="w-full max-w-sm" side="right">
@@ -37,10 +41,10 @@ const CartDrawer = async () => {
         </SheetHeader>
         <ScrollArea className="min-h-0 px-4 lg:px-6">
           <ul className="divide-y">
-            {cartItems.map((item) => (
+            {items.map((item) => (
               <li key={item.id}>
                 <CartItem
-                  product={item}
+                  item={item}
                   className="pr-8 pl-0 **:text-base [&_button]:right-2 [&>div]:gap-1.5"
                 />
               </li>
@@ -50,7 +54,7 @@ const CartDrawer = async () => {
         <SheetFooter className="bg-background sticky bottom-0 gap-4 !pt-0 lg:gap-6">
           <div className="flex justify-between border-t pt-4 text-lg font-bold">
             <span>Total</span>
-            <span>{formatPrice(1580)}</span>
+            <span>{formatPrice(totalPrice)}</span>
           </div>
           <div className="flex gap-4">
             <SheetClose asChild className="flex-1">
@@ -60,7 +64,7 @@ const CartDrawer = async () => {
             </SheetClose>
             <SheetClose asChild>
               <Button size="lg" asChild className="flex-1">
-                <Link href="/cart">Checkout</Link>
+                <Link href="/checkout">Checkout</Link>
               </Button>
             </SheetClose>
           </div>

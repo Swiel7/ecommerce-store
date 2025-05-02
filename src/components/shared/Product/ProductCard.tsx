@@ -48,7 +48,10 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
           </Badge>
         )}
         {variant === "vertical" && (
-          <ProductActions className="slide-in-from-right slide-out-to-right group-hover:animate-in animate-out focus-within:animate-in absolute top-[5%] right-[5%] opacity-0 transition duration-100 ease-in group-hover:opacity-100 group-hover:duration-300 group-hover:ease-out focus-within:opacity-100 focus-within:duration-300 focus-within:ease-out" />
+          <ProductActions
+            className="slide-in-from-right slide-out-to-right group-hover:animate-in animate-out focus-within:animate-in absolute top-[5%] right-[5%] opacity-0 transition duration-100 ease-in group-hover:opacity-100 group-hover:duration-300 group-hover:ease-out focus-within:opacity-100 focus-within:duration-300 focus-within:ease-out"
+            product={product}
+          />
         )}
       </div>
       <div
@@ -68,7 +71,7 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
         </Link>
         <div className="flex flex-wrap gap-1.5">
           <span className="font-medium">
-            {formatPrice(product.discountPrice || product.regularPrice)}
+            {formatPrice(product.discountPrice ?? product.regularPrice)}
           </span>
           {product.discountPrice && (
             <span className="text-muted-foreground line-through">
@@ -77,7 +80,11 @@ const ProductCard = ({ product, variant = "vertical" }: Props) => {
           )}
         </div>
         {variant === "horizontal" && (
-          <ProductActions className="mt-auto" variant="horizontal" />
+          <ProductActions
+            className="mt-auto"
+            variant="horizontal"
+            product={product}
+          />
         )}
       </div>
     </article>

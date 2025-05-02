@@ -6,10 +6,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useCart } from "@/hooks/use-cart";
 import { cn } from "@/lib/utils";
-import { TIcon } from "@/types";
+import { TIcon, TProduct } from "@/types";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { MouseEventHandler, ReactNode } from "react";
+
+type ProductActionsProps = {
+  product: TProduct;
+  className?: string;
+  variant?: "vertical" | "horizontal";
+};
 
 type ActionProps = {
   content: ReactNode;
@@ -19,12 +26,12 @@ type ActionProps = {
 };
 
 const ProductActions = ({
+  product,
   className,
   variant = "vertical",
-}: {
-  className?: string;
-  variant?: "vertical" | "horizontal";
-}) => {
+}: ProductActionsProps) => {
+  const { addItem } = useCart();
+
   return (
     <div
       className={cn(
@@ -36,7 +43,7 @@ const ProductActions = ({
       <Action
         content="Add to cart"
         icon={ShoppingCart}
-        action={() => console.log("add to cart")}
+        action={() => addItem(product, 1, product.variants[0].colorName)}
         variant={variant}
       />
       <Action

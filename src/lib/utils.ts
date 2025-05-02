@@ -1,7 +1,7 @@
 import { TFilterURLSearchParams, TSortValue } from "@/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { SLIDER_MAX_PRICE } from "./constants";
+import { FREE_SHIPPING_LIMIT, SLIDER_MAX_PRICE } from "./constants";
 import { sortValues } from "@/data";
 import { redirect } from "next/navigation";
 
@@ -27,10 +27,6 @@ export const formatDate = (date: Date | number | string) => {
     year: "numeric",
   }).format(new Date(date));
 };
-
-// export const getAverage = (array: number[]) => {
-//   return array.reduce((sum, current) => sum + current, 0) / array.length;
-// };
 
 export const createSearchParams = (
   searchParams: Record<string, string | string[] | undefined>,
@@ -99,4 +95,16 @@ export const getFilterSearchParams = (
   if (shouldRedirect) redirect(`?${params.toString()}`);
 
   return { ...searchParams, page, sort, price };
+};
+
+export const checkFreeShipping = (itemsPrice: number, taxPrice: number) => {
+  const freeShippingDiff =
+    itemsPrice + taxPrice >= FREE_SHIPPING_LIMIT
+      ? 0
+      : FREE_SHIPPING_LIMIT - (itemsPrice + taxPrice);
+
+  return {
+    isFree: freeShippingDiff === 0,
+    freeShippingDiff,
+  };
 };

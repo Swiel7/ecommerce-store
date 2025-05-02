@@ -8,6 +8,24 @@ export type TProduct = InferSelectModel<typeof products>;
 export type TReview = InferSelectModel<typeof reviews>;
 export type TUser = InferSelectModel<typeof users>;
 export type TCategory = InferSelectModel<typeof categories>;
+export type TCartItem = {
+  id: string;
+  name: string;
+  slug: string;
+  image: string;
+  regularPrice: number;
+  discountPrice: number | null;
+  quantity: number;
+  color: string;
+};
+export type TCart = {
+  items: TCartItem[];
+  itemsCount: number;
+  itemsPrice: number;
+  shippingPrice: number;
+  taxPrice: number;
+  totalPrice: number;
+};
 
 export type TIcon = ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
@@ -21,6 +39,7 @@ export type TFilterKeys =
   | "color"
   | "page"
   | "sort";
+
 export type TFilterURLSearchParams = Record<
   TFilterKeys,
   string | string[] | undefined

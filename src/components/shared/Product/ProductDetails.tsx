@@ -5,6 +5,7 @@ import { Color } from "@/components/ui/color";
 import { QuantityButton } from "@/components/ui/quantity-button";
 import { Rating } from "@/components/ui/rating";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useCart } from "@/hooks/use-cart";
 import { formatPrice } from "@/lib/utils";
 import { TProduct } from "@/types";
 import { ExternalLink, Heart, Package, Repeat, Truck } from "lucide-react";
@@ -12,6 +13,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const ProductDetails = ({ product }: { product: TProduct }) => {
+  const { addItem } = useCart();
   const { name, discountPrice, regularPrice, numReviews, rating, variants } =
     product;
 
@@ -30,7 +32,7 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
         </div>
         <div className="flex gap-1.5">
           <span className="font-medium">
-            {formatPrice(discountPrice || regularPrice)}
+            {formatPrice(discountPrice ?? regularPrice)}
           </span>
           {discountPrice && (
             <span className="text-muted-foreground line-through">
@@ -72,7 +74,13 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
           quantity={quantity}
           onQuantityChange={setQuantity}
         />
-        <Button size="lg" className="grow">
+        <Button
+          size="lg"
+          className="grow"
+          onClick={() =>
+            addItem(product, quantity, variants[variant].colorName)
+          }
+        >
           Add To Cart
         </Button>
         <Button variant="secondary" size="lg" className="w-full">
