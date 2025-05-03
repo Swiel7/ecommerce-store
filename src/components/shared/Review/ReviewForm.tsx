@@ -42,7 +42,7 @@ const ReviewForm = () => {
           Write A Review
         </Button>
       </DialogTrigger>
-      <DialogContent className="gap-6">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Write A Review</DialogTitle>
         </DialogHeader>

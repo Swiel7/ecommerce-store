@@ -36,7 +36,9 @@ const Header = () => {
 
             {/* account */}
             <Button variant="ghost" size="icon" className="size-10">
-              <User2 />
+              <Link href="/login">
+                <User2 />
+              </Link>
             </Button>
 
             {/* wishlist */}

@@ -12,12 +12,19 @@ export const metadata: Metadata = {
     "TechVVave Store offers electronic devices at very competitive prices",
 };
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({
+  children,
+  auth,
+}: {
+  children: ReactNode;
+  auth: ReactNode;
+}) => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 *:nth-last-[2]:pb-8 *:nth-last-[2]:lg:pb-20">
         {children}
+        {auth}
         <Features />
       </main>
       <Footer />
