@@ -14,11 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { loginSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import AuthLink from "./AuthLink";
 
-const LoginForm = () => {
+const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
   const form = useForm<z.infer<typeof loginSchema>>({
     defaultValues: { email: "", password: "", remember: false },
     resolver: zodResolver(loginSchema),
@@ -79,12 +79,9 @@ const LoginForm = () => {
                   </FormItem>
                 )}
               />
-              <Link
-                className="underline hover:no-underline"
-                href="/forgot-password"
-              >
+              <AuthLink href="/forgot-password" intercept={intercept}>
                 Forgot Password?
-              </Link>
+              </AuthLink>
             </div>
           </FormControls>
           <Button type="submit" size="lg" className="w-full">
@@ -94,9 +91,9 @@ const LoginForm = () => {
       </Form>
       <div className="mt-4 text-center">
         Don&apos;t have an account?{" "}
-        <Link href="/register" className="underline hover:no-underline">
+        <AuthLink href="/register" intercept={intercept}>
           Sign up
-        </Link>
+        </AuthLink>
       </div>
     </div>
   );

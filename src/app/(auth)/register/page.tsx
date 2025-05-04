@@ -11,9 +11,9 @@ export const metadata = { title: "Register" };
 
 const RegisterPage = () => {
   return (
-    <section>
-      <div className="wrapper">
-        <Card className="mx-auto max-w-md">
+    <section className="grid place-items-center">
+      <div className="wrapper w-full">
+        <Card className="mx-auto max-w-lg">
           <CardHeader>
             <CardTitle>Create New Account</CardTitle>
             <CardDescription>Please Enter Details</CardDescription>

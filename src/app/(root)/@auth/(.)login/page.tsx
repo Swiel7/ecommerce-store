@@ -20,7 +20,7 @@ const LoginModal = () => {
           <DialogTitle>Welcome</DialogTitle>
           <DialogDescription>Please login here</DialogDescription>
         </DialogHeader>
-        <LoginForm />
+        <LoginForm intercept />
       </DialogContent>
     </Dialog>
   );

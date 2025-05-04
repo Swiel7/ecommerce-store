@@ -20,7 +20,7 @@ const RegisterModal = () => {
           <DialogTitle>Create New Account</DialogTitle>
           <DialogDescription>Please Enter Details</DialogDescription>
         </DialogHeader>
-        <RegisterForm />
+        <RegisterForm intercept />
       </DialogContent>
     </Dialog>
   );

@@ -14,9 +14,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { registerSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import AuthLink from "./AuthLink";
+import Link from "next/link";
 
 const inputs: { label: string; name: string; type: string }[] = [
   { label: "First Name", name: "firstName", type: "text" },
@@ -25,7 +26,7 @@ const inputs: { label: string; name: string; type: string }[] = [
   { label: "Password", name: "password", type: "password" },
 ];
 
-const RegisterForm = () => {
+const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
   const form = useForm<z.infer<typeof registerSchema>>({
     defaultValues: {
       firstName: "",
@@ -94,9 +95,9 @@ const RegisterForm = () => {
       </Form>
       <div className="mt-4 text-center">
         Already have an account?{" "}
-        <Link href="/login" className="underline hover:no-underline">
+        <AuthLink href="/login" intercept={intercept}>
           Sign in
-        </Link>
+        </AuthLink>
       </div>
     </div>
   );
