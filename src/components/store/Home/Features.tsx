@@ -2,7 +2,7 @@ import { features } from "@/data";
 
 const Features = () => {
   return (
-    <section className="border-t">
+    <section className="mt-auto border-t">
       <div className="wrapper">
         <ul className="grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (

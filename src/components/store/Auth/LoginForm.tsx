@@ -17,16 +17,31 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import AuthLink from "./AuthLink";
+import { loginWithCredentials } from "@/actions/auth";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof loginSchema>>({
     defaultValues: { email: "", password: "", remember: false },
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (values: z.infer<typeof loginSchema>) => {
-    console.log(values);
-    // TODO: "Login action"
+  const isSubmitting = form.formState.isSubmitting;
+
+  const onSubmit = async (values: z.infer<typeof loginSchema>) => {
+    const result = await loginWithCredentials(values);
+
+    if (result.success) {
+      toast.success("Success", {
+        description: "You have successfully signed in.",
+      });
+      router.replace("/");
+    } else {
+      toast.error("Error", { description: result.error });
+    }
   };
 
   return (
@@ -41,7 +56,7 @@ const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
                 <FormItem>
                   <FormLabel>Email Address</FormLabel>
                   <FormControl>
-                    <Input {...field} type="email" />
+                    <Input type="email" disabled={isSubmitting} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -54,7 +69,7 @@ const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input {...field} type="password" />
+                    <Input type="password" disabled={isSubmitting} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -70,6 +85,7 @@ const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        disabled={isSubmitting}
                       />
                     </FormControl>
                     <FormLabel className="text-foreground text-base">
@@ -84,7 +100,12 @@ const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
               </AuthLink>
             </div>
           </FormControls>
-          <Button type="submit" size="lg" className="w-full">
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full"
+            loading={isSubmitting}
+          >
             Login
           </Button>
         </form>

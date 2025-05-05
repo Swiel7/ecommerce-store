@@ -18,6 +18,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import AuthLink from "./AuthLink";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { register } from "@/actions/auth";
+import { toast } from "sonner";
 
 const inputs: { label: string; name: string; type: string }[] = [
   { label: "First Name", name: "firstName", type: "text" },
@@ -27,6 +30,8 @@ const inputs: { label: string; name: string; type: string }[] = [
 ];
 
 const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof registerSchema>>({
     defaultValues: {
       firstName: "",
@@ -38,9 +43,19 @@ const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
     resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = (values: z.infer<typeof registerSchema>) => {
-    console.log(values);
-    // TODO: "Login action"
+  const isSubmitting = form.formState.isSubmitting;
+
+  const onSubmit = async (values: z.infer<typeof registerSchema>) => {
+    const result = await register(values);
+
+    if (result.success) {
+      toast.success("Success", {
+        description: "You have successfully signed up.",
+      });
+      router.replace("/");
+    } else {
+      toast.error("Error", { description: result.error });
+    }
   };
 
   return (
@@ -59,7 +74,7 @@ const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
                   <FormItem>
                     <FormLabel>{label}</FormLabel>
                     <FormControl>
-                      <Input {...field} type={type} />
+                      <Input type={type} disabled={isSubmitting} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -75,6 +90,7 @@ const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
+                      disabled={isSubmitting}
                     />
                   </FormControl>
                   <FormLabel className="text-foreground text-base">
@@ -88,7 +104,12 @@ const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
               )}
             />
           </FormControls>
-          <Button type="submit" size="lg" className="w-full">
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full"
+            loading={isSubmitting}
+          >
             Register
           </Button>
         </form>

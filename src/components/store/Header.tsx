@@ -35,7 +35,7 @@ const Header = () => {
             </Button>
 
             {/* account */}
-            <Button variant="ghost" size="icon" className="size-10">
+            <Button variant="ghost" size="icon" className="size-10" asChild>
               <Link href="/login">
                 <User2 />
               </Link>

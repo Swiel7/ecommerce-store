@@ -22,7 +22,7 @@ const Layout = ({
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-1 *:nth-last-[2]:pb-8 *:nth-last-[2]:lg:pb-20">
+      <main className="flex flex-1 flex-col *:nth-last-[2]:pb-8 *:nth-last-[2]:lg:pb-20">
         {children}
         {auth}
         <Features />
