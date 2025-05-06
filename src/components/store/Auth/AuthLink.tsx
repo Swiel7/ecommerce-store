@@ -5,7 +5,7 @@ import { redirectToUrl } from "@/actions/auth";
 const AuthLink = (
   props:
     | ({ intercept?: true } & ComponentProps<typeof Link>)
-    | ({ intercept: false; href: string } & ComponentProps<"button">),
+    | ({ intercept: false; href: string } & ComponentProps<"a">),
 ) => {
   const allowIntercept = props.intercept !== false;
 
@@ -19,9 +19,9 @@ const AuthLink = (
   const { href, intercept, ...rest } = props;
 
   return (
-    <button
-      type="button"
-      className="underline hover:no-underline"
+    <a
+      className="focus-visible:border-ring focus-visible:ring-ring/50 cursor-pointer underline outline-none hover:no-underline focus-visible:ring-[3px]"
+      tabIndex={0}
       onClick={async () => {
         redirectToUrl(href);
       }}

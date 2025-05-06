@@ -21,7 +21,9 @@ import { loginWithCredentials } from "@/actions/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
+type Props = { intercept?: boolean; onSubmit?: () => void };
+
+const LoginForm = ({ intercept = false, onSubmit }: Props) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -31,23 +33,23 @@ const LoginForm = ({ intercept = false }: { intercept?: boolean }) => {
 
   const isSubmitting = form.formState.isSubmitting;
 
-  const onSubmit = async (values: z.infer<typeof loginSchema>) => {
-    const result = await loginWithCredentials(values);
+  const handleSubmit = async (values: z.infer<typeof loginSchema>) => {
+    const { success, message } = await loginWithCredentials(values);
 
-    if (result.success) {
-      toast.success("Success", {
-        description: "You have successfully signed in.",
-      });
-      router.replace("/");
+    if (success) {
+      if (onSubmit) onSubmit?.();
+      else router.replace("/");
+
+      toast.success("Success", { description: message });
     } else {
-      toast.error("Error", { description: result.error });
+      toast.error("Error", { description: message });
     }
   };
 
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
           <FormControls>
             <FormField
               control={form.control}

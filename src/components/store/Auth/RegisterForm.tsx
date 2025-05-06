@@ -29,7 +29,9 @@ const inputs: { label: string; name: string; type: string }[] = [
   { label: "Password", name: "password", type: "password" },
 ];
 
-const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
+type Props = { intercept?: boolean; onSubmit?: () => void };
+
+const RegisterForm = ({ intercept = false, onSubmit }: Props) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -45,23 +47,23 @@ const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
 
   const isSubmitting = form.formState.isSubmitting;
 
-  const onSubmit = async (values: z.infer<typeof registerSchema>) => {
-    const result = await register(values);
+  const handleSubmit = async (values: z.infer<typeof registerSchema>) => {
+    const { success, message } = await register(values);
 
-    if (result.success) {
-      toast.success("Success", {
-        description: "You have successfully signed up.",
-      });
-      router.replace("/");
+    if (success) {
+      if (onSubmit) onSubmit?.();
+      else router.replace("/");
+
+      toast.success("Success", { description: message });
     } else {
-      toast.error("Error", { description: result.error });
+      toast.error("Error", { description: message });
     }
   };
 
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
           <FormControls>
             {inputs.map(({ name, label, type }) => (
               <FormField
@@ -85,20 +87,22 @@ const RegisterForm = ({ intercept = false }: { intercept?: boolean }) => {
               control={form.control}
               name="terms"
               render={({ field }) => (
-                <FormItem className="flex items-center gap-2">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                      disabled={isSubmitting}
-                    />
-                  </FormControl>
-                  <FormLabel className="text-foreground text-base">
-                    I Agree The{" "}
-                    <Link href="#" className="underline hover:no-underline">
-                      Terms & Conditions
-                    </Link>
-                  </FormLabel>
+                <FormItem>
+                  <div className="flex items-center gap-2">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        disabled={isSubmitting}
+                      />
+                    </FormControl>
+                    <FormLabel className="text-foreground text-base">
+                      I Agree The{" "}
+                      <Link href="#" className="underline hover:no-underline">
+                        Terms & Conditions
+                      </Link>
+                    </FormLabel>
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}

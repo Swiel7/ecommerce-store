@@ -2,11 +2,13 @@ import { navLinks } from "@/data";
 import { Logo } from "../shared";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Heart, Search, User2 } from "lucide-react";
+import { Heart, Search } from "lucide-react";
 import MobileNav from "./MobileNav";
 import { CartDrawer } from "./Cart";
+import UserButton from "./UserButton";
+import { Session } from "next-auth";
 
-const Header = () => {
+const Header = ({ session }: { session: Session | null }) => {
   return (
     <header className="bg-background sticky top-0 z-20 shadow-xs">
       <div className="wrapper px-2 lg:px-4">
@@ -34,13 +36,6 @@ const Header = () => {
               <Search />
             </Button>
 
-            {/* account */}
-            <Button variant="ghost" size="icon" className="size-10" asChild>
-              <Link href="/login">
-                <User2 />
-              </Link>
-            </Button>
-
             {/* wishlist */}
             <Button
               variant="ghost"
@@ -53,8 +48,8 @@ const Header = () => {
               </Link>
             </Button>
 
-            {/* cart */}
             <CartDrawer />
+            <UserButton session={session} />
           </div>
         </div>
       </div>

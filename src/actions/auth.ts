@@ -6,10 +6,9 @@ import { loginSchema, registerSchema } from "@/lib/validations";
 import { signIn, signOut } from "auth";
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
-import { AuthError } from "next-auth";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { redirect, RedirectType } from "next/navigation";
-import { z, ZodError } from "zod";
+import { z } from "zod";
 
 export const redirectToUrl = async (url: string, type?: RedirectType) => {
   redirect(url, type);
@@ -20,13 +19,13 @@ export const loginWithCredentials = async (
 ) => {
   try {
     loginSchema.parse(values);
-    await signIn("credentials", values);
+    await signIn("credentials", { ...values, redirect: false });
 
-    return { success: true, message: "Sign in successfully" };
+    return { success: true, message: "Sign in successfully!" };
   } catch (error) {
     if (isRedirectError(error)) throw error;
 
-    return { success: false, message: "Invalid email or password" };
+    return { success: false, message: "Invalid email or password!" };
   }
 };
 
@@ -35,13 +34,12 @@ export const register = async (values: z.infer<typeof registerSchema>) => {
     const { email, password, firstName, lastName } =
       registerSchema.parse(values);
 
-    const existingUser = await db
-      .select()
-      .from(users)
-      .where(eq(users.email, email))
-      .limit(1);
+    const existingUser = await db.query.users.findFirst({
+      where: eq(users.email, email),
+    });
 
-    if (existingUser.length > 0) throw new Error("User already exists");
+    if (existingUser)
+      return { success: false, message: "User already exists!" };
 
     const hashedPassword = await hash(password, 10);
 
@@ -54,16 +52,11 @@ export const register = async (values: z.infer<typeof registerSchema>) => {
 
     await loginWithCredentials({ email, password, remember: false });
 
-    return { success: true };
+    return { success: true, message: "User created successfully!" };
   } catch (error) {
-    let err = "An error occurred.";
+    if (isRedirectError(error)) throw error;
 
-    if (error instanceof ZodError) {
-      err = fromError(error).toString();
-    } else if (error instanceof AuthError || error instanceof Error) {
-      err = error.message;
-    }
-    return { success: false, error: err };
+    return { success: false, message: "Signup error!" };
   }
 };
 

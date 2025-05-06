@@ -9,18 +9,25 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const LoginModal = () => {
   const router = useRouter();
+  const [open, setOpen] = useState<boolean>(true);
+
+  const handleChange = () => {
+    router.back();
+    setOpen(false);
+  };
 
   return (
-    <Dialog defaultOpen onOpenChange={() => router.back()}>
+    <Dialog open={open} onOpenChange={handleChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Welcome</DialogTitle>
           <DialogDescription>Please login here</DialogDescription>
         </DialogHeader>
-        <LoginForm intercept />
+        <LoginForm intercept onSubmit={handleChange} />
       </DialogContent>
     </Dialog>
   );

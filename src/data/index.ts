@@ -1,6 +1,16 @@
 import { headphones, laptop, smartwatch } from "public/hero";
 import { banner1, banner2 } from "public/banners";
-import { CreditCard, Headphones, Package, RefreshCcw } from "lucide-react";
+import {
+  CreditCard,
+  Headphones,
+  Heart,
+  Package,
+  RefreshCcw,
+  Settings,
+  Tag,
+  User2,
+} from "lucide-react";
+import { TIcon } from "@/types";
 
 export const navLinks = [
   { label: "Home", href: "/" },
@@ -97,3 +107,11 @@ export const sortOptions = [
 ] as const;
 
 export const sortValues = sortOptions.map(({ value }) => value);
+
+export const profileLinks: { label: string; href: string; icon: TIcon }[] = [
+  { label: "Personal Information", href: "/account", icon: User2 },
+  { label: "Orders", href: "/account/orders", icon: Package },
+  { label: "Adresses", href: "/account/adresses", icon: Tag },
+  { label: "Wishlist", href: "/account/wishlist", icon: Heart },
+  { label: "Settings", href: "/account/settings", icon: Settings },
+];
