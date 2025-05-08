@@ -14,7 +14,7 @@ import { logout } from "@/actions/auth";
 import { Session } from "next-auth";
 
 const UserButton = ({ session }: { session: Session | null }) => {
-  if (!session?.user)
+  if (!session?.user) {
     return (
       <Button variant="ghost" size="icon" className="size-10" asChild>
         <Link href="/login">
@@ -22,23 +22,21 @@ const UserButton = ({ session }: { session: Session | null }) => {
         </Link>
       </Button>
     );
+  }
 
-  const { image, email, name } = session.user;
-  const avatarFallback = name
-    ?.split(" ")
-    .map((n) => n[0])
-    .join("");
+  const { image, email, firstName, lastName } = session.user;
 
   const userAvatar = (
     <Avatar>
       {image && (
         <AvatarImage
           src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${image}`}
-          alt={`${name} avatar`}
+          alt={`${firstName} ${lastName} avatar`}
         />
       )}
       <AvatarFallback className="bg-primary text-primary-foreground text-sm">
-        {avatarFallback}
+        {firstName[0]}
+        {lastName[0]}
       </AvatarFallback>
     </Avatar>
   );
@@ -50,7 +48,9 @@ const UserButton = ({ session }: { session: Session | null }) => {
         <DropdownMenuItem className="py-2">
           {userAvatar}
           <div className="ml-1 flex flex-col">
-            <span className="text-sm font-medium">{name}</span>
+            <span className="text-sm font-medium">
+              {firstName} {lastName}
+            </span>
             <span className="text-muted-foreground text-xs">{email}</span>
           </div>
         </DropdownMenuItem>

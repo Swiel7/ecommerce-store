@@ -1,9 +1,8 @@
 "use client";
 
-import { Menu, Search } from "lucide-react";
+import { MenuIcon, Search } from "lucide-react";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -12,9 +11,7 @@ import {
 import { Button } from "../ui/button";
 import { Logo } from "../shared";
 import { Input } from "../ui/input";
-import { navLinks } from "@/data";
-import Link from "next/link";
-import { sidebarMenuButtonVariants } from "../ui/sidebar";
+import Menu from "./Menu";
 
 const MobileNav = () => {
   return (
@@ -22,7 +19,7 @@ const MobileNav = () => {
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="size-10">
-            <Menu />
+            <MenuIcon />
           </Button>
         </SheetTrigger>
         <SheetContent className="w-80">
@@ -43,25 +40,7 @@ const MobileNav = () => {
             </div>
 
             {/* menu */}
-            <nav>
-              <ul>
-                {navLinks.map(({ label, href }) => (
-                  <li key={label}>
-                    <SheetClose asChild>
-                      <Link
-                        href={href}
-                        className={sidebarMenuButtonVariants({
-                          variant: "default",
-                          size: "lg",
-                        })}
-                      >
-                        {label}
-                      </Link>
-                    </SheetClose>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <Menu orientation="vertical" />
           </div>
         </SheetContent>
       </Sheet>

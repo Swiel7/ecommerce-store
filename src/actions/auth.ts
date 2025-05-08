@@ -1,14 +1,12 @@
 "use server";
 
-import { db } from "@/db";
-import { users } from "@/db/schema";
 import { loginSchema, registerSchema } from "@/lib/validations";
 import { signIn, signOut } from "auth";
 import { hash } from "bcryptjs";
-import { eq } from "drizzle-orm";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
+import { createUser, getUserByEmail } from "./user";
 
 export const redirectToUrl = async (url: string, type?: RedirectType) => {
   redirect(url, type);
@@ -34,22 +32,13 @@ export const register = async (values: z.infer<typeof registerSchema>) => {
     const { email, password, firstName, lastName } =
       registerSchema.parse(values);
 
-    const existingUser = await db.query.users.findFirst({
-      where: eq(users.email, email),
-    });
+    const existingUser = await getUserByEmail(email);
 
     if (existingUser)
       return { success: false, message: "User already exists!" };
 
     const hashedPassword = await hash(password, 10);
-
-    await db.insert(users).values({
-      firstName,
-      lastName,
-      email,
-      password: hashedPassword,
-    });
-
+    await createUser({ firstName, lastName, email, password: hashedPassword });
     await loginWithCredentials({ email, password, remember: false });
 
     return { success: true, message: "User created successfully!" };

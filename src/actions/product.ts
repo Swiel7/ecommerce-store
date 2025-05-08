@@ -17,7 +17,7 @@ import {
   SQL,
   sql,
 } from "drizzle-orm";
-import { getFilterConditions } from "./filters";
+import { getFilterConditions } from "./filter";
 import { PRODUCTS_PER_PAGE } from "@/lib/constants";
 
 export const getCategories = async (): Promise<TCategory[]> => {

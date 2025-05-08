@@ -1,4 +1,3 @@
-import { navLinks } from "@/data";
 import { Logo } from "../shared";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -7,6 +6,7 @@ import MobileNav from "./MobileNav";
 import { CartDrawer } from "./Cart";
 import UserButton from "./UserButton";
 import { Session } from "next-auth";
+import Menu from "./Menu";
 
 const Header = ({ session }: { session: Session | null }) => {
   return (
@@ -15,17 +15,7 @@ const Header = ({ session }: { session: Session | null }) => {
         <div className="flex items-center justify-between gap-3 py-2 lg:py-4">
           <MobileNav />
           <Logo />
-          <nav className="hidden lg:block">
-            <ul className="flex">
-              {navLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <Button variant="link" size="sm" asChild>
-                    <Link href={href}>{label}</Link>
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <Menu className="not-lg:hidden" />
           <div className="flex">
             {/* search */}
             <Button

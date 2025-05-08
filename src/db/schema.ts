@@ -19,7 +19,7 @@ export const users = pgTable("users", {
   lastName: text("last_name").notNull(),
   email: text("email").notNull().unique(),
   password: text("password").notNull(),
-  role: USER_ROLE("role").default("CUSTOMER"),
+  role: USER_ROLE("role").default("CUSTOMER").notNull(),
   image: text("image"),
   // addresses: json("addresses").$type<X>().array(),
   createdAt: timestamp("created_at").defaultNow().notNull(),

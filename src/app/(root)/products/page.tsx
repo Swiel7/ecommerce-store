@@ -1,5 +1,5 @@
-import { getFilters } from "@/actions/filters";
-import { getFilteredProducts } from "@/actions/products";
+import { getFilters } from "@/actions/filter";
+import { getFilteredProducts } from "@/actions/product";
 import { Filters, ProductList } from "@/components/shared/Product";
 import SectionBreadcrumb, {
   TBreadcrumbsItem,

@@ -1,4 +1,4 @@
-import { getFeaturedProducts } from "@/actions/products";
+import { getFeaturedProducts } from "@/actions/product";
 import { ProductCard } from "@/components/shared/Product";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";

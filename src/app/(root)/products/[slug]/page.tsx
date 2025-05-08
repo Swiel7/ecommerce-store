@@ -1,9 +1,9 @@
-import { getProductBySlug } from "@/actions/products";
+import { getProductBySlug } from "@/actions/product";
 import {
   getRatingCounts,
   getReviewsByProductId,
   getReviewsCount,
-} from "@/actions/reviews";
+} from "@/actions/review";
 import {
   ProductDetails,
   ProductImages,

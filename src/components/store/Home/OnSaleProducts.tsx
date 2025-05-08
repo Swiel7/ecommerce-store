@@ -1,4 +1,4 @@
-import { getOnSaleProducts } from "@/actions/products";
+import { getOnSaleProducts } from "@/actions/product";
 import { ProductCard } from "@/components/shared/Product";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";

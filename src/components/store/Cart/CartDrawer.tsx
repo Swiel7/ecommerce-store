@@ -29,7 +29,7 @@ const CartDrawer = () => {
         <Button variant="ghost" size="icon" className="relative size-10">
           <ShoppingCart />
           {itemsCount > 0 && (
-            <Badge className="absolute -top-1 left-full aspect-square min-h-4 min-w-4 -translate-x-1/2 rounded-full p-1 leading-0">
+            <Badge className="absolute -top-1 right-0 aspect-square min-h-4 min-w-4 rounded-full p-1 leading-0">
               {itemsCount}
             </Badge>
           )}

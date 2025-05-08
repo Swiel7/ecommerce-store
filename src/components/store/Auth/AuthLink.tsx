@@ -22,7 +22,8 @@ const AuthLink = (
     <a
       className="focus-visible:border-ring focus-visible:ring-ring/50 cursor-pointer underline outline-none hover:no-underline focus-visible:ring-[3px]"
       tabIndex={0}
-      onClick={async () => {
+      onClick={(e) => {
+        e.preventDefault();
         redirectToUrl(href);
       }}
       {...rest}

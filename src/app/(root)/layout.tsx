@@ -21,8 +21,6 @@ const Layout = async ({
   authModal: ReactNode;
 }) => {
   const session = await auth();
-  //   if (!session) redirect("/login");
-  console.log(session);
 
   return (
     <div className="flex min-h-screen flex-col">

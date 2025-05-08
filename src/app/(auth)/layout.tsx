@@ -1,6 +1,4 @@
-import { auth } from "auth";
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
@@ -13,9 +11,6 @@ export const metadata: Metadata = {
 };
 
 const Layout = async ({ children }: { children: ReactNode }) => {
-  const session = await auth();
-  // if (session) redirect("/");
-
   return <main className="grid min-h-screen">{children}</main>;
 };
 

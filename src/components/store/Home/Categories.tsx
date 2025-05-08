@@ -1,4 +1,4 @@
-import { getCategories } from "@/actions/products";
+import { getCategories } from "@/actions/product";
 import Image from "next/image";
 import Link from "next/link";
 import { cache } from "react";
