@@ -27,7 +27,7 @@ const RegisterModal = () => {
           <DialogTitle>Create New Account</DialogTitle>
           <DialogDescription>Please Enter Details</DialogDescription>
         </DialogHeader>
-        <RegisterForm intercept onSubmit={handleChange} />
+        <RegisterForm intercept onSuccess={handleChange} />
       </DialogContent>
     </Dialog>
   );

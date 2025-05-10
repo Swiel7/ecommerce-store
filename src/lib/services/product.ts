@@ -1,5 +1,3 @@
-"use server";
-
 import { db } from "@/db";
 import { categories, products } from "@/db/schema";
 import {
@@ -17,8 +15,8 @@ import {
   SQL,
   sql,
 } from "drizzle-orm";
-import { getFilterConditions } from "./filter";
 import { PRODUCTS_PER_PAGE } from "@/lib/constants";
+import { getFilterConditions } from "@/lib/services/filter";
 
 export const getCategories = async (): Promise<TCategory[]> => {
   return await db.select().from(categories).where(isNotNull(categories.image));

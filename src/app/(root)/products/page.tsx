@@ -1,5 +1,4 @@
-import { getFilters } from "@/actions/filter";
-import { getFilteredProducts } from "@/actions/product";
+import { getFilters } from "@/lib/services/filter";
 import { Filters, ProductList } from "@/components/shared/Product";
 import SectionBreadcrumb, {
   TBreadcrumbsItem,
@@ -7,6 +6,7 @@ import SectionBreadcrumb, {
 import { getFilterSearchParams } from "@/lib/utils";
 import { TFilterURLSearchParams } from "@/types";
 import { cache } from "react";
+import { getFilteredProducts } from "@/lib/services/product";
 
 export const metadata = { title: "Products" };
 

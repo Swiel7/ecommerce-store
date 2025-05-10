@@ -1,17 +1,18 @@
 import { User as DefaultUser } from "next-auth";
 import { DefaultJWT } from "next-auth/jwt";
+import { TUser } from ".";
 
 type ExtendedUser = {
-  id: string;
-  role: "CUSTOMER" | "ADMIN";
-  firstName: string;
-  lastName: string;
+  id: TUser["id"];
+  role: TUser["role"];
+  firstName: TUser["firstName"];
+  lastName: TUser["lastName"];
 };
 
 declare module "next-auth" {
-  export interface User extends ExtendedUser, DefaultUser {}
+  interface User extends ExtendedUser, DefaultUser {}
 }
 
 declare module "next-auth/jwt" {
-  export interface JWT extends ExtendedUser, DefaultJWT {}
+  interface JWT extends ExtendedUser, DefaultJWT {}
 }

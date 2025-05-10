@@ -1,5 +1,3 @@
-"use server";
-
 import { db } from "@/db";
 import { reviews, users } from "@/db/schema";
 import { REVIEWS_PER_PAGE } from "@/lib/constants";
@@ -69,4 +67,25 @@ export const getRatingCounts = async (productId: string) => {
   }
 
   return ratingCounts;
+};
+
+export const getTestimonials = async () => {
+  const sq = db
+    .selectDistinctOn([users.email], {
+      ...getTableColumns(reviews),
+      firstName: users.firstName,
+      lastName: users.lastName,
+      image: users.image,
+    })
+    .from(reviews)
+    .innerJoin(users, eq(reviews.userId, users.id))
+    .where(eq(reviews.rating, 5))
+    .orderBy(users.email, desc(sql<number>`length(${reviews.description})`))
+    .as("sq");
+
+  return await db
+    .select()
+    .from(sq)
+    .orderBy(desc(sql<number>`length(${sq.description})`))
+    .limit(6);
 };

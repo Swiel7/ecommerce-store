@@ -17,13 +17,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import AuthLink from "./AuthLink";
-import { loginWithCredentials } from "@/actions/auth";
+import { loginWithCredentials } from "@/lib/actions/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-type Props = { intercept?: boolean; onSubmit?: () => void };
+type Props = { intercept?: boolean; onSuccess?: () => void };
 
-const LoginForm = ({ intercept = false, onSubmit }: Props) => {
+const LoginForm = ({ intercept = false, onSuccess }: Props) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -37,7 +37,7 @@ const LoginForm = ({ intercept = false, onSubmit }: Props) => {
     const { success, message } = await loginWithCredentials(values);
 
     if (success) {
-      if (onSubmit) onSubmit?.();
+      if (onSuccess) onSuccess?.();
       else router.replace("/");
 
       toast.success("Success", { description: message });
@@ -50,7 +50,7 @@ const LoginForm = ({ intercept = false, onSubmit }: Props) => {
     <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
-          <FormControls>
+          <FormControls className="mb-4 space-y-2">
             <FormField
               control={form.control}
               name="email"
@@ -112,7 +112,7 @@ const LoginForm = ({ intercept = false, onSubmit }: Props) => {
           </Button>
         </form>
       </Form>
-      <div className="mt-4 text-center">
+      <div className="text-foreground mt-3 text-center">
         Don&apos;t have an account?{" "}
         <AuthLink href="/register" intercept={intercept}>
           Sign up

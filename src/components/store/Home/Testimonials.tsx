@@ -7,53 +7,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { db } from "@/db";
-import { reviews, users } from "@/db/schema";
-import { desc, eq, getTableColumns, sql } from "drizzle-orm";
+import { getTestimonials } from "@/lib/services/review";
 import { cache } from "react";
 
 const Testimonials = async () => {
-  // const sq = db
-  //   .selectDistinctOn([users.email], {
-  //     ...getTableColumns(reviews),
-  //     firstName: users.firstName,
-  //     lastName: users.lastName,
-  //     image: users.image,
-  //   })
-  //   .from(reviews)
-  //   .innerJoin(users, eq(reviews.userId, users.id))
-  //   .where(eq(reviews.rating, 5))
-  //   .orderBy(users.email, desc(sql<number>`length(${reviews.description})`))
-  //   .as("sq");
-
-  // const testimonials = await db
-  //   .select()
-  //   .from(sq)
-  //   .orderBy(desc(sql<number>`length(${sq.description})`))
-  //   .limit(6)
-
-  const getData = cache(async () => {
-    const sq = db
-      .selectDistinctOn([users.email], {
-        ...getTableColumns(reviews),
-        firstName: users.firstName,
-        lastName: users.lastName,
-        image: users.image,
-      })
-      .from(reviews)
-      .innerJoin(users, eq(reviews.userId, users.id))
-      .where(eq(reviews.rating, 5))
-      .orderBy(users.email, desc(sql<number>`length(${reviews.description})`))
-      .as("sq");
-
-    return await db
-      .select()
-      .from(sq)
-      .orderBy(desc(sql<number>`length(${sq.description})`))
-      .limit(6);
-  });
-
-  const testimonials = await getData();
+  // const testimonials = await getTestimonials();
+  const testimonials = await cache(getTestimonials)();
 
   return (
     <section className="bg-muted pt-16 !pb-10 lg:pt-20 lg:!pb-14">

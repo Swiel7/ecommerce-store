@@ -27,7 +27,7 @@ const LoginModal = () => {
           <DialogTitle>Welcome</DialogTitle>
           <DialogDescription>Please login here</DialogDescription>
         </DialogHeader>
-        <LoginForm intercept onSubmit={handleChange} />
+        <LoginForm intercept onSuccess={handleChange} />
       </DialogContent>
     </Dialog>
   );

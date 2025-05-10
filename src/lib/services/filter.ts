@@ -1,5 +1,3 @@
-"use server";
-
 import { db } from "@/db";
 import { categories, products } from "@/db/schema";
 import { TFilterOptionColor, TFilterURLSearchParams } from "@/types";

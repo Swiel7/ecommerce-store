@@ -25,7 +25,7 @@ const Layout = async ({
   return (
     <div className="flex min-h-screen flex-col">
       <Header session={session} />
-      <main className="flex flex-1 flex-col *:nth-last-[2]:pb-8 *:nth-last-[2]:lg:pb-20">
+      <main className="bg-background flex flex-1 flex-col *:nth-last-[2]:pb-8 *:nth-last-[2]:lg:pb-20">
         {children}
         {authModal}
         <Features />

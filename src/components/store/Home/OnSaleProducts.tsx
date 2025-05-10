@@ -1,6 +1,6 @@
-import { getOnSaleProducts } from "@/actions/product";
 import { ProductCard } from "@/components/shared/Product";
 import { Button } from "@/components/ui/button";
+import { getOnSaleProducts } from "@/lib/services/product";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { cache } from "react";

@@ -17,9 +17,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import AuthLink from "./AuthLink";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { register } from "@/actions/auth";
+import { register } from "@/lib/actions/auth";
 import { toast } from "sonner";
 
 const inputs: { label: string; name: string; type: string }[] = [
@@ -29,9 +28,9 @@ const inputs: { label: string; name: string; type: string }[] = [
   { label: "Password", name: "password", type: "password" },
 ];
 
-type Props = { intercept?: boolean; onSubmit?: () => void };
+type Props = { intercept?: boolean; onSuccess?: () => void };
 
-const RegisterForm = ({ intercept = false, onSubmit }: Props) => {
+const RegisterForm = ({ intercept = false, onSuccess }: Props) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -51,7 +50,7 @@ const RegisterForm = ({ intercept = false, onSubmit }: Props) => {
     const { success, message } = await register(values);
 
     if (success) {
-      if (onSubmit) onSubmit?.();
+      if (onSuccess) onSuccess?.();
       else router.replace("/");
 
       toast.success("Success", { description: message });
@@ -64,7 +63,7 @@ const RegisterForm = ({ intercept = false, onSubmit }: Props) => {
     <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
-          <FormControls>
+          <FormControls className="mb-4 space-y-2">
             {inputs.map(({ name, label, type }) => (
               <FormField
                 key={name}
@@ -98,9 +97,7 @@ const RegisterForm = ({ intercept = false, onSubmit }: Props) => {
                     </FormControl>
                     <FormLabel className="text-foreground text-base">
                       I Agree The{" "}
-                      <Link href="#" className="underline hover:no-underline">
-                        Terms & Conditions
-                      </Link>
+                      <AuthLink href="#">Terms & Conditions</AuthLink>
                     </FormLabel>
                   </div>
                   <FormMessage />
@@ -118,7 +115,7 @@ const RegisterForm = ({ intercept = false, onSubmit }: Props) => {
           </Button>
         </form>
       </Form>
-      <div className="mt-4 text-center">
+      <div className="text-foreground mt-3 text-center">
         Already have an account?{" "}
         <AuthLink href="/login" intercept={intercept}>
           Sign in

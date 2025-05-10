@@ -1,9 +1,8 @@
-import { getProductBySlug } from "@/actions/product";
 import {
   getRatingCounts,
   getReviewsByProductId,
   getReviewsCount,
-} from "@/actions/review";
+} from "@/lib/services/review";
 import {
   ProductDetails,
   ProductImages,
@@ -15,6 +14,7 @@ import SectionBreadcrumb, {
 import { FeaturedProducts } from "@/components/store/Home";
 import { REVIEWS_PER_PAGE } from "@/lib/constants";
 import { cache } from "react";
+import { getProductBySlug } from "@/lib/services/product";
 
 export const generateMetadata = async (props: {
   params: Promise<{ slug: string }>;
