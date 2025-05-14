@@ -1,4 +1,4 @@
-import { FREE_SHIPPING_LIMIT, SHIPPING_COST, TAX_RATE } from "@/lib/constants";
+import { FREE_SHIPPING_LIMIT, SHIPPING_COST } from "@/lib/constants";
 import { TCart, TCartItem, TProduct } from "@/types";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
@@ -8,7 +8,6 @@ const initialState: TCart = {
   itemsCount: 0,
   itemsPrice: 0,
   shippingPrice: 0,
-  taxPrice: 0,
   totalPrice: 0,
 };
 
@@ -28,7 +27,7 @@ export const useCart = create(
         const { id, name, images, discountPrice, regularPrice, slug } = product;
 
         const cartItem: TCartItem = {
-          id,
+          productId: id,
           name,
           slug,
           image: images[0],
@@ -40,12 +39,15 @@ export const useCart = create(
 
         const items = get().cart.items;
         const existingItem = items.find(
-          (item) => item.id === cartItem.id && item.color === cartItem.color,
+          (item) =>
+            item.productId === cartItem.productId &&
+            item.color === cartItem.color,
         );
 
         const newItems = existingItem
           ? items.map((item) =>
-              item.id === existingItem.id && item.color === existingItem.color
+              item.productId === existingItem.productId &&
+              item.color === existingItem.color
                 ? {
                     ...existingItem,
                     quantity: existingItem.quantity + cartItem.quantity,
@@ -65,7 +67,7 @@ export const useCart = create(
       },
       removeItem: (id, color) => {
         const items = get().cart.items.filter(
-          (item) => !(item.id === id && item.color === color),
+          (item) => !(item.productId === id && item.color === color),
         );
 
         set(({ cart }) => ({
@@ -80,7 +82,9 @@ export const useCart = create(
       setQuantity: (product, quantity) => {
         const items = [...get().cart.items];
         const existingItem = items.find(
-          (item) => item.id === product.id && item.color === product.color,
+          (item) =>
+            item.productId === product.productId &&
+            item.color === product.color,
         );
 
         if (existingItem) existingItem.quantity = quantity;
@@ -102,17 +106,15 @@ export const useCart = create(
   ),
 );
 
-const calcCartPrice = (items: TCartItem[]) => {
+export const calcCartPrice = (items: TCartItem[]) => {
   const itemsPrice = items.reduce(
     (acc, item) =>
       acc + (item.discountPrice ?? item.regularPrice) * item.quantity,
     0,
   );
-  const taxPrice = TAX_RATE * itemsPrice;
-  const shippingPrice =
-    itemsPrice + taxPrice >= FREE_SHIPPING_LIMIT ? 0 : SHIPPING_COST;
-  const totalPrice = itemsPrice + shippingPrice + taxPrice;
-  return { itemsPrice, shippingPrice, taxPrice, totalPrice };
+  const shippingPrice = itemsPrice >= FREE_SHIPPING_LIMIT ? 0 : SHIPPING_COST;
+  const totalPrice = itemsPrice + shippingPrice;
+  return { itemsPrice, shippingPrice, totalPrice };
 };
 
 const calcCartItems = (items: TCartItem[]) => {

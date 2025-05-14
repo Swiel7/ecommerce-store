@@ -11,11 +11,11 @@ import { FREE_SHIPPING_LIMIT } from "@/lib/constants";
 
 const CartList = () => {
   const {
-    cart: { items, itemsPrice, taxPrice },
+    cart: { items, itemsPrice },
     clearCart,
   } = useCart();
 
-  const { isFree, freeShippingDiff } = checkFreeShipping(itemsPrice, taxPrice);
+  const { isFree, freeShippingDiff } = checkFreeShipping(itemsPrice);
 
   const progressValue = !isFree
     ? ((FREE_SHIPPING_LIMIT - freeShippingDiff) * 100) / FREE_SHIPPING_LIMIT
@@ -43,7 +43,7 @@ const CartList = () => {
       </Alert>
       <ul className="space-y-4">
         {items.map((item) => (
-          <li key={item.id} className="rounded-lg border">
+          <li key={item.productId} className="rounded-lg border">
             <CartItem item={item} />
           </li>
         ))}

@@ -1,2 +1,2 @@
-export const protectedRoutes = ["/account", "/cart"];
+export const protectedRoutes = ["/account", "/checkout"];
 export const authRoutes = ["/login", "/register"];

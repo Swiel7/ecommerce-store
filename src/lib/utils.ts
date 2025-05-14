@@ -97,11 +97,9 @@ export const getFilterSearchParams = (
   return { ...searchParams, page, sort, price };
 };
 
-export const checkFreeShipping = (itemsPrice: number, taxPrice: number) => {
+export const checkFreeShipping = (itemsPrice: number) => {
   const freeShippingDiff =
-    itemsPrice + taxPrice >= FREE_SHIPPING_LIMIT
-      ? 0
-      : FREE_SHIPPING_LIMIT - (itemsPrice + taxPrice);
+    itemsPrice >= FREE_SHIPPING_LIMIT ? 0 : FREE_SHIPPING_LIMIT - itemsPrice;
 
   return {
     isFree: freeShippingDiff === 0,

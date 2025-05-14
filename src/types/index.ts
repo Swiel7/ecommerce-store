@@ -1,5 +1,6 @@
 import { sortOptions } from "@/data";
-import { categories, products, reviews, users } from "@/db/schema";
+import { categories, orders, products, reviews, users } from "@/db/schema";
+import { ContactOption } from "@stripe/stripe-js";
 import { InferSelectModel } from "drizzle-orm";
 import { LucideProps } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
@@ -8,8 +9,10 @@ export type TProduct = InferSelectModel<typeof products>;
 export type TReview = InferSelectModel<typeof reviews>;
 export type TUser = InferSelectModel<typeof users>;
 export type TCategory = InferSelectModel<typeof categories>;
+export type TOrder = InferSelectModel<typeof orders>;
+
 export type TCartItem = {
-  id: string;
+  productId: string;
   name: string;
   slug: string;
   image: string;
@@ -18,14 +21,20 @@ export type TCartItem = {
   quantity: number;
   color: string;
 };
+
+export type TOrderItem = Omit<TCartItem, "regularPrice" | "discountPrice"> & {
+  price: number;
+};
+
 export type TCart = {
   items: TCartItem[];
   itemsCount: number;
   itemsPrice: number;
   shippingPrice: number;
-  taxPrice: number;
   totalPrice: number;
 };
+
+export type TShippingAddress = ContactOption;
 
 export type TIcon = ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>

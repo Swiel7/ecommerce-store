@@ -1,3 +1,4 @@
+import { TOrderItem, TShippingAddress } from "@/types";
 import { relations } from "drizzle-orm";
 import {
   pgTable,
@@ -12,16 +13,23 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const USER_ROLE = pgEnum("role", ["CUSTOMER", "ADMIN"]);
+export const ORDER_STATUS = pgEnum("order_status", [
+  "Pending",
+  "Delivered",
+  "Cancelled",
+  "Refunded",
+]);
 
 export const users = pgTable("users", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),
+  stripeCustomerId: text("stripe_customer_id").unique(),
   firstName: text("first_name").notNull(),
   lastName: text("last_name").notNull(),
   email: text("email").notNull().unique(),
   password: text("password").notNull(),
   role: USER_ROLE("role").default("CUSTOMER").notNull(),
   image: text("image"),
-  // addresses: json("addresses").$type<X>().array(),
+  addresses: jsonb("addresses").$type<TShippingAddress[]>(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -81,4 +89,26 @@ export const reviewsRelations = relations(reviews, ({ one }) => ({
     fields: [reviews.productId],
     references: [products.id],
   }),
+}));
+
+export const orders = pgTable("orders", {
+  id: uuid("id").notNull().primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+  items: jsonb("items").$type<TOrderItem[]>().notNull(),
+  shippingAddress: jsonb("shipping_address")
+    .$type<TShippingAddress>()
+    .notNull(),
+  paymentMethod: text("payment_method").notNull(),
+  orderStatus: ORDER_STATUS("order_status").default("Pending").notNull(),
+  itemsPrice: integer("items_price").notNull(),
+  shippingPrice: integer("shipping_price").notNull(),
+  totalPrice: integer("total_price").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at"),
+});
+
+export const ordersRelations = relations(orders, ({ one }) => ({
+  user: one(users, { fields: [orders.userId], references: [users.id] }),
 }));

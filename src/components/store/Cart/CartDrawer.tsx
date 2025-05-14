@@ -42,10 +42,10 @@ const CartDrawer = () => {
         <ScrollArea className="min-h-0 px-4 lg:px-6">
           <ul className="divide-y">
             {items.map((item) => (
-              <li key={item.id}>
+              <li key={item.productId}>
                 <CartItem
                   item={item}
-                  className="pr-8 pl-0 **:text-base [&_button]:right-2 [&>div]:gap-1.5"
+                  className="pr-8 pl-0 **:text-base [&_button]:right-2 [&>div]:gap-1.5 [&>div]:first-of-type:w-24"
                 />
               </li>
             ))}

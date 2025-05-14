@@ -128,6 +128,41 @@ const seed = async () => {
         const names = review.user[0].name.split(" ");
         let user;
 
+        const userImages: { firstName: string; image: string }[] = [
+          {
+            firstName: "Ezekiel",
+            image: "https://randomuser.me/api/portraits/men/64.jpg",
+          },
+          {
+            firstName: "Jasper",
+            image: "https://randomuser.me/api/portraits/men/20.jpg",
+          },
+          {
+            firstName: "Sarai",
+            image: "https://randomuser.me/api/portraits/women/43.jpg",
+          },
+          {
+            firstName: "Christop",
+            image: "https://randomuser.me/api/portraits/men/73.jpg",
+          },
+          {
+            firstName: "Harry",
+            image: "https://randomuser.me/api/portraits/men/30.jpg",
+          },
+          {
+            firstName: "Leonor",
+            image: "https://randomuser.me/api/portraits/men/79.jpg",
+          },
+          {
+            firstName: "Marshall",
+            image: "https://randomuser.me/api/portraits/men/21.jpg",
+          },
+          {
+            firstName: "Christa",
+            image: "https://randomuser.me/api/portraits/women/91.jpg",
+          },
+        ];
+
         console.log("Adding user data");
 
         const userExist = await db
@@ -138,6 +173,19 @@ const seed = async () => {
         if (userExist.length > 0) {
           user = userExist[0];
         } else {
+          const result = userImages.find(
+            (image) => image.firstName === names[0],
+          ) as {
+            firstName: string;
+            image: string;
+          };
+
+          const uploadedUserImage = await uploadToImageKit(
+            result.image,
+            `${names[0]}-${names[1]}-image.png`,
+            `${projectFolder}/users`,
+          );
+
           user = (
             await db
               .insert(users)
@@ -146,6 +194,7 @@ const seed = async () => {
                 lastName: names[1],
                 email: review.user[0].email,
                 password: review.user[0].password,
+                image: uploadedUserImage,
               })
               .returning()
           )[0];
