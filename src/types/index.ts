@@ -22,7 +22,10 @@ export type TCartItem = {
   color: string;
 };
 
-export type TOrderItem = Omit<TCartItem, "regularPrice" | "discountPrice"> & {
+export type TOrderItem = Omit<
+  TCartItem,
+  "regularPrice" | "discountPrice" | "slug"
+> & {
   price: number;
 };
 

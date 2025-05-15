@@ -131,35 +131,43 @@ const seed = async () => {
         const userImages: { firstName: string; image: string }[] = [
           {
             firstName: "Ezekiel",
-            image: "https://randomuser.me/api/portraits/men/64.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F1.jpg?alt=media&token=6dca0128-13b6-4cf6-8b23-d43c09805f23",
           },
           {
             firstName: "Jasper",
-            image: "https://randomuser.me/api/portraits/men/20.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F2.jpg?alt=media&token=3e5ee247-686f-407b-8830-01294da42fdf",
           },
           {
             firstName: "Sarai",
-            image: "https://randomuser.me/api/portraits/women/43.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F3.jpg?alt=media&token=fda7ff3d-30d6-4f7d-9c70-c7db1ffaed05",
           },
           {
             firstName: "Christop",
-            image: "https://randomuser.me/api/portraits/men/73.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F4.jpg?alt=media&token=277f1843-eb97-4fa0-a48b-1fa688ae0e1e",
           },
           {
             firstName: "Harry",
-            image: "https://randomuser.me/api/portraits/men/30.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F5.jpg?alt=media&token=b3fde5e6-d03c-4747-82dc-4aa721a9c72b",
           },
           {
             firstName: "Leonor",
-            image: "https://randomuser.me/api/portraits/men/79.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F6.jpg?alt=media&token=08e38e54-1ec8-43bc-99ea-836b9e197c27",
           },
           {
             firstName: "Marshall",
-            image: "https://randomuser.me/api/portraits/men/21.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F7.jpg?alt=media&token=ef9787dc-023d-4808-a330-ab52549af859",
           },
           {
             firstName: "Christa",
-            image: "https://randomuser.me/api/portraits/women/91.jpg",
+            image:
+              "https://firebasestorage.googleapis.com/v0/b/techvvave-store.appspot.com/o/avatars%2F8.jpg?alt=media&token=23e43368-5e69-4707-b76e-a514e6790a3a",
           },
         ];
 

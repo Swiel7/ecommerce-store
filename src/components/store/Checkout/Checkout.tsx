@@ -10,7 +10,7 @@ import CheckoutForm from "./CheckoutForm";
 const stripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const getClientSecret = (cartItems: TCartItem[]) => {
-  return fetch("/api/create-checkout-session", {
+  return fetch("/api/checkout/create-session", {
     method: "POST",
     body: JSON.stringify(cartItems),
   })

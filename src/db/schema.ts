@@ -22,7 +22,6 @@ export const ORDER_STATUS = pgEnum("order_status", [
 
 export const users = pgTable("users", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),
-  stripeCustomerId: text("stripe_customer_id").unique(),
   firstName: text("first_name").notNull(),
   lastName: text("last_name").notNull(),
   email: text("email").notNull().unique(),
@@ -101,6 +100,7 @@ export const orders = pgTable("orders", {
     .$type<TShippingAddress>()
     .notNull(),
   paymentMethod: text("payment_method").notNull(),
+  paymentId: text("payment_id"),
   orderStatus: ORDER_STATUS("order_status").default("Pending").notNull(),
   itemsPrice: integer("items_price").notNull(),
   shippingPrice: integer("shipping_price").notNull(),

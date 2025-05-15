@@ -2,7 +2,6 @@ import { db } from "@/db";
 import { products } from "@/db/schema";
 import { calcCartPrice } from "@/hooks/use-cart";
 import { authenticateUser } from "@/lib/actions/auth";
-import { createOrGetStripeCustomer, getUserById } from "@/lib/services/user";
 import { stripe } from "@/lib/stripe";
 import { TCartItem } from "@/types";
 import { inArray } from "drizzle-orm";
@@ -34,13 +33,19 @@ export async function POST(request: NextRequest) {
         acc[id] = { regularPrice, discountPrice };
         return acc;
       },
-      {} as Record<string, Record<string, number | null>>,
+      {} as Record<
+        string,
+        {
+          regularPrice: number;
+          discountPrice: number | null;
+        }
+      >,
     );
 
     const formattedCartItems = cartItems.map((item) => ({
       ...item,
       discountPrice: formattedProducts[item.productId].discountPrice,
-      regularPrice: formattedProducts[item.productId].regularPrice as number,
+      regularPrice: formattedProducts[item.productId].regularPrice,
       image: `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${item.image}`,
     }));
 
@@ -62,19 +67,16 @@ export async function POST(request: NextRequest) {
             product_data: {
               name,
               images: [image],
-              metadata: { productId, color },
+              metadata: {
+                productId,
+                color,
+              },
             },
             unit_amount: discountPrice ?? regularPrice,
           },
           quantity,
         }),
       );
-
-    const dbUser = await getUserById(user.id!);
-    if (!dbUser) throw new Error("User not found!");
-
-    const result = await createOrGetStripeCustomer(dbUser);
-    if (!result.success) throw new Error("Stripe customer not created!");
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: "custom",
@@ -87,13 +89,12 @@ export async function POST(request: NextRequest) {
           shipping_rate_data: {
             display_name: "Shipping cost",
             fixed_amount: { amount: shippingPrice, currency: "usd" },
+            type: "fixed_amount",
           },
         },
       ],
       customer_email: user.email!,
-      customer: result.stripeCustomerId,
-      saved_payment_method_options: { payment_method_save: "enabled" },
-      metadata: { userId: user.id! },
+      metadata: { userId: user.id!, orderId: null },
       return_url: `${origin}/order-confirmation?session_id={CHECKOUT_SESSION_ID}`,
     });
 
