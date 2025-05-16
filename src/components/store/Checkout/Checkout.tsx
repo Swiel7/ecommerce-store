@@ -3,7 +3,7 @@
 import { Empty } from "@/components/shared";
 import { useCart } from "@/hooks/use-cart";
 import { Appearance, loadStripe } from "@stripe/stripe-js";
-import { TCartItem } from "@/types";
+import { TCartItem, TShippingAddress } from "@/types";
 import { CheckoutProvider } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
@@ -30,7 +30,11 @@ const appearance = {
   },
 } as Appearance;
 
-const Checkout = () => {
+const Checkout = ({
+  shippingAddress,
+}: {
+  shippingAddress: TShippingAddress[];
+}) => {
   const {
     cart: { itemsCount, items },
   } = useCart();
@@ -45,7 +49,7 @@ const Checkout = () => {
             elementsOptions: { appearance },
           }}
         >
-          <CheckoutForm />
+          <CheckoutForm shippingAddress={shippingAddress} />
         </CheckoutProvider>
       ) : (
         <Empty />

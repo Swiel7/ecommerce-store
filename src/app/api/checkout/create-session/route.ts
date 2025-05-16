@@ -28,26 +28,18 @@ export async function POST(request: NextRequest) {
       .from(products)
       .where(inArray(products.id, cartItemsIds));
 
-    const formattedProducts = productsWithPrice.reduce(
-      (acc, { id, regularPrice, discountPrice }) => {
-        acc[id] = { regularPrice, discountPrice };
-        return acc;
-      },
-      {} as Record<
-        string,
-        {
-          regularPrice: number;
-          discountPrice: number | null;
-        }
-      >,
-    );
+    const priceMap = new Map(productsWithPrice.map((p) => [p.id, p]));
 
-    const formattedCartItems = cartItems.map((item) => ({
-      ...item,
-      discountPrice: formattedProducts[item.productId].discountPrice,
-      regularPrice: formattedProducts[item.productId].regularPrice,
-      image: `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${item.image}`,
-    }));
+    const formattedCartItems = cartItems.map((item) => {
+      const price = priceMap.get(item.productId)!;
+
+      return {
+        ...item,
+        discountPrice: price.discountPrice,
+        regularPrice: price.regularPrice,
+        image: `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${item.image}`,
+      };
+    });
 
     const { shippingPrice } = calcCartPrice(formattedCartItems);
 

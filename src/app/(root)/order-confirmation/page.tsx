@@ -1,18 +1,26 @@
+import { CartReset } from "@/components/store/Cart";
 import { Button } from "@/components/ui/button";
+import { stripe } from "@/lib/stripe";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata = { title: "Order confirmation" };
 
 const OrderConfirmationPage = async (props: {
-  searchParams: Promise<{ session_id: string | string[] | undefined }>;
+  searchParams: Promise<{ session_id?: string }>;
 }) => {
   const searchParams = await props.searchParams;
   const sessionId = searchParams.session_id;
 
-  // TODO:
-  console.log(sessionId);
-  const orderId = 1;
+  if (!sessionId) redirect("/");
+
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+  if (session.status !== "complete") redirect("/checkout");
+
+  const orderId = session.metadata?.orderId;
+  console.log(orderId);
 
   return (
     <section>
@@ -30,9 +38,14 @@ const OrderConfirmationPage = async (props: {
             <Button size="lg" asChild variant="outline" className="flex-1">
               <Link href="/">Back To Home</Link>
             </Button>
-            <Button size="lg" asChild className="flex-1">
-              <Link href={`/account/orders/${orderId}`}>View Order</Link>
-            </Button>
+            {orderId ? (
+              <>
+                <Button size="lg" asChild className="flex-1">
+                  <Link href={`/account/orders/${orderId}`}>View Order</Link>
+                </Button>
+                <CartReset />
+              </>
+            ) : null}
           </div>
         </div>
       </div>

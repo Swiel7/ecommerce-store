@@ -2,8 +2,13 @@
 
 import { AddressElement, PaymentElement } from "@stripe/react-stripe-js";
 import CheckoutSummary from "./CheckoutSummary";
+import { TShippingAddress } from "@/types";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({
+  shippingAddress,
+}: {
+  shippingAddress: TShippingAddress[];
+}) => {
   return (
     <form>
       <div className="flex gap-x-16 gap-y-8 not-lg:flex-col">
@@ -14,28 +19,7 @@ const CheckoutForm = () => {
               options={{
                 mode: "shipping",
                 display: { name: "split" },
-                contacts: [
-                  // {
-                  //   name: "Jenny Rosen",
-                  //   address: {
-                  //     line1: "185 Berry St.",
-                  //     city: "San Francisco",
-                  //     state: "CA",
-                  //     postal_code: "94941",
-                  //     country: "US",
-                  //   },
-                  // },
-                  // {
-                  //   name: "Jenny Rosen",
-                  //   address: {
-                  //     line1: "185 Berry St.",
-                  //     city: "San Francisco",
-                  //     state: "CA",
-                  //     postal_code: "94941",
-                  //     country: "US",
-                  //   },
-                  // },
-                ],
+                contacts: shippingAddress,
               }}
             />
           </div>

@@ -2,30 +2,29 @@
 
 import { db } from "@/db";
 import { users } from "@/db/schema";
-import { TShippingAddress, TUser } from "@/types";
+import { TShippingAddress } from "@/types";
 import { eq, InferInsertModel } from "drizzle-orm";
 
 export const createUser = async (values: InferInsertModel<typeof users>) => {
   return await db.insert(users).values(values).returning();
 };
 
-export const createShippingAddress = async (
+export const createShippingAddressIfNotExists = async (
   address: TShippingAddress,
   userId: string,
-): Promise<TUser> => {
-  const user = await db.query.users.findFirst({
-    where: eq(users.id, userId),
-    columns: { addresses: true },
-  });
+) => {
+  const user = await db.query.users.findFirst({ where: eq(users.id, userId) });
 
-  const currentAddresses = user?.addresses ?? [];
-  const updatedAddresses = [...currentAddresses, address];
+  const existing = user?.addresses?.some(
+    (a) => JSON.stringify(a) === JSON.stringify(address),
+  );
 
-  const result = await db
-    .update(users)
-    .set({ addresses: updatedAddresses })
-    .where(eq(users.id, userId))
-    .returning();
+  if (!existing) {
+    const newAddresses = [...(user?.addresses || []), address];
 
-  return result[0];
+    await db
+      .update(users)
+      .set({ addresses: newAddresses })
+      .where(eq(users.id, userId));
+  }
 };
