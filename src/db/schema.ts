@@ -96,15 +96,13 @@ export const orders = pgTable("orders", {
     .references(() => users.id)
     .notNull(),
   items: jsonb("items").$type<TOrderItem[]>().notNull(),
-  shippingAddress: jsonb("shipping_address")
-    .$type<TShippingAddress>()
-    .notNull(),
-  paymentMethod: text("payment_method").notNull(),
-  paymentId: text("payment_id"),
+  shippingAddress: jsonb("shipping_address").$type<TShippingAddress>(),
+  paymentMethod: text("payment_method"),
   orderStatus: ORDER_STATUS("order_status").default("Pending").notNull(),
   itemsPrice: integer("items_price").notNull(),
   shippingPrice: integer("shipping_price").notNull(),
   totalPrice: integer("total_price").notNull(),
+  isPaid: boolean("is_paid").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at"),
 });

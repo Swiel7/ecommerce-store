@@ -22,9 +22,9 @@ export async function POST(request: NextRequest) {
     event.type === "checkout.session.completed" ||
     event.type === "checkout.session.async_payment_succeeded"
   ) {
-    const orderId = event.data.object.metadata?.orderId;
+    const isCompleted = event.data.object.metadata?.completed === "true";
 
-    if (!orderId) await fulfillCheckout(event.data.object.id);
+    if (!isCompleted) await fulfillCheckout(event.data.object.id);
   }
 
   return NextResponse.json({ received: true });

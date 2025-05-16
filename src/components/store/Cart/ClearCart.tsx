@@ -3,7 +3,7 @@
 import { useCart } from "@/hooks/use-cart";
 import { useEffect } from "react";
 
-const CartReset = () => {
+const ClearCart = () => {
   const { clearCart } = useCart();
 
   useEffect(() => {
@@ -13,4 +13,4 @@ const CartReset = () => {
   return null;
 };
 
-export default CartReset;
+export default ClearCart;

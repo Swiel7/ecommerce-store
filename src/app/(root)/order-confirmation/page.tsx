@@ -1,4 +1,4 @@
-import { CartReset } from "@/components/store/Cart";
+import { ClearCart } from "@/components/store/Cart";
 import { Button } from "@/components/ui/button";
 import { stripe } from "@/lib/stripe";
 import { CheckCircle } from "lucide-react";
@@ -20,7 +20,6 @@ const OrderConfirmationPage = async (props: {
   if (session.status !== "complete") redirect("/checkout");
 
   const orderId = session.metadata?.orderId;
-  console.log(orderId);
 
   return (
     <section>
@@ -43,7 +42,7 @@ const OrderConfirmationPage = async (props: {
                 <Button size="lg" asChild className="flex-1">
                   <Link href={`/account/orders/${orderId}`}>View Order</Link>
                 </Button>
-                <CartReset />
+                <ClearCart />
               </>
             ) : null}
           </div>

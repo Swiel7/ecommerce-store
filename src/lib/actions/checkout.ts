@@ -1,6 +1,6 @@
 "use server";
 
-import { TOrder, TOrderItem, TShippingAddress } from "@/types";
+import { TOrder, TShippingAddress } from "@/types";
 import { stripe } from "../stripe";
 import Stripe from "stripe";
 import { db } from "@/db";
@@ -10,11 +10,8 @@ import { createShippingAddressIfNotExists } from "./user";
 
 export const fulfillCheckout = async (sessionId: string) => {
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
-    expand: ["line_items.data.price.product", "payment_intent.payment_method"],
+    expand: ["payment_intent.payment_method"],
   });
-
-  const { amount_subtotal, amount_total, metadata, shipping_cost, line_items } =
-    session;
 
   const paymentIntent = session.payment_intent as Stripe.PaymentIntent;
   const paymentMethod = (paymentIntent.payment_method as Stripe.PaymentMethod)
@@ -33,39 +30,17 @@ export const fulfillCheckout = async (sessionId: string) => {
     },
   };
 
-  const items: TOrderItem[] =
-    line_items?.data.map((item) => {
-      const product = item.price?.product as Stripe.Product;
-
-      return {
-        name: product.name,
-        image: product.images[0],
-        color: product.metadata.color,
-        productId: product.metadata.productId,
-        quantity: item.quantity as number,
-        price: item.price?.unit_amount as number,
-      };
-    }) || [];
-
-  let order: TOrder | undefined;
+  let updatedOrder: TOrder | undefined;
 
   await db.transaction(async (tx) => {
-    order = await tx
-      .insert(orders)
-      .values({
-        items,
-        itemsPrice: amount_subtotal as number,
-        shippingPrice: shipping_cost?.amount_total as number,
-        totalPrice: amount_total as number,
-        shippingAddress,
-        userId: metadata?.userId as string,
-        paymentMethod,
-        paymentId: sessionId,
-      })
+    updatedOrder = await tx
+      .update(orders)
+      .set({ isPaid: true, paymentMethod, shippingAddress })
+      .where(eq(orders.id, session.metadata!.orderId))
       .returning()
-      .then((r) => r[0]);
+      .then((o) => o[0]);
 
-    for (const item of items) {
+    for (const item of updatedOrder!.items) {
       const product = await tx
         .select()
         .from(products)
@@ -87,12 +62,12 @@ export const fulfillCheckout = async (sessionId: string) => {
 
   await createShippingAddressIfNotExists(
     shippingAddress,
-    metadata?.userId as string,
+    session.metadata!.userId,
   );
 
-  if (order) {
+  if (updatedOrder) {
     await stripe.checkout.sessions.update(sessionId, {
-      metadata: { ...metadata, orderId: order.id },
+      metadata: { ...session.metadata, completed: "true" },
     });
   }
 };

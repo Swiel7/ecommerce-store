@@ -1,74 +1,69 @@
 import { db } from "@/db";
 import { products } from "@/db/schema";
-import { calcCartPrice } from "@/hooks/use-cart";
 import { authenticateUser } from "@/lib/actions/auth";
+import { createOrder } from "@/lib/actions/order";
+import { FREE_SHIPPING_LIMIT, SHIPPING_COST } from "@/lib/constants";
 import { stripe } from "@/lib/stripe";
-import { TCartItem } from "@/types";
-import { inArray } from "drizzle-orm";
+import { TCartItem, TOrder, TOrderItem } from "@/types";
+import { inArray, sql } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     const user = await authenticateUser();
     if (!user) return;
 
-    const requestHeaders = new Headers(request.headers);
-    const origin = requestHeaders.get("origin");
-
-    const cartItems = (await request.json()) as TCartItem[];
+    const cartItems = (await req.json()) as TCartItem[];
     const cartItemsIds = cartItems.map(({ productId }) => productId);
 
     const productsWithPrice = await db
       .select({
         id: products.id,
-        discountPrice: products.discountPrice,
-        regularPrice: products.regularPrice,
+        price: sql`COALESCE(discount_price, regular_price)`,
       })
       .from(products)
       .where(inArray(products.id, cartItemsIds));
 
     const priceMap = new Map(productsWithPrice.map((p) => [p.id, p]));
 
-    const formattedCartItems = cartItems.map((item) => {
-      const price = priceMap.get(item.productId)!;
+    const items: TOrderItem[] = cartItems.map((item) => ({
+      name: item.name,
+      image: `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${item.image}`,
+      color: item.color,
+      productId: item.productId,
+      quantity: item.quantity,
+      price: priceMap.get(item.productId)!.price as number,
+    }));
 
-      return {
-        ...item,
-        discountPrice: price.discountPrice,
-        regularPrice: price.regularPrice,
-        image: `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${item.image}`,
-      };
-    });
-
-    const { shippingPrice } = calcCartPrice(formattedCartItems);
+    const itemsPrice = items.reduce(
+      (acc, { price, quantity }) => acc + price * quantity,
+      0,
+    );
+    const shippingPrice = itemsPrice >= FREE_SHIPPING_LIMIT ? 0 : SHIPPING_COST;
 
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] =
-      formattedCartItems.map(
-        ({
-          name,
-          color,
-          quantity,
-          image,
-          productId,
-          discountPrice,
-          regularPrice,
-        }) => ({
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name,
-              images: [image],
-              metadata: {
-                productId,
-                color,
-              },
-            },
-            unit_amount: discountPrice ?? regularPrice,
+      items.map((item) => ({
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: item.name,
+            images: [item.image],
           },
-          quantity,
-        }),
-      );
+          unit_amount: item.price,
+        },
+        quantity: item.quantity,
+      }));
+
+    const order = await createOrder({
+      items,
+      itemsPrice,
+      shippingPrice,
+      totalPrice: itemsPrice + shippingPrice,
+      shippingAddress: null,
+      userId: user.id!,
+      paymentMethod: null,
+    } as TOrder);
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: "custom",
@@ -86,12 +81,13 @@ export async function POST(request: NextRequest) {
         },
       ],
       customer_email: user.email!,
-      metadata: { userId: user.id!, orderId: null },
-      return_url: `${origin}/order-confirmation?session_id={CHECKOUT_SESSION_ID}`,
+      metadata: { userId: user.id!, orderId: order.id, completed: "false" },
+      return_url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}/order-confirmation?session_id={CHECKOUT_SESSION_ID}`,
     });
 
     return NextResponse.json({ clientSecret: session.client_secret });
   } catch (error) {
     console.error(error);
+    return new NextResponse("Internal error", { status: 500 });
   }
 }
