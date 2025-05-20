@@ -15,12 +15,12 @@ const CheckoutSummary = () => {
     <Card>
       <ul className="w-full space-y-4">
         {items.map((item) => (
-          <li key={item.productId} className="px-6">
+          <li key={item.productId} className="px-4 lg:px-6">
             <CartItem
               item={item}
               withQuantityButton={false}
               withRemoveButton={false}
-              className="p-0 **:text-base [&_button]:right-2 [&>div]:gap-1.5 [&>div]:first-of-type:w-24"
+              className="p-0 [&_button]:right-2 [&>div]:gap-1 [&>div]:first-of-type:w-24"
             />
           </li>
         ))}

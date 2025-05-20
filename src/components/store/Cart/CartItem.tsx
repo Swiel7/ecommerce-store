@@ -37,7 +37,7 @@ const CartItem = ({
     <article
       className={cn("relative flex items-start gap-4 p-4 pr-11", className)}
     >
-      <div className="grid aspect-square w-40 shrink-0 rounded-lg border">
+      <div className="grid aspect-square w-5/12 max-w-40 shrink-0 rounded-lg border">
         <Link href={`/products/${slug}`} className="relative m-auto size-[80%]">
           <Image
             src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${image}`}
@@ -50,7 +50,7 @@ const CartItem = ({
       </div>
       <div className="flex flex-col items-start gap-1.5">
         <Link href={`/products/${slug}`} className="hover:underline">
-          <h3 className="text-lg font-bold">{name}</h3>
+          <h3 className="font-bold">{name}</h3>
         </Link>
         <span className="font-medium">Color: {color}</span>
         <div className="flex flex-wrap gap-1.5">

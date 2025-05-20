@@ -32,7 +32,7 @@ const CheckoutForm = ({
             />
           </div>
         </div>
-        <div className="w-full max-w-sm">
+        <div className="w-full lg:max-w-sm">
           <CheckoutSummary />
         </div>
       </div>

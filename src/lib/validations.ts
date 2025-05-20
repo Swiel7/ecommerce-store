@@ -47,3 +47,22 @@ export const reviewSchema = z.object({
     .min(1, "Description is required")
     .max(100, "Description is too long"),
 });
+
+export const updateProfileSchema = z.object({
+  firstName: z.string().min(3, "First name must be at least 3 characters"),
+  lastName: z.string().min(3, "Last name must be at least 3 characters"),
+  email: z.string().email().min(3, "Email must be at least 3 characters"),
+});
+
+export const updatePasswordSchema = z
+  .object({
+    currentPassword: z.string(),
+    newPassword: z.string().min(8, "Password must be at least 8 characters"),
+    confirmNewPassword: z
+      .string()
+      .min(8, "Confirm password must be at least 8 characters"),
+  })
+  .refine((data) => data.newPassword === data.confirmNewPassword, {
+    message: "Passwords don't match",
+    path: ["confirmNewPassword"],
+  });

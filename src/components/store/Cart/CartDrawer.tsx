@@ -45,7 +45,7 @@ const CartDrawer = () => {
               <li key={item.productId}>
                 <CartItem
                   item={item}
-                  className="pr-8 pl-0 **:text-base [&_button]:right-2 [&>div]:gap-1.5 [&>div]:first-of-type:w-24"
+                  className="pr-8 pl-0 [&_button]:right-2 [&>div]:gap-1 [&>div]:first-of-type:w-24"
                 />
               </li>
             ))}

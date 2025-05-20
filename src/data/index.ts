@@ -6,7 +6,6 @@ import {
   Heart,
   Package,
   RefreshCcw,
-  Settings,
   Tag,
   User2,
 } from "lucide-react";
@@ -111,7 +110,6 @@ export const sortValues = sortOptions.map(({ value }) => value);
 export const profileLinks: { label: string; href: string; icon: TIcon }[] = [
   { label: "Personal Information", href: "/account", icon: User2 },
   { label: "Orders", href: "/account/orders", icon: Package },
-  { label: "Adresses", href: "/account/adresses", icon: Tag },
+  { label: "Addresses", href: "/account/addresses", icon: Tag },
   { label: "Wishlist", href: "/account/wishlist", icon: Heart },
-  { label: "Settings", href: "/account/settings", icon: Settings },
 ];

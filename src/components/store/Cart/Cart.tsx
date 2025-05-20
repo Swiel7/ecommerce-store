@@ -15,7 +15,7 @@ const Cart = () => {
       {itemsCount > 0 ? (
         <div className="flex gap-x-16 gap-y-8 not-lg:flex-col">
           <CartList />
-          <div className="w-full max-w-sm">
+          <div className="w-full lg:max-w-sm">
             <CartSummary />
           </div>
         </div>

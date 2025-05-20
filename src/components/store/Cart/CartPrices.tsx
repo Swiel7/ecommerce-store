@@ -22,7 +22,7 @@ const CartPrices = () => {
         </span>
       </div>
       <div className="flex justify-between pt-4 text-lg font-bold">
-        <span>Grand Total</span>
+        <span>Total</span>
         <span>{formatPrice(totalPrice)}</span>
       </div>
     </div>

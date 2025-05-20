@@ -35,7 +35,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    jwt: ({ token, user }) => {
+    jwt: ({ token, user, trigger, session }) => {
+      if (trigger === "update") {
+        return { ...token, ...session.user };
+      }
+
       if (user?.id) token.id = user.id;
       if (user?.role) token.role = user.role;
       if (user?.firstName) token.firstName = user.firstName;
@@ -56,10 +60,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       const { nextUrl } = request;
       const isLoggedIn = !!auth?.user;
 
-      if (!isLoggedIn && protectedRoutes.includes(nextUrl.pathname))
+      if (!isLoggedIn && protectedRoutes.some((r) => r.test(nextUrl.pathname)))
         return false;
 
-      if (isLoggedIn && authRoutes.includes(nextUrl.pathname))
+      if (isLoggedIn && authRoutes.some((r) => r.test(nextUrl.pathname)))
         return Response.redirect(new URL("/", nextUrl));
 
       return true;

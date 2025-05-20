@@ -19,7 +19,7 @@ import { protectedRoutes } from "@/lib/routes";
 
 const UserButton = ({ session }: { session: Session | null }) => {
   const pathname = usePathname();
-  const isProtectedRoute = protectedRoutes.includes(pathname);
+  const isProtectedRoute = protectedRoutes.some((r) => r.test(pathname));
 
   if (!session?.user) {
     return (

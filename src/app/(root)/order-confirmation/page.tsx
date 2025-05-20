@@ -33,7 +33,7 @@ const OrderConfirmationPage = async (props: {
               send you and email when it done.
             </p>
           </div>
-          <div className="flex w-full gap-4">
+          <div className="flex w-full flex-wrap gap-4">
             <Button size="lg" asChild variant="outline" className="flex-1">
               <Link href="/">Back To Home</Link>
             </Button>
