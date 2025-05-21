@@ -37,7 +37,7 @@ export type TCart = {
   totalPrice: number;
 };
 
-export type TShippingAddress = ContactOption;
+export type TShippingAddress = ContactOption & { id: string };
 
 export type TIcon = ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>

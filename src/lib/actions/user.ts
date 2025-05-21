@@ -17,8 +17,24 @@ type UpdateUserResponse =
       data: Pick<TUser, "firstName" | "lastName" | "email">;
     };
 
-export const createUser = async (values: InferInsertModel<typeof users>) => {
-  return await db.insert(users).values(values).returning();
+export const createUser = async (
+  values: InferInsertModel<typeof users>,
+): Promise<TUser> => {
+  return await db
+    .insert(users)
+    .values(values)
+    .returning()
+    .then((res) => res[0]);
+};
+
+export const updateUser = async (
+  values: Partial<InferInsertModel<typeof users>>,
+): Promise<TUser> => {
+  return await db
+    .update(users)
+    .set(values)
+    .returning()
+    .then((res) => res[0]);
 };
 
 export const updateUserInfo = async (
@@ -102,7 +118,7 @@ export const createShippingAddressIfNotExists = async (
   address: TShippingAddress,
   userId: string,
 ) => {
-  const user = await db.query.users.findFirst({ where: eq(users.id, userId) });
+  const user = await getUserById(userId);
 
   const existing = user?.addresses?.some(
     (a) => JSON.stringify(a) === JSON.stringify(address),
@@ -115,5 +131,22 @@ export const createShippingAddressIfNotExists = async (
       .update(users)
       .set({ addresses: newAddresses })
       .where(eq(users.id, userId));
+  }
+};
+
+export const deleteShippingAddress = async (id: string) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) return { success: false, message: "User not authenticated!" };
+
+    const existingUser = await getUserById(user.id!);
+    if (!existingUser) return { success: false, message: "User not found!" };
+
+    const newAddresses = existingUser.addresses?.filter((a) => a.id !== id);
+    await updateUser({ addresses: newAddresses });
+
+    return { success: true, message: "Shipping address deleted successfully!" };
+  } catch {
+    return { success: false, message: "Oops. Something went wrong!" };
   }
 };

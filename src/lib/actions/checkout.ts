@@ -7,6 +7,7 @@ import { db } from "@/db";
 import { orders, products } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { createShippingAddressIfNotExists } from "./user";
+import { randomUUID } from "crypto";
 
 export const fulfillCheckout = async (sessionId: string) => {
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
@@ -19,6 +20,7 @@ export const fulfillCheckout = async (sessionId: string) => {
   const shippingDetails = session.collected_information?.shipping_details;
 
   const shippingAddress: TShippingAddress = {
+    id: randomUUID(),
     name: shippingDetails?.name || "",
     address: {
       city: shippingDetails?.address.city || "",
