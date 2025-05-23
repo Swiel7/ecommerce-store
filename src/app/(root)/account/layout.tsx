@@ -14,7 +14,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <SectionBreadcrumb items={items} />
       <section>
         <div className="wrapper">
-          <div className="flex gap-x-16 gap-y-8 not-md:flex-col md:items-start">
+          <div className="flex gap-8 not-md:flex-col md:items-start lg:gap-16">
             <AccountNav />
             <div className="grow">{children}</div>
           </div>

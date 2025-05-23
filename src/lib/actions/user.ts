@@ -8,6 +8,7 @@ import { updatePasswordSchema, updateProfileSchema } from "../validations";
 import { authenticateUser } from "./auth";
 import { getUserById } from "../services/user";
 import { compare, hash } from "bcryptjs";
+import { revalidatePath } from "next/cache";
 
 type UpdateUserResponse =
   | { success: false; message: string }
@@ -117,24 +118,31 @@ export const changeUserPassword = async (
 export const createShippingAddressIfNotExists = async (
   address: TShippingAddress,
   userId: string,
-) => {
+): Promise<{ success: boolean; message: string }> => {
   const user = await getUserById(userId);
+  if (!user) return { success: false, message: "User not found!" };
 
-  const existing = user?.addresses?.some(
+  const existing = user.addresses?.some(
     (a) => JSON.stringify(a) === JSON.stringify(address),
   );
 
-  if (!existing) {
-    const newAddresses = [...(user?.addresses || []), address];
+  if (existing)
+    return { success: false, message: "Shipping address already exists!" };
 
-    await db
-      .update(users)
-      .set({ addresses: newAddresses })
-      .where(eq(users.id, userId));
-  }
+  const newAddresses = [...(user?.addresses || []), address];
+
+  await db
+    .update(users)
+    .set({ addresses: newAddresses })
+    .where(eq(users.id, userId));
+
+  revalidatePath("account/addresses");
+  return { success: true, message: "Shipping address added successfully!" };
 };
 
-export const deleteShippingAddress = async (id: string) => {
+export const deleteShippingAddress = async (
+  id: string,
+): Promise<{ success: boolean; message: string }> => {
   try {
     const user = await authenticateUser();
     if (!user) return { success: false, message: "User not authenticated!" };
@@ -145,7 +153,34 @@ export const deleteShippingAddress = async (id: string) => {
     const newAddresses = existingUser.addresses?.filter((a) => a.id !== id);
     await updateUser({ addresses: newAddresses });
 
+    revalidatePath("account/addresses");
     return { success: true, message: "Shipping address deleted successfully!" };
+  } catch {
+    return { success: false, message: "Oops. Something went wrong!" };
+  }
+};
+
+export const updateShippingAddress = async (
+  address: TShippingAddress,
+): Promise<{
+  success: boolean;
+  message: string;
+}> => {
+  try {
+    const user = await authenticateUser();
+    if (!user) return { success: false, message: "User not authenticated!" };
+
+    const existingUser = await getUserById(user.id!);
+    if (!existingUser) return { success: false, message: "User not found!" };
+
+    const addresses = existingUser.addresses?.map((a) =>
+      a.id === address.id ? address : a,
+    );
+
+    await updateUser({ addresses });
+
+    revalidatePath("account/addresses");
+    return { success: true, message: "Shipping address updated successfully!" };
   } catch {
     return { success: false, message: "Oops. Something went wrong!" };
   }

@@ -2,7 +2,11 @@ import { db } from "@/db";
 import { products } from "@/db/schema";
 import { authenticateUser } from "@/lib/actions/auth";
 import { createOrder } from "@/lib/actions/order";
-import { FREE_SHIPPING_LIMIT, SHIPPING_COST } from "@/lib/constants";
+import {
+  ALLOWED_COUNTRIES,
+  FREE_SHIPPING_LIMIT,
+  SHIPPING_COST,
+} from "@/lib/constants";
 import { stripe } from "@/lib/stripe";
 import { TCartItem, TOrder, TOrderItem } from "@/types";
 import { inArray, sql } from "drizzle-orm";
@@ -70,7 +74,7 @@ export async function POST(req: NextRequest) {
       mode: "payment",
       line_items,
       payment_method_types: ["card", "paypal"],
-      shipping_address_collection: { allowed_countries: ["US", "GB", "PL"] },
+      shipping_address_collection: { allowed_countries: ALLOWED_COUNTRIES },
       shipping_options: [
         {
           shipping_rate_data: {

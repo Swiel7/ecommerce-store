@@ -19,7 +19,8 @@ const CheckoutForm = ({
               options={{
                 mode: "shipping",
                 display: { name: "split" },
-                contacts: shippingAddress,
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                contacts: shippingAddress.map(({ id, ...rest }) => rest),
               }}
             />
           </div>
