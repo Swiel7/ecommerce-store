@@ -19,7 +19,7 @@ const AccountNav = () => {
   const pathname = usePathname();
 
   return (
-    <Card className="w-full md:max-w-sm">
+    <Card className="w-full sm:max-w-2xs md:max-w-xs">
       <NavigationMenu orientation="vertical">
         <NavigationMenuList className="px-6">
           {profileLinks.map((link) => (

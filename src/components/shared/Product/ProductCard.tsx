@@ -12,6 +12,8 @@ type Props = {
 };
 
 const ProductCard = ({ product, variant = "vertical" }: Props) => {
+  // TODO: Add to wishlist (+wishlist status)
+
   return (
     <article
       className={cn(

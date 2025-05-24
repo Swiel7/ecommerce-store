@@ -64,13 +64,15 @@ const AddressCard = ({
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <AddressForm
-          open={isEditOpen}
-          onOpenChange={setIsEditOpen}
-          shippingAddress={shippingAddress}
-          userId={userId}
-          mode="edit"
-        />
+        {isEditOpen && (
+          <AddressForm
+            open={isEditOpen}
+            onOpenChange={setIsEditOpen}
+            shippingAddress={shippingAddress}
+            userId={userId}
+            mode="edit"
+          />
+        )}
         <DeleteAddressModal
           isOpen={isDeleteOpen}
           setIsOpen={setIsDeleteOpen}

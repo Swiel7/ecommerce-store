@@ -17,7 +17,7 @@ const AddressList = ({
 
   return (
     <div className="space-y-6">
-      <ul className="grid gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+      <ul className="grid gap-6 lg:grid-cols-2">
         {shippingAddresses.map((shippingAddress) => (
           <li key={shippingAddress.id}>
             <AddressCard shippingAddress={shippingAddress} userId={userId} />
@@ -27,23 +27,25 @@ const AddressList = ({
       <Button size="lg" onClick={() => setIsAddOpen(true)}>
         Add New Address
       </Button>
-      <AddressForm
-        open={isAddOpen}
-        onOpenChange={setIsAddOpen}
-        userId={userId}
-        shippingAddress={{
-          address: {
-            city: "",
-            country: "",
-            line1: "",
-            line2: "",
-            postal_code: "",
-            state: "",
-          },
-          name: "",
-        }}
-        mode="add"
-      />
+      {isAddOpen && (
+        <AddressForm
+          open={isAddOpen}
+          onOpenChange={setIsAddOpen}
+          userId={userId}
+          shippingAddress={{
+            address: {
+              city: "",
+              country: "",
+              line1: "",
+              line2: "",
+              postal_code: "",
+              state: "",
+            },
+            name: "",
+          }}
+          mode="add"
+        />
+      )}
     </div>
   );
 };

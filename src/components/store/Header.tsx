@@ -33,7 +33,7 @@ const Header = ({ session }: { session: Session | null }) => {
               className="hidden size-10 sm:flex"
               asChild
             >
-              <Link href="/wishlist">
+              <Link href="/account/wishlist">
                 <Heart />
               </Link>
             </Button>

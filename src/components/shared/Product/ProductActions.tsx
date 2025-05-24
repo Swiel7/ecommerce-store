@@ -7,6 +7,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useCart } from "@/hooks/use-cart";
+import { addToWishlist } from "@/lib/actions/user";
 import { cn } from "@/lib/utils";
 import { TIcon, TProduct } from "@/types";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
@@ -49,7 +50,7 @@ const ProductActions = ({
       <Action
         content="Add to wishlist"
         icon={Heart}
-        action={() => console.log("add to wishlist")}
+        action={() => addToWishlist(product.id)}
         variant={variant}
       />
       <Action

@@ -9,6 +9,8 @@ import { authenticateUser } from "./auth";
 import { getUserById } from "../services/user";
 import { compare, hash } from "bcryptjs";
 import { revalidatePath } from "next/cache";
+import { randomUUID } from "crypto";
+import { redirect } from "next/navigation";
 
 type UpdateUserResponse =
   | { success: false; message: string }
@@ -129,7 +131,10 @@ export const createShippingAddressIfNotExists = async (
   if (existing)
     return { success: false, message: "Shipping address already exists!" };
 
-  const newAddresses = [...(user?.addresses || []), address];
+  const newAddresses = [
+    ...(user?.addresses || []),
+    { ...address, id: randomUUID() },
+  ];
 
   await db
     .update(users)
@@ -181,6 +186,43 @@ export const updateShippingAddress = async (
 
     revalidatePath("account/addresses");
     return { success: true, message: "Shipping address updated successfully!" };
+  } catch {
+    return { success: false, message: "Oops. Something went wrong!" };
+  }
+};
+
+export const addToWishlist = async (productId: string) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) redirect("/login");
+
+    const existingUser = await getUserById(user.id!);
+    if (!existingUser) return { success: false, message: "User not found!" };
+
+    const wishlist = [...(existingUser.wishlist || []), productId];
+
+    await updateUser({ wishlist });
+
+    return { success: true, message: "Product added to wishlist!" };
+  } catch {
+    return { success: false, message: "Oops. Something went wrong!" };
+  }
+};
+
+export const removeFromWishlist = async (productId: string) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) redirect("/login");
+
+    const existingUser = await getUserById(user.id!);
+    if (!existingUser) return { success: false, message: "User not found!" };
+
+    if (existingUser.wishlist && existingUser.wishlist.includes(productId)) {
+      const wishlist = existingUser.wishlist?.filter((id) => id !== productId);
+
+      await updateUser({ wishlist });
+      return { success: true, message: "Product removed from wishlist!" };
+    }
   } catch {
     return { success: false, message: "Oops. Something went wrong!" };
   }

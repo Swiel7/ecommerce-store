@@ -29,8 +29,13 @@ export const users = pgTable("users", {
   role: USER_ROLE("role").default("CUSTOMER").notNull(),
   image: text("image"),
   addresses: jsonb("addresses").$type<TShippingAddress[]>(),
+  wishlist: text("wishlist").array(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const usersRelations = relations(users, ({ many }) => ({
+  orders: many(orders),
+}));
 
 export const categories = pgTable("categories", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),

@@ -15,14 +15,14 @@ import { ALLOWED_COUNTRIES } from "@/lib/constants";
 import { TShippingAddress } from "@/types";
 import { AddressElement, Elements, useElements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 import { toast } from "sonner";
 
 const stripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 type AddressFormProps = {
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
   shippingAddress: TShippingAddress;
   userId: string;
   mode: "add" | "edit";
@@ -39,23 +39,17 @@ const AddressForm = (props: AddressFormProps) => {
 export default AddressForm;
 
 const Modal = ({
-  open = false,
+  open,
   onOpenChange,
   shippingAddress,
   userId,
   mode,
 }: AddressFormProps) => {
   const elements = useElements();
-  const [isOpen, setIsOpen] = useState<boolean>(open);
   const [isPending, startTransition] = useTransition();
 
   const { address, name, id } = shippingAddress;
   const [firstName, ...lastName] = name.split(" ");
-
-  const handleChange = () => {
-    setIsOpen(false);
-    onOpenChange?.(false);
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -81,7 +75,7 @@ const Modal = ({
             : await createShippingAddressIfNotExists(data, userId);
 
         if (success) {
-          setIsOpen(false);
+          onOpenChange(false);
           toast.success("Success", { description: message });
         } else {
           toast.error("Error", { description: message });
@@ -91,7 +85,7 @@ const Modal = ({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleChange}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>

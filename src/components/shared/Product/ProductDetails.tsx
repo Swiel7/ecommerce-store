@@ -19,6 +19,7 @@ const ProductDetails = ({ product }: { product: TProduct }) => {
 
   const [variant, setVariant] = useState<number>(0);
   const [quantity, setQuantity] = useState<number>(1);
+  // TODO: Add to wishlist (+wishlist status)
 
   return (
     <div className="space-y-8">
