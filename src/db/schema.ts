@@ -16,7 +16,7 @@ export const USER_ROLE = pgEnum("role", ["CUSTOMER", "ADMIN"]);
 export const ORDER_STATUS = pgEnum("order_status", [
   "Pending",
   "Delivered",
-  "Cancelled",
+  // "Cancelled",
   "Refunded",
 ]);
 

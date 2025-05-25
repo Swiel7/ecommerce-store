@@ -16,18 +16,12 @@ export type TCartItem = {
   name: string;
   slug: string;
   image: string;
-  regularPrice: number;
-  discountPrice: number | null;
+  price: number;
   quantity: number;
   color: string;
 };
 
-export type TOrderItem = Omit<
-  TCartItem,
-  "regularPrice" | "discountPrice" | "slug"
-> & {
-  price: number;
-};
+export type TOrderItem = TCartItem;
 
 export type TCart = {
   items: TCartItem[];

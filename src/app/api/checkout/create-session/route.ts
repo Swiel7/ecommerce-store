@@ -33,7 +33,8 @@ export async function POST(req: NextRequest) {
 
     const items: TOrderItem[] = cartItems.map((item) => ({
       name: item.name,
-      image: `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${item.image}`,
+      slug: item.slug,
+      image: item.image,
       color: item.color,
       productId: item.productId,
       quantity: item.quantity,
@@ -52,7 +53,9 @@ export async function POST(req: NextRequest) {
           currency: "usd",
           product_data: {
             name: item.name,
-            images: [item.image],
+            images: [
+              `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}${item.image}`,
+            ],
           },
           unit_amount: item.price,
         },

@@ -31,8 +31,7 @@ export const useCart = create(
           name,
           slug,
           image: images[0],
-          regularPrice,
-          discountPrice,
+          price: discountPrice ?? regularPrice,
           color,
           quantity,
         };
@@ -108,8 +107,7 @@ export const useCart = create(
 
 export const calcCartPrice = (items: TCartItem[]) => {
   const itemsPrice = items.reduce(
-    (acc, item) =>
-      acc + (item.discountPrice ?? item.regularPrice) * item.quantity,
+    (acc, { price, quantity }) => acc + price * quantity,
     0,
   );
   const shippingPrice = itemsPrice >= FREE_SHIPPING_LIMIT ? 0 : SHIPPING_COST;

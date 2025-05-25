@@ -9,8 +9,8 @@ import { authenticateUser } from "./auth";
 import { getUserById } from "../services/user";
 import { compare, hash } from "bcryptjs";
 import { revalidatePath } from "next/cache";
-import { randomUUID } from "crypto";
 import { redirect } from "next/navigation";
+import { v4 as uuid } from "uuid";
 
 type UpdateUserResponse =
   | { success: false; message: string }
@@ -131,10 +131,7 @@ export const createShippingAddressIfNotExists = async (
   if (existing)
     return { success: false, message: "Shipping address already exists!" };
 
-  const newAddresses = [
-    ...(user?.addresses || []),
-    { ...address, id: randomUUID() },
-  ];
+  const newAddresses = [...(user?.addresses || []), { ...address, id: uuid() }];
 
   await db
     .update(users)

@@ -22,11 +22,10 @@ const CartItem = ({
   withRemoveButton = true,
   className,
 }: Props) => {
-  const { productId, name, slug, image, color, discountPrice, regularPrice } =
-    item;
+  const { productId, name, slug, image, color, price, quantity } = item;
 
   const { removeItem, setQuantity } = useCart();
-  const [quantityValue, setQuantityValue] = useState<number>(item.quantity);
+  const [quantityValue, setQuantityValue] = useState<number>(quantity);
 
   const handleQuantityChange = (value: number) => {
     setQuantityValue(value);
@@ -57,14 +56,7 @@ const CartItem = ({
           {!withQuantityButton && (
             <span className="font-medium">{quantityValue} x </span>
           )}
-          <span className="font-medium">
-            {formatPrice(discountPrice ?? regularPrice)}
-          </span>
-          {discountPrice && (
-            <span className="text-muted-foreground line-through">
-              {formatPrice(regularPrice)}
-            </span>
-          )}
+          <span className="font-medium">{formatPrice(price)}</span>
         </div>
         {withQuantityButton && (
           <QuantityButton
