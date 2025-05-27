@@ -16,7 +16,6 @@ export const USER_ROLE = pgEnum("role", ["CUSTOMER", "ADMIN"]);
 export const ORDER_STATUS = pgEnum("order_status", [
   "Pending",
   "Delivered",
-  // "Cancelled",
   "Refunded",
 ]);
 
@@ -96,7 +95,7 @@ export const reviewsRelations = relations(reviews, ({ one }) => ({
 }));
 
 export const orders = pgTable("orders", {
-  id: uuid("id").notNull().primaryKey().defaultRandom(),
+  id: text("id").notNull().primaryKey(),
   userId: uuid("user_id")
     .references(() => users.id)
     .notNull(),

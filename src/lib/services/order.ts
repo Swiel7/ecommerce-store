@@ -1,16 +1,22 @@
 import { db } from "@/db";
 import { orders } from "@/db/schema";
-import { TOrder } from "@/types";
+import { TOrder, TUser } from "@/types";
 import { and, count, desc, eq, SQL } from "drizzle-orm";
 import { authenticateUser } from "../actions/auth";
 import { ORDERS_PER_PAGE } from "../constants";
 
-export const getOrderById = async (orderId: string): Promise<TOrder> => {
-  return await db
-    .select()
-    .from(orders)
-    .where(eq(orders.id, orderId))
-    .then((res) => res[0]);
+export const getOrderById = async (
+  orderId: string,
+): Promise<
+  | (TOrder & { user: Pick<TUser, "email" | "firstName" | "lastName"> })
+  | undefined
+> => {
+  return await db.query.orders.findFirst({
+    where: eq(orders.id, orderId),
+    with: {
+      user: { columns: { email: true, firstName: true, lastName: true } },
+    },
+  });
 };
 
 export const getMyOrders = async (
@@ -55,4 +61,17 @@ export const getMyOrders = async (
     );
 
   return { data, totalPages: Math.ceil(dataCount[0].count / limit) };
+};
+
+export const generateOrderId = async (): Promise<string> => {
+  let orderId, exists;
+
+  do {
+    orderId = `ORD${Date.now()}`;
+    exists = await db.query.orders.findFirst({
+      where: eq(orders.id, orderId),
+    });
+  } while (exists);
+
+  return orderId;
 };

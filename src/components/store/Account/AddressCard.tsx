@@ -12,6 +12,7 @@ import { Edit, EllipsisVertical, Trash2 } from "lucide-react";
 import { useState } from "react";
 import DeleteAddressModal from "./DeleteAddressModal";
 import AddressForm from "./AddressForm";
+import AddressItem from "./AddressItem";
 
 const AddressCard = ({
   shippingAddress,
@@ -20,27 +21,13 @@ const AddressCard = ({
   shippingAddress: TShippingAddress;
   userId: string;
 }) => {
-  const {
-    name,
-    id,
-    address: { line1, line2, city, state, postal_code, country },
-  } = shippingAddress;
-
   const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
 
   return (
     <Card className="min-w-1/3 !py-3 not-last:flex-1">
       <CardContent className="flex items-center gap-4 !px-3">
-        <div className="grow space-y-1">
-          <h3 className="font-bold">{name}</h3>
-          <p className="text-sm">
-            {line1}, {line2}
-          </p>
-          <p className="text-sm">
-            {city}, {state} {postal_code} {country}
-          </p>
-        </div>
+        <AddressItem shippingAddress={shippingAddress} />
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger>
             <EllipsisVertical />
@@ -76,7 +63,7 @@ const AddressCard = ({
         <DeleteAddressModal
           isOpen={isDeleteOpen}
           setIsOpen={setIsDeleteOpen}
-          addressId={id!}
+          addressId={shippingAddress.id!}
         />
       </CardContent>
     </Card>

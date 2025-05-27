@@ -17,7 +17,7 @@ const AddressList = ({
 
   return (
     <div className="space-y-6">
-      <ul className="grid gap-6 lg:grid-cols-2">
+      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {shippingAddresses.map((shippingAddress) => (
           <li key={shippingAddress.id}>
             <AddressCard shippingAddress={shippingAddress} userId={userId} />

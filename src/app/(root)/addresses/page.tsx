@@ -1,5 +1,5 @@
 import { AddressList } from "@/components/store/Account";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { CardTitle } from "@/components/ui/card";
 import { getShippingAddresses } from "@/lib/services/user";
 import { auth } from "auth";
 
@@ -13,14 +13,12 @@ const AddressesPage = async () => {
   const shippingAddresses = await getShippingAddresses(userId);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Shipping Address</CardTitle>
-      </CardHeader>
-      <CardContent>
+    <section>
+      <div className="wrapper">
+        <CardTitle className="mb-6">Shipping Address</CardTitle>
         <AddressList shippingAddresses={shippingAddresses} userId={userId} />
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 };
 

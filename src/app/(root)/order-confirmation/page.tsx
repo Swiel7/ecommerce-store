@@ -40,7 +40,7 @@ const OrderConfirmationPage = async (props: {
             {orderId ? (
               <>
                 <Button size="lg" asChild className="flex-1">
-                  <Link href={`/account/orders/${orderId}`}>View Order</Link>
+                  <Link href={`/orders/${orderId}`}>View Order</Link>
                 </Button>
                 <ClearCart />
               </>

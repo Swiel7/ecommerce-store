@@ -24,7 +24,7 @@ export const generateMetadata = async (props: {
   return { title: product?.name };
 };
 
-const SingleProduct = async (props: {
+const ProductDetailsPage = async (props: {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ page: string }>;
 }) => {
@@ -76,4 +76,4 @@ const SingleProduct = async (props: {
   );
 };
 
-export default SingleProduct;
+export default ProductDetailsPage;

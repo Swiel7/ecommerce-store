@@ -4,3 +4,4 @@ export { default as AllOrders } from "./AllOrders";
 export { default as PendingOrders } from "./PendingOrders";
 export { default as DeliveredOrders } from "./DeliveredOrders";
 export { default as RefundedOrders } from "./RefundedOrders";
+export { default as OrderItem } from "./OrderItem";

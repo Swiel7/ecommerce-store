@@ -9,7 +9,9 @@ import {
   Tag,
   User2,
 } from "lucide-react";
-import { TIcon } from "@/types";
+import { TIcon, TOrder } from "@/types";
+import { badgeVariants } from "@/components/ui/badge";
+import { VariantProps } from "class-variance-authority";
 
 export const navLinks = [
   { label: "Home", href: "/" },
@@ -108,8 +110,17 @@ export const sortOptions = [
 export const sortValues = sortOptions.map(({ value }) => value);
 
 export const profileLinks: { label: string; href: string; icon: TIcon }[] = [
-  { label: "Personal Information", href: "/account", icon: User2 },
-  { label: "Orders", href: "/account/orders", icon: Package },
-  { label: "Addresses", href: "/account/addresses", icon: Tag },
-  { label: "Wishlist", href: "/account/wishlist", icon: Heart },
+  { label: "Account Details", href: "/account", icon: User2 },
+  { label: "Orders", href: "/orders", icon: Package },
+  { label: "Addresses", href: "/addresses", icon: Tag },
+  { label: "Wishlist", href: "/wishlist", icon: Heart },
 ];
+
+export const orderStatusColors: Record<
+  TOrder["orderStatus"],
+  VariantProps<typeof badgeVariants>["variant"]
+> = {
+  Pending: "yellow",
+  Delivered: "success",
+  Refunded: "blue",
+};

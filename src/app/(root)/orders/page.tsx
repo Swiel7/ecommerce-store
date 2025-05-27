@@ -5,7 +5,7 @@ import {
   PendingOrders,
   RefundedOrders,
 } from "@/components/store/Orders";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { CardTitle } from "@/components/ui/card";
 import { TabsContent } from "@/components/ui/tabs";
 
 export const metadata = { title: "Orders" };
@@ -16,11 +16,9 @@ const OrdersPage = async (props: {
   const { page } = await props.searchParams;
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Your Orders</CardTitle>
-      </CardHeader>
-      <CardContent>
+    <section>
+      <div className="wrapper">
+        <CardTitle className="mb-6">Your Orders</CardTitle>
         <OrderTabs>
           <TabsContent value="all">
             <AllOrders page={page} />
@@ -35,8 +33,8 @@ const OrdersPage = async (props: {
             <RefundedOrders page={page} />
           </TabsContent>
         </OrderTabs>
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 };
 
