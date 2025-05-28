@@ -19,22 +19,6 @@ export const registerSchema = z
     path: ["terms"],
   });
 
-export const forgotPasswordSchema = z.object({
-  email: z.string().email().min(3, "Email must be at least 3 characters"),
-});
-
-export const resetPasswordSchema = z
-  .object({
-    password: z.string().min(8, "Password must be at least 8 characters"),
-    confirmPassword: z
-      .string()
-      .min(8, "Confirm password must be at least 8 characters"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  });
-
 export const reviewSchema = z.object({
   rating: z.coerce
     .number()
@@ -66,15 +50,3 @@ export const updatePasswordSchema = z
     message: "Passwords don't match",
     path: ["confirmNewPassword"],
   });
-
-// export const shippingAddressSchema = z.object({
-//   firstName: z.string().min(3, "First name must be at least 3 characters"),
-//   lastName: z.string().min(3, "Last name must be at least 3 characters"),
-//   // country: z.string().min(3, "country must be at least 3 characters"),  Dropdown (3 opcje)
-//   line1: z.string().min(3, "Address must be at least 3 characters"),
-//   line2: z.string().optional().nullable(),
-//   city: z.string().min(3, "City must be at least 3 characters"),
-//   state: z.string().optional().nullable(),
-//   postalCode: z.string().min(3, "Postal code must be at least 3 characters"),
-
-// });

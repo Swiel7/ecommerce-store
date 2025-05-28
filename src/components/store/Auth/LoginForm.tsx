@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -50,7 +49,7 @@ const LoginForm = ({ intercept = false, onSuccess }: Props) => {
     <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
-          <FormControls className="mb-4 space-y-2">
+          <FormControls>
             <FormField
               control={form.control}
               name="email"
@@ -77,30 +76,6 @@ const LoginForm = ({ intercept = false, onSuccess }: Props) => {
                 </FormItem>
               )}
             />
-            <div className="flex justify-between gap-2">
-              <FormField
-                control={form.control}
-                name="remember"
-                render={({ field }) => (
-                  <FormItem className="flex items-center gap-2">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        disabled={isSubmitting}
-                      />
-                    </FormControl>
-                    <FormLabel className="text-foreground text-base">
-                      Remember me
-                    </FormLabel>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <AuthLink href="/forgot-password" intercept={intercept}>
-                Forgot Password?
-              </AuthLink>
-            </div>
           </FormControls>
           <Button
             type="submit"

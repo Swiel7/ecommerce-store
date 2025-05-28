@@ -24,14 +24,14 @@ const OrderItem = ({
           />
         </div>
       </div>
-      <div className="flex grow flex-wrap justify-between gap-x-5">
-        <div className="flex flex-col justify-center">
+      <div className="flex grow flex-wrap justify-between gap-x-5 gap-y-1">
+        <div className="flex flex-col justify-center gap-y-1">
           <h3 className="text-sm font-bold">{name}</h3>
           <span className="text-muted-foreground text-sm font-medium">
             Color: <span> {color}</span>
           </span>
         </div>
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center gap-y-1">
           <span className="text-sm font-bold">{formatPrice(price)}</span>
           <span className="text-muted-foreground text-sm font-medium">
             Qty: {quantity}
